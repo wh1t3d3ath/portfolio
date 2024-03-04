@@ -11,6 +11,26 @@
       height: fit-content;
     }
   }
+/* CSS for desktop view */
+@media screen and (min-width: 1200px) {
+  #about .section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #about .section__text {
+    flex: 1;
+    margin-right: 2rem; /* Adjust the margin as needed */
+  }
+
+  #about .lottie-container {
+    width: 300px; /* Adjust width as needed */
+    height: auto; /* Let the height adjust proportionally */
+  }
+}
+
+
   
   @media screen and (max-width: 1200px) {
     #desktop-nav {
