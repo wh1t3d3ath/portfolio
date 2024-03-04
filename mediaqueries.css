@@ -91,6 +91,9 @@
     .contact-info-container {
       margin: 0;
     }
+    .contact-info-container p{
+      margin-bottom: 10px;
+    }
     .contact-info-container p,
     .nav-links li a {
       font-size: 1rem;
