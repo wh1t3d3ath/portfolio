@@ -43,8 +43,8 @@ Here are some of my recent projects:
 
 Feel free to reach out to me via email or LinkedIn:
 
-- **Email**: [vaggeliskavouras3@gmail.com](mailto:vaggeliskavouras3@gmail.com)
-- **LinkedIn**: [Vaggelis Kavouras](https://www.linkedin.com)
+- **Email**: [Mail Me](mailto:vaggeliskavouras3@gmail.com)
+- **LinkedIn**: [LinkedIn](https://www.linkedin.com)
 
 ## License 📝
 
