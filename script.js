@@ -7,21 +7,47 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
-// Dark Mode
+// Dark / Light Mode
 
-let btn = document.getElementById("btn");
-let btnText = document.getElementById("btnText");
-let btnIcon = document.getElementById("btnIcon")
+const btn = document.getElementById("modeToogle")
+const btn2 = document.getElementById("modeToogle2")
+const themeIcons = document.querySelectorAll(".icon");
+const currentTheme= localStorage.getItem("theme");
 
+if(currentTheme === "dark"){
+  setDarkMode();
+};
 
-btn.onclick = function(){
-  document.body.classList.toggle("dark-theme");
-  if(document.body.classList.contains(dark-theme)){
-    btnIcon.src = "<./assets/sun-solid.svg>";
-    btnText.innerHTML = "Light";
+btn.addEventListener("click" , function(){
+  setTheme();
+})
+btn2.addEventListener("click" , function(){
+  setTheme();
+})
+
+function setTheme(){
+  let currentTheme = document.body.getAttribute("theme")
+
+  if(currentTheme === "dark"){
+    setLightMode();}
+  else 
+  {
+    setDarkMode();
   }
-  else{
-    btnIcon.src = "./aseets/moon-solid.svg"
-    btnText.innerHTML = "Dark";
-  }
-}
+};
+
+function setDarkMode(){
+  document.body.setAttribute("theme" , "dark");
+  localStorage.setItem("theme" , "dark");
+  themeIcons.forEach((icon) => (
+    icon.src = icon.getAttribute("src-dark")
+  ))
+};
+
+function setLightMode(){
+  document.body.removeAttribute("theme");
+  localStorage.setItem("theme" , "light");
+  themeIcons.forEach((icon) => (
+    icon.src = icon.getAttribute("src-light")
+  ))
+};
