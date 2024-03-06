@@ -19,7 +19,7 @@
 
 /* Dark Mode */
 [theme="dark"] {
-  --primary-color: rgb(20, 20, 20);
+  --primary-color: rgb(34, 34, 34);
   --primary-color-2: rgb(39, 39, 39);
   --primary-color-3: rgb(74, 74, 74);
   --background-color: rgb(33, 33, 33);
@@ -27,10 +27,30 @@
   --secondary-color-2: rgb(170, 170, 170);
   --button-background: rgb(202, 202, 202);
   --button-text-hover: lightgrey;
-  --button-border: rgb(81,0,203) 0.1rem solid;
+  --button-border: rgb(58, 1, 105) 0.1rem solid;
   --button-border-2: rgb(0, 0, 0) 0.1rem solid;
-  --container-border: rgb(81,0,203);
+  --container-border: rgb(46, 2, 87);
 }
+
+.wave {
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
+}
+
 
 * {
   margin: 0;

@@ -3,8 +3,16 @@
     height: 83vh;
     margin-bottom: 6rem;
   }
+  #profile,
+  .section-container {
+    display: block;
+  }
   .about-containers {
     flex-wrap: wrap;
+  }
+  .lottie-container{
+    width: auto;
+    height: auto;
   }
 }
 
@@ -33,6 +41,13 @@
   section {
     margin: 0 5%;
   }
+  
+.lottie-container{
+  width: 275px;
+  height: 275px;
+  margin: auto ;
+}
+
   .section__pic-container {
     width: 275px;
     height: 275px;
@@ -83,6 +98,13 @@
     gap: 0.5rem;
     text-align: center;
   }
+
+  .lottie-container{
+    width: auto;
+    height: 46vw;
+    justify-content: center;
+  }
+
   .section__pic-container {
     width: auto;
     height: 46vw;
