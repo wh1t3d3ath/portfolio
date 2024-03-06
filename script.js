@@ -1,5 +1,4 @@
 // Hamburger Menu
-
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
@@ -8,30 +7,42 @@ function toggleMenu() {
 }
 
 // Dark / Light Mode
-
 const btn = document.getElementById("modeToogle")
 const btn2 = document.getElementById("modeToogle2")
 const themeIcons = document.querySelectorAll(".icon");
-const currentTheme= localStorage.getItem("theme");
+let isSystemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-if(currentTheme === "dark"){
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    isSystemDarkMode = e.matches;
+    setTheme();
+});
+
+if(localStorage.getItem("theme") === "dark"){
   setDarkMode();
 };
 
 btn.addEventListener("click" , function(){
+  localStorage.setItem("themeChangedManually", "true");
   setTheme();
 })
 btn2.addEventListener("click" , function(){
+  localStorage.setItem("themeChangedManually", "true");
   setTheme();
 })
 
 function setTheme(){
   let currentTheme = document.body.getAttribute("theme")
+  let themeChangedManually = localStorage.getItem("themeChangedManually");
 
-  if(currentTheme === "dark"){
-    setLightMode();}
-  else 
-  {
+  if(themeChangedManually !== "true"){
+    if(isSystemDarkMode){
+      setDarkMode();
+    } else {
+      setLightMode();
+    }
+  } else if(currentTheme === "dark"){
+    setLightMode();
+  } else {
     setDarkMode();
   }
 };
