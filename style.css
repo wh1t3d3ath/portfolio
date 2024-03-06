@@ -8,7 +8,7 @@
   --primary-color-2: rgb(250, 250, 250);
   --primary-color-3: rgb(181, 181, 181);
   --background-color: rgb(255, 255, 255);
-  --secondary-color: black;
+  --secondary-color: rgb(131, 88, 88);
   --secondary-color-2: rgb(85, 85, 85);
   --button-background: rgb(53, 53, 53);
   --button-text-hover: grey;
@@ -19,11 +19,11 @@
 
 /* Dark Mode */
 [theme="dark"] {
-  --primary-color: rgb(34, 34, 34);
+  --primary-color: rgb(29, 29, 29);
   --primary-color-2: rgb(39, 39, 39);
   --primary-color-3: rgb(74, 74, 74);
   --background-color: rgb(33, 33, 33);
-  --secondary-color: white;
+  --secondary-color: rgb(255, 255, 255);
   --secondary-color-2: rgb(170, 170, 170);
   --button-background: rgb(202, 202, 202);
   --button-text-hover: lightgrey;
@@ -33,6 +33,7 @@
 }
 
 .wave {
+  z-index: 1;
   animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
   animation-duration: 2.5s;        /* Change to speed up or slow down */
   animation-iteration-count: infinite;  /* Never stop waving :) */
@@ -141,6 +142,7 @@ nav a:hover {
 }
 
 .hamburger-menu {
+  z-index: 2;
   position: relative;
   display: inline-block;
 }
