@@ -12,14 +12,14 @@
   --secondary-color-2: rgb(85, 85, 85);
   --button-background: rgb(53, 53, 53);
   --button-text-hover: grey;
-  --button-border: rgb(81, 0, 203) 0.1rem solid;
+  --button-border: rgb(73, 1, 97) 0.1rem solid;
   --button-border-2: rgb(255, 255, 255) 0.1rem solid;
-  --container-border: rgb(6, 1, 45);
+  --container-border: rgb(84, 0, 112);
 }
 
 /* Dark Mode */
 [theme="dark"] {
-  --primary-color: black;
+  --primary-color: rgb(20, 20, 20);
   --primary-color-2: rgb(39, 39, 39);
   --primary-color-3: rgb(74, 74, 74);
   --background-color: rgb(33, 33, 33);
@@ -51,6 +51,7 @@ html {
 }
 
 p {
+  font-family: "Poppins" , sans-serif;
   color: var(--secondary-color-2);
 }
 
