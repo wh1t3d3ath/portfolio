@@ -10,13 +10,14 @@
   --primary-color-2: rgb(250, 250, 250);
   --primary-color-3: rgb(181, 181, 181);
   --background-color: rgb(255, 255, 255);
-  --secondary-color: rgb(0, 0, 0);
+  --secondary-color: rgb(45, 0, 95);
   --secondary-color-2: rgb(33, 19, 39);
   --button-background: rgb(53, 53, 53);
   --button-text-hover: grey;
-  --button-border: rgb(73, 1, 97) 0.1rem solid;
+  --button-border: rgb(45, 0, 95) 0.1rem solid;
   --button-border-2: rgb(255, 255, 255) 0.1rem solid;
-  --container-border: rgb(84, 0, 112);
+  --container-border: rgb(45, 0, 95);
+  --icon-inverted-color: #000000;
 }
 
 /* Dark Mode */
@@ -26,12 +27,13 @@
   --primary-color-3: rgb(74, 74, 74);
   --background-color: rgb(33, 33, 33);
   --secondary-color: rgb(255, 255, 255);
-  --secondary-color-2: rgb(170, 170, 170);
+  --secondary-color-2: rgb(205, 205, 205);
   --button-background: rgb(202, 202, 202);
   --button-text-hover: lightgrey;
-  --button-border: rgb(58, 1, 105) 0.1rem solid;
+  --button-border: rgb(145, 50, 220) 0.1rem solid;
   --button-border-2: rgb(0, 0, 0) 0.1rem solid;
-  --container-border: rgb(46, 2, 87);
+  --container-border: rgb(145, 50, 220);
+  --icon-inverted-color: #ffffff;
 }
 
 .wave {
@@ -52,6 +54,19 @@
    50% { transform: rotate(10.0deg) }
    60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
   100% { transform: rotate( 0.0deg) }
+}
+
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(29, 29, 29);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
 }
 
 * {
@@ -282,6 +297,10 @@ section {
 }
 
 /* ICONS */
+
+.icons{
+  color: var(--icon-inverted-color);
+}
 
 .icon {
   cursor: pointer;
