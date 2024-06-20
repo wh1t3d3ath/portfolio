@@ -119,4 +119,19 @@
   .text-container {
     text-align: justify;
   }
+  .dropdown {
+    position: relative;
+    width: 100%; /* Full width on smaller screens */
+    padding: 8px 10px; /* Slightly smaller padding on small devices */
+    font-size: 0.9rem; /* Slightly smaller font size for small screens */
+    text-align: center;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
 }

@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
     <body>  
-      <div id="splash-screen">
+      <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; background: white; z-index: 9999;">
         <lottie-player src="./assets/lotti/splash.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-    </div>  
+      </div>  
       <nav id="hamburger-nav">
       <div class="logo">Vaggelis Kavouras</div>
       <div class="hamburger-menu">
@@ -62,15 +62,20 @@
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Vaggelis Kavouras<span class="wave">👋</span></h1>
-
         <p class="section__text__p2">Software Developer</p>
         <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/CV.pdf')"
-          >
-            Download CV
-          </button>
+          <!-- Dropdown Menu for Download CV -->
+          <div class="dropdown">
+            <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
+            <div class="dropdown-content">
+              <a href="./assets/CV_Vaggelis_Kavouras_English.pdf">
+                <img src="./assets/usa.png" alt="USA Flag" class="flag-icon"> English
+              </a>
+              <a href="./assets/CV_Vaggelis_Kavouras_Greek.pdf">
+                <img src="./assets/greece.png" alt="Greece Flag" class="flag-icon"> Greek
+              </a>
+            </div>
+          </div>
           <button class="btn btn-color-1" onclick="location.href='#contact'">
             Contact Info
           </button>
@@ -79,8 +84,6 @@
           <img
             src="./assets/linkedin_light.png"
             src-light = "./assets/linkedin_light.png"
-            src-dark = "./assets/linkedin_dark.png"
-            src-light ="./assets/lingkedin_light.png"
             src-dark = "./assets/linkedin_dark.png"
             alt="My LinkedIn profile"
             class="icon linked-icon"
@@ -102,7 +105,7 @@
     </dotlottie-player>
     <br>
     </section>
-    <section id="about">
+    <section id="about" class="animated">
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
       <div class="section-container"> 
@@ -128,7 +131,7 @@
           </div>
           <div class="text-container">
             <p>
-              👋 Hey there! I'm a 19-year-old solo software developer from Thessaloniki, Greece. I'm passionate about coding and love diving into new projects. Whether it's crafting sleek interfaces or solving complex problems, I'm always up for a challenge. Join me on my journey as I continue to learn and grow in the world of technology!            
+              👋Proactive and detail-oriented IT Technician with a strong foundation in software development, web design, and game development. Adept at leading projects, solving complex technical problems, and delivering high-quality solutions within tight deadlines. Eager to leverage my skills and passion for technology to contribute to innovative projects and drive organizational success.            
             </p>
           </div>
         </div>
@@ -139,10 +142,9 @@
         src-dark = "./assets/arrow_dark.png"
         alt="Arrow icon"
         class="icon arrow"
-        onclick="location.href='#experience'"
-      />
+        onclick="location.href='#experience'"/>
     </section>
-    <section id="experience">
+    <section id="experience" class="animated">
       <p class="section__text__p1">Explore My</p>
       <h1 class="title">Experience</h1>
       <div class="experience-details-container">
@@ -163,7 +165,6 @@
                   <h3>CSS</h3>
                   <p>Basic</p>
                 </div></i>
-
               </article>
               <article>
                 <div class="icons"><i class="fa-brands fa-js"></i></div>               
@@ -262,7 +263,7 @@
         onclick="location.href='#projects'"
       />
     </section>
-    <section id="projects">
+    <section id="projects" class="animated">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
       <div class="experience-details-container">
@@ -350,7 +351,7 @@
       <br>
       <br>
     </section>
-    <section id="contact">
+    <section id="contact" class="animated">
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
       <div class="contact-info-upper-container">

@@ -67,6 +67,14 @@
   justify-content: center;
   align-items: center;
   z-index: 5;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  opacity: 1;
+  visibility: visible;
+}
+
+#splash-screen.hide {
+  opacity: 0;
+  visibility: hidden;
 }
 
 * {
@@ -81,6 +89,11 @@ h3 {
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
+  overflow: hidden; /* Prevent scrolling while splash is visible */
+}
+
+#splash-screen.hide + body {
+  overflow: auto; /* Allow scrolling after splash screen is hidden */
 }
 
 html {
@@ -129,12 +142,25 @@ a {
   color: var(--secondary-color);
   text-decoration: none;
   text-decoration-color: var(--primary-color);
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
 }
 
-a:hover {
-  text-decoration: underline;
-  text-underline-offset: 1rem;
-  text-decoration-color: var(--secondary-color);
+a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--secondary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+a:hover::after {
+  transform: scaleX(1);
 }
 
 nav a:hover {
@@ -176,13 +202,30 @@ nav a:hover {
 }
 
 .hamburger-icon span {
+  display: block;
   width: 100%;
   height: 2px;
   background-color: var(--secondary-color);
-  transition: all 0.3 ease-in-out;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.hamburger-icon.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
 }
 
 .menu-links {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+  display: block; /* Ensure it's always block but hidden */
   position: absolute;
   top: 100%;
   right: 0;
@@ -208,31 +251,9 @@ nav a:hover {
 }
 
 .menu-links.open {
-  max-height: 300px;
-}
-
-.hamburger-icon.open span:first-child {
-  transform: rotate(45deg) translate(10px, 5px);
-}
-
-.hamburger-icon.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-icon.open span:last-child {
-  transform: rotate(-45deg) translate(10px, -5px);
-}
-
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
-.hamburger-icon span:first-child {
   opacity: 1;
-}
-
-.hamburger-icon span:first-child {
-  transform: none;
+  transform: translateY(0);
+  max-height: 300px;
 }
 
 /* SECTIONS */
@@ -305,6 +326,11 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.icon:hover {
+  transform: rotate(360deg);
 }
 
 /* BUTTONS */
@@ -321,6 +347,33 @@ section {
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--secondary-color);
+  z-index: -1;
+  transition: transform 0.5s ease;  /* Increased from 0.3s to 0.5s for a slower transition */
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn:hover::after {
+  transform: scaleY(1);
 }
 
 .btn-color-1,
@@ -332,6 +385,13 @@ section {
 .btn-color-1:hover,
 .btn-color-2:hover {
   cursor: pointer;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-color-1:hover::after,
+.btn-color-2:hover::after {
+  transform: scaleY(1);
 }
 
 .btn-color-1,
@@ -453,9 +513,7 @@ article div{
   text-align: center;
 }
 
-
 /* PROJECTS SECTION */
-
 #projects {
   position: relative;
 }
@@ -530,4 +588,184 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    background-color: var(--button-background);
+    color: var(--secondary-color);
+    border: var(--button-border);
+    padding: 1rem;
+    width: 8rem;
+    border-radius: 2rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 300ms ease, color 300ms ease;
+}
+
+.dropdown-toggle:hover {
+    background-color: var(--button-text-hover);
+    color: var(--primary-color);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;  /* This positions the dropdown right below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 8rem;
+  width: auto;
+  display: none;
+  background-color: var(--primary-color-2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+  border-radius: 2rem;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition-delay: 0.1s;
+  pointer-events: none;
+}
+
+
+.dropdown-content a {
+    color: var(--secondary-color);
+    padding: 12px 16px;
+    text-decoration: none; /* Remove underline */
+    display: block; /* Use flexbox for alignment */
+    pointer-events: auto;
+    align-items: center; /* Center items vertically */
+    transition: background-color 300ms ease, color 300ms ease;
+
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-color-3);
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+  pointer-events: auto; /* Allow interaction */
+}
+
+/* Flag Icon Styles */
+.flag-icon {
+    width: 20px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 8px; /* Space between flag and text */
+    vertical-align: middle; /* Align with text */
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animated {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+}
+
+.animated.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    visibility: hidden;
+}
+
+.section.visible {
+    visibility: visible;
+}
+
+.card {
+    transition: background-color 0.3s ease;
+}
+
+.card:hover {
+    background-color: #f0f0f0;
+}
+
+/* Adjust existing animations to be smoother */
+.animated {
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+}
+
+/* Example of adjusting a specific steep animation */
+.some-steep-animation-class {
+    transition: transform 0.8s ease-in-out;
+}
+
+/* Fade-in effect for navigation links */
+.nav-links a {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition-delay: 0.3s; /* Adjust delay based on when you want them to start appearing */
+}
+
+.nav-links a.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-links li a {
+  position: relative;
+  display: inline-block;
+  overflow: hidden; /* Ensures pseudo-elements within are clipped */
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-color); /* Use your theme color */
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: left; /* Ensures the animation starts from the left */
+}
+
+.nav-links li a:hover::after {
+  transform: scaleX(1);
+}
+.btn.close::after {
+  content: 'X';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem; /* Adjust size as needed */
+  color: var(--primary-color); /* Adjust color as needed */
+}
+
+.btn.close {
+  color: transparent; /* Hide the original text */
 }
