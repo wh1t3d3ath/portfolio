@@ -5,7 +5,7 @@
 
 
 /* Default Light Mode */
-:root {
+:root { 
   --primary-color: white;
   --primary-color-2: rgb(250, 250, 250);
   --primary-color-3: rgb(181, 181, 181);
@@ -34,6 +34,7 @@
   --button-border-2: rgb(0, 0, 0) 0.1rem solid;
   --container-border: rgb(145, 50, 220);
   --icon-inverted-color: #ffffff;
+
 }
 
 .wave {
@@ -56,17 +57,15 @@
   100% { transform: rotate( 0.0deg) }
 }
 
+
 #splash-screen {
+  background-color:var(--primary-color);
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(29, 29, 29);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5;
   transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
   opacity: 1;
   visibility: visible;
@@ -87,6 +86,7 @@ h3 {
 }
 
 body {
+  transition: background-color 0.5s ease, color 0.5s ease;
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   overflow: hidden; /* Prevent scrolling while splash is visible */
@@ -616,8 +616,6 @@ footer p {
 
 .dropdown-content {
   position: absolute;
-  top: 100%;  /* This positions the dropdown right below the button */
-  left: 50%;
   transform: translateX(-50%);
   min-width: 8rem;
   width: auto;

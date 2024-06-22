@@ -1,3 +1,4 @@
+/* Media Queries for screen width up to 1400px */
 @media screen and (max-width: 1400px) {
   #profile {
     height: 83vh;
@@ -10,12 +11,13 @@
   .about-containers {
     flex-wrap: wrap;
   }
-  .lottie-container{
+  .lottie-container {
     width: auto;
     height: auto;
   }
 }
 
+/* Media Queries for screen width up to 1200px */
 @media screen and (max-width: 1200px) {
   #desktop-nav {
     display: none;
@@ -41,13 +43,11 @@
   section {
     margin: 0 5%;
   }
-  
-.lottie-container{
-  width: 275px;
-  height: 275px;
-  margin: auto ;
-}
-
+  .lottie-container {
+    width: 275px;
+    height: 275px;
+    margin: auto;
+  }
   .section__pic-container {
     width: 275px;
     height: 275px;
@@ -58,6 +58,7 @@
   }
 }
 
+/* Media Queries for screen width up to 600px */
 @media screen and (max-width: 600px) {
   #contact,
   footer {
@@ -98,13 +99,11 @@
     gap: 0.5rem;
     text-align: center;
   }
-
-  .lottie-container{
+  .lottie-container {
     width: auto;
     height: 46vw;
     justify-content: center;
   }
-
   .section__pic-container {
     width: auto;
     height: 46vw;
@@ -118,20 +117,17 @@
   }
   .text-container {
     text-align: justify;
-  }
+  }  
   .dropdown {
-    position: relative;
-    width: 100%; /* Full width on smaller screens */
-    padding: 8px 10px; /* Slightly smaller padding on small devices */
-    font-size: 0.9rem; /* Slightly smaller font size for small screens */
-    text-align: center;
+    display: flex; /* Using flexbox to center the content */
+    justify-content: center; /* Centers the content horizontally */
+    width: 100%; /* Full width to match the button's container */
   }
+
   .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
+    justify-content: center;
+    top: 100%; /* Positions the dropdown right below the button */
+    width: auto; /* Auto width based on content */
+    transform: translateX(-50%); /* Shift left by half of its own width to center it */
   }
 }

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
     <body>  
-      <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; background: white; z-index: 9999;">
+      <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;">
         <lottie-player src="./assets/lotti/splash.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
       </div>  
       <nav id="hamburger-nav">
@@ -138,7 +138,7 @@
       </div>
       <img
         src="./assets/arrow_light.png"
-        src-light = "./assets/arrow_light.png"
+        src-light= "./assets/arrow_light.png"
         src-dark = "./assets/arrow_dark.png"
         alt="Arrow icon"
         class="icon arrow"
@@ -344,12 +344,7 @@
         class="icon arrow"
         onclick="location.href='#contact'"
       />
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+
     </section>
     <section id="contact" class="animated">
       <p class="section__text__p1">Get in Touch</p>
@@ -377,7 +372,7 @@
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2023 Kavouras Vaggelis. All Rights Reserved.</p>
+      <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
   </body>
