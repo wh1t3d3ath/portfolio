@@ -1,110 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <!-- External Scripts and Stylesheets -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" type="x-icon" href="./assets/scroll-solid.svg">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    
+    <!-- Meta Tags -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Page Title -->
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-    <body>  
-      <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;">
-        <lottie-player src="./assets/lotti/splash.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-      </div>  
-      <nav id="hamburger-nav">
-      <div class="logo">Vaggelis Kavouras</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-          <li><img
-            id="modeToogle2"
-            class="icon color-icon"
-             src="./assets/theme_light.png" 
-            src-light = "./assets/theme_light.png"
-            src-dark = "./assets/theme_dark.png"
-            alt="Color theme icon">
-          </li>
-        </div>
-      </div>
-    </nav>
-    <nav id="desktop-nav">
-      <div class="logo">Vaggelis Kavouras</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><img
-            id="modeToogle"
-            class="icon color-icon"
-             src="./assets/theme_light.png" 
-            src-light = "./assets/theme_light.png"
-            src-dark = "./assets/theme_dark.png"
-            alt="Color theme icon">
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Vaggelis Kavouras<span class="wave">👋</span></h1>
-        <p class="section__text__p2">Software Developer</p>
-        <div class="btn-container">
-          <!-- Dropdown Menu for Download CV -->
-          <div class="dropdown">
-            <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
-            <div class="dropdown-content">
-              <a href="./assets/CV_Vaggelis_Kavouras_English.pdf">
-                <img src="./assets/usa.png" alt="USA Flag" class="flag-icon"> English
-              </a>
-              <a href="./assets/CV_Vaggelis_Kavouras_Greek.pdf">
-                <img src="./assets/greece.png" alt="Greece Flag" class="flag-icon"> Greek
-              </a>
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;">
+        <lottie-player src="./assets/lotti/splash.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+    </div> 
+
+    <!-- Hamburger Menu for Mobile -->
+    <nav id="hamburger-nav">
+        <div class="logo">Vaggelis Kavouras</div>
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-          </div>
-          <button class="btn btn-color-1" onclick="location.href='#contact'">
-            Contact Info
-          </button>
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                <li><img id="modeToogle2" class="icon color-icon" src="./assets/theme_light.png" src-light="./assets/theme_light.png" src-dark="./assets/theme_dark.png" alt="Color theme icon"></li>
+            </div>
         </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin_light.png"
-            src-light = "./assets/linkedin_light.png"
-            src-dark = "./assets/linkedin_dark.png"
-            alt="My LinkedIn profile"
-            class="icon linked-icon"
-            onclick="location.href='https://www.linkedin.com/in/vkavouras/'"
-          />
-          <img
-            src="./assets/github_light.png"
-            src-light = "./assets/github_light.png"
-            src-dark = "./assets/github_dark.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/dacrab'"
-          />
+    </nav>
+
+    <!-- Desktop Navigation -->
+    <nav id="desktop-nav">
+        <div class="logo">Vaggelis Kavouras</div>
+        <div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><img id="modeToogle" class="icon color-icon" src="./assets/theme_light.png" src-light="./assets/theme_light.png" src-dark="./assets/theme_dark.png" alt="Color theme icon"></li>
+            </ul>
         </div>
-      </div>
-      <br>
-      <div class="lottie-container">
-    <dotlottie-player src="./assets/lotti/landingPerson.json"speed="1"loop autoplay>
-    </dotlottie-player>
-    <br>
+    </nav>
+
+    <!-- Profile Section -->
+    <section id="profile">
+        <div class="section__text">
+            <p class="section__text__p1">Hello, I'm</p>
+            <h1 class="title">Vaggelis Kavouras<span class="wave">👋</span></h1>
+            <p class="section__text__p2">Software Developer</p>
+            <div class="btn-container">
+                <div class="dropdown">
+                    <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
+                    <div class="dropdown-content">
+                        <a href="./assets/CV_Vaggelis_Kavouras_English.pdf"><img src="./assets/usa.png" alt="USA Flag" class="flag-icon"> English</a>
+                        <a href="./assets/CV_Vaggelis_Kavouras_Greek.pdf"><img src="./assets/greece.png" alt="Greece Flag" class="flag-icon"> Greek</a>
+                    </div>
+                </div>
+                <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
+            </div>
+            <div id="socials-container">
+                <img src="./assets/linkedin_light.png" src-light="./assets/linkedin_light.png" src-dark="./assets/linkedin_dark.png" alt="My LinkedIn profile" class="icon linked-icon" onclick="location.href='https://www.linkedin.com/in/vkavouras/'"/>
+                <img src="./assets/github_light.png" src-light="./assets/github_light.png" src-dark="./assets/github_dark.png" alt="My Github profile" class="icon" onclick="location.href='https://github.com/dacrab'"/>
+            </div>
+        </div>
+        <br>
+        <div class="lottie-container">
+            <dotlottie-player src="./assets/lotti/landingPerson.json" speed="1" loop autoplay></dotlottie-player>
+            <br>
+        </div>
     </section>
+
+    <!-- About Section -->
     <section id="about" class="animated">
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
@@ -144,6 +124,8 @@
         class="icon arrow"
         onclick="location.href='#experience'"/>
     </section>
+
+    <!-- Experience Section -->
     <section id="experience" class="animated">
       <p class="section__text__p1">Explore My</p>
       <h1 class="title">Experience</h1>
@@ -263,6 +245,9 @@
         onclick="location.href='#projects'"
       />
     </section>
+
+
+        <!-- Projects Section -->
     <section id="projects" class="animated">
       <p class="section__text__p1">Browse My Recent</p>
       <h1 class="title">Projects</h1>
@@ -286,10 +271,7 @@
               </button>
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://dacrab.github.io/RecipeSwap'"
-              >
-                Live Demo
-              </button>
+                onclick="location.href='https://dacrab.github.io/RecipeSwap'">Live Demo</button>
             </div>
           </div>
           <div class="details-container color-container">
@@ -304,34 +286,20 @@
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/dacrab/Simple-Java-Projects'"
-              >
-                Github
-              </button>
+                onclick="location.href='https://github.com/dacrab/Simple-Java-Projects'">Github</button>
             </div>
           </div>
           <div class="details-container color-container">
             <div class="article-container">
               <img
-                src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1194.jpg?t=st=1709505515~exp=1709509115~hmac=72a0e9b3c77742fcdf09c54754fbf3b181ae4b202094f5605c99c4cec0c1c01c&w=826"
-                alt="Project 3"
-                class="project-img"
-              />
+                src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1194.jpg?t=st=1709505515~exp=1709509115~hmac=72a0e9b3c77742fcdf09c54754fbf3b181ae4b202094f5605c99c4cec0c1c01c&w=826"alt="Project 3"class="project-img"/>
             </div>
             <h2 class="experience-sub-title project-title">Calculator Made in JavaScript</h2>
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/dacrab/calculator-js-html-css'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'"
-              >
-                Live Demo
-              </button>
+                onclick="location.href='https://github.com/dacrab/calculator-js-html-css'">Github</button>
+              <button class="btn btn-color-2 project-btn" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'" >Live Demo</button>
             </div>
           </div>
         </div>
@@ -342,10 +310,9 @@
       src-dark = "./assets/arrow_dark.png"
         alt="Arrow icon"
         class="icon arrow"
-        onclick="location.href='#contact'"
-      />
+        onclick="location.href='#contact'"/></section>
 
-    </section>
+        <!-- Contact Section -->
     <section id="contact" class="animated">
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
@@ -360,7 +327,8 @@
           <p><a href="https://www.linkedin.com/in/vkavouras/">LinkedIn</a></p>
         </div>
     </section>
-      </div>
+
+    <!-- Footer -->
     <footer>
       <nav>
         <div class="nav-links-container">
@@ -375,5 +343,5 @@
       <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
-  </body>
+    </body>
 </html>

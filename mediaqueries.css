@@ -22,6 +22,13 @@
   #desktop-nav {
     display: none;
   }
+
+  #hamburger-nav li:last-child {
+    width: max-content;
+    display: flex;
+    margin: auto;
+    padding: 10px;
+  }
   #hamburger-nav {
     display: flex;
   }
