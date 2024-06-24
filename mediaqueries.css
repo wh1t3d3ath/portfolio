@@ -22,15 +22,14 @@
   #desktop-nav {
     display: none;
   }
-
+  #hamburger-nav {
+    display: flex;
+  }
   #hamburger-nav li:last-child {
     width: max-content;
     display: flex;
     margin: auto;
     padding: 10px;
-  }
-  #hamburger-nav {
-    display: flex;
   }
   #experience,
   .experience-details-container {
@@ -106,14 +105,10 @@
     gap: 0.5rem;
     text-align: center;
   }
-  .lottie-container {
-    width: auto;
-    height: 46vw;
-    justify-content: center;
-  }
+  .lottie-container,
   .section__pic-container {
-    width: auto;
-    height: 46vw;
+    width: 100%;
+    height: auto;
     justify-content: center;
   }
   .section__text__p2 {
@@ -126,15 +121,28 @@
     text-align: justify;
   }  
   .dropdown {
-    display: flex; /* Using flexbox to center the content */
-    justify-content: center; /* Centers the content horizontally */
-    width: 100%; /* Full width to match the button's container */
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
-
   .dropdown-content {
     justify-content: center;
-    top: 100%; /* Positions the dropdown right below the button */
-    width: auto; /* Auto width based on content */
-    transform: translateX(-50%); /* Shift left by half of its own width to center it */
+    top: 100%;
+    width: auto;
+    transform: translateX(-50%);
+  }
+  /* Simplify animations */
+  .animated, .section {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    animation-duration: 0.5s;
+  }
+  /* Reduce the intensity of hover effects */
+  .btn:hover, .btn:hover::after {
+    transform: scale(1.02);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  /* Disable rotation on icons to reduce repaints */
+  .icon:hover {
+    transform: none;
   }
 }

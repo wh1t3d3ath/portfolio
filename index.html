@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- External Scripts and Stylesheets -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="x-icon" href="./assets/scroll-solid.svg">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-    
     <!-- Meta Tags -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,6 +8,13 @@
     
     <!-- Page Title -->
     <title>My Portfolio</title>
+    
+    <!-- External Scripts and Stylesheets -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="x-icon" href="./assets/scroll-solid.svg">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
 </head>
 <body>
 
@@ -23,6 +23,7 @@
         <lottie-player src="./assets/lotti/splash.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
     </div> 
 
+    <!-- Navigation -->
     <!-- Hamburger Menu for Mobile -->
     <nav id="hamburger-nav">
         <div class="logo">Vaggelis Kavouras</div>
@@ -86,262 +87,220 @@
 
     <!-- About Section -->
     <section id="about" class="animated">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container"> 
-    <div class="lottie-container">
-      <dotlottie-player src="./assets/lotti/codingPerson.json" background="transparent" speed="1" loop autoplay>
-      </dotlottie-player>
-      </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <div class="icons"><i class="fa-solid fa-medal"></i></div>
-              <h3>Experience</h3>
-              <Br>
-              <p>2+ years Software Development</p>
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container"> 
+            <div class="lottie-container">
+                <dotlottie-player src="./assets/lotti/codingPerson.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
             </div>
-            <div class="details-container">
-              <div class="icons"><i class="fa-solid fa-user-graduate"></i></div>
-              <h3>Education</h3>
-              <br>
-              <p>IT Techitian<br>
-                 (Multimedia/Web Designer - Developer/Video Games) <br> <br> C2 English Degree</p>
+            <div class="about-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <div class="icons"><i class="fa-solid fa-medal"></i></div>
+                        <h3>Experience</h3>
+                        <br>
+                        <p>2+ years Software Development</p>
+                    </div>
+                    <div class="details-container">
+                        <div class="icons"><i class="fa-solid fa-user-graduate"></i></div>
+                        <h3>Education</h3>
+                        <br>
+                        <p>IT Techitian<br>
+                        (Multimedia/Web Designer - Developer/Video Games) <br> <br> C2 English Degree</p>
+                    </div>
+                </div>
+                <div class="text-container">
+                    <p>
+                        👋 Hello! I'm a <span id="age"></span>-year-old IT Technician from Thessaloniki, Greece. With a robust foundation in software development, web design, and game development, I am skilled at leading projects and solving complex technical challenges. I am committed to delivering high-quality solutions and am eager to use my skills and passion for technology to contribute to innovative projects and drive success in the IT industry.
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              👋Proactive and detail-oriented IT Technician with a strong foundation in software development, web design, and game development. Adept at leading projects, solving complex technical problems, and delivering high-quality solutions within tight deadlines. Eager to leverage my skills and passion for technology to contribute to innovative projects and drive organizational success.            
-            </p>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow_light.png"
-        src-light= "./assets/arrow_light.png"
-        src-dark = "./assets/arrow_dark.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#experience'"/>
+        <img src="./assets/arrow_light.png" src-light="./assets/arrow_light.png" src-dark="./assets/arrow_dark.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#experience'"/>
     </section>
 
     <!-- Experience Section -->
     <section id="experience" class="animated">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Software Development</h2>
-            <div class="article-container">
-              <article>
-                <div class="icons"><i class="fa-brands fa-html5"></i></div>
-                  <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-brands fa-css3-alt"></i></div>     
-                  <div>
-                  <h3>CSS</h3>
-                  <p>Basic</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-brands fa-js"></i></div>               
-                  <div>
-                  <h3>JavaScript</h3>
-                  <p>Begginer</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-brands fa-java"></i></div>
-                  <div>
-                  <h3>Java</h3>
-                  <p>Beginner</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-solid fa-c"></i></div>                
-                  <div>
-                  <h3>C / C++</h3>
-                  <p>Basic</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-brands fa-php"></i></div>                
-                  <div>
-                  <h3>PHP</h3>
-                  <p>Basic</p>
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Experience</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Software Development</h2>
+                    <div class="article-container">
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-html5"></i></div>
+                            <div>
+                                <h3>HTML</h3>
+                                <p>Experienced</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-css3-alt"></i></div>     
+                            <div>
+                                <h3>CSS</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-js"></i></div>               
+                            <div>
+                                <h3>JavaScript</h3>
+                                <p>Beginner</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-java"></i></div>
+                            <div>
+                                <h3>Java</h3>
+                                <p>Beginner</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-solid fa-c"></i></div>                
+                            <div>
+                                <h3>C / C++</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-php"></i></div>                
+                            <div>
+                                <h3>PHP</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-              </i>
-              </article>
-            </div>
-          </div>
-          <br>
-          <div class="section__pic-container">
-            <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-      <dotlottie-player src="./assets/lotti/showcase.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
-              </div>            
-              <br>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Content Creation</h2>
-            <div class="article-container">
-              <article>
-                <div class="icons"><i class="fa-solid fa-keyboard"></i></div>                
-                   <div>
-                  <h3>Unreal Engine</h3>
-                  <p>Beginner</p>
+                <br>
+                <div class="section__pic-container">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+                    <dotlottie-player src="./assets/lotti/showcase.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                </div>            
+                <br>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Content Creation</h2>
+                    <div class="article-container">
+                        <article>
+                            <div class="icons"><i class="fa-solid fa-keyboard"></i></div>                
+                            <div>
+                                <h3>Unreal Engine</h3>
+                                <p>Beginner</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-unity"></i></div>
+                            <div>
+                                <h3>Unity</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-solid fa-camera"></i></div>
+                            <div>
+                                <h3>Adobe Photoshop</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-solid fa-clapperboard"></i></div>
+                            <div>
+                                <h3>Abobe Premier</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-brands fa-wordpress"></i></div>
+                            <div>
+                                <h3>WordPress</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                        <article>
+                            <div class="icons"><i class="fa-solid fa-cube"></i></div>
+                            <div>
+                                <h3>3Ds Max</h3>
+                                <p>Basic</p>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-              </i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-brands fa-unity"></i></div>
-                  <div>
-                  <h3>Unity</h3>
-                  <p>Basic</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-solid fa-camera"></i></div>
-                  <div>
-                  <h3>Adobe Photoshop</h3>
-                  <p>Basic</p>
-                </div>
-              </i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-solid fa-clapperboard"></i></div>
-                  <div>
-                  <h3>Abobe Premier</h3>
-                  <p>Basic</p>
-                </div>
-              </i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-brands fa-wordpress"></i></div>
-                <div>
-                  <h3>WordPress</h3>
-                  <p>Basic</p>
-                </div></i>
-              </article>
-              <article>
-                <div class="icons"><i class="fa-solid fa-cube"></i></div>
-                <div>
-                  <h3>3Ds Max</h3>
-                  <p>Basic</p>
-                </div></i>
-              </article>
             </div>
         </div>
-      </div>
-      <img
-      src="./assets/arrow_light.png"
-      src-light = "./assets/arrow_light.png"
-      src-dark = "./assets/arrow_dark.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#projects'"
-      />
+        <img src="./assets/arrow_light.png" src-light="./assets/arrow_light.png" src-dark="./assets/arrow_dark.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#projects'"/>
     </section>
 
-
-        <!-- Projects Section -->
+    <!-- Projects Section -->
     <section id="projects" class="animated">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="https://img.freepik.com/free-vector/www-concept-illustration_114360-2143.jpg?t=st=1709505551~exp=1709509151~hmac=07b722eb18ad3b58a5da7f655759910550ba7cd30801bcec029775a4e8be2852&w=826"
-                alt="Project 1"
-                class="project-img"
-              />
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://img.freepik.com/free-vector/www-concept-illustration_114360-2143.jpg?t=st=1709505551~exp=1709509151~hmac=07b722eb18ad3b58a5da7f655759910550ba7cd30801bcec029775a4e8be2852&w=826" alt="Project 1" class="project-img"/>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Cooking Website</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/dacrab/RecipeSwap'">Github</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://dacrab.github.io/RecipeSwap'">Live Demo</button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://img.freepik.com/free-vector/woman-working-new-app_23-2148682102.jpg?w=1380&t=st=1709505464~exp=1709506064~hmac=dc477c103e7a507e29a4490958a87803c6ff56c22b5ada30ffc7677d4f913341" alt="Project 2" class="project-img"/>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Simple Projects made in Java</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/dacrab/Simple-Java-Projects'">Github</button>
+                    </div>
+                </div>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1194.jpg?t=st=1709505515~exp=1709509115~hmac=72a0e9b3c77742fcdf09c54754fbf3b181ae4b202094f5605c99c4cec0c1c01c&w=826" alt="Project 3" class="project-img"/>
+                    </div>
+                    <h2 class="experience-sub-title project-title">Calculator Made in JavaScript</h2>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/dacrab/calculator-js-html-css'">Github</button>
+                        <button class="btn btn-color-2 project-btn" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'" >Live Demo</button>
+                    </div>
+                </div>
             </div>
-            <h2 class="experience-sub-title project-title">Cooking Website</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/dacrab/RecipeSwap'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://dacrab.github.io/RecipeSwap'">Live Demo</button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="https://img.freepik.com/free-vector/woman-working-new-app_23-2148682102.jpg?w=1380&t=st=1709505464~exp=1709506064~hmac=dc477c103e7a507e29a4490958a87803c6ff56c22b5ada30ffc7677d4f913341"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Simple Projects made in Java</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/dacrab/Simple-Java-Projects'">Github</button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1194.jpg?t=st=1709505515~exp=1709509115~hmac=72a0e9b3c77742fcdf09c54754fbf3b181ae4b202094f5605c99c4cec0c1c01c&w=826"alt="Project 3"class="project-img"/>
-            </div>
-            <h2 class="experience-sub-title project-title">Calculator Made in JavaScript</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/dacrab/calculator-js-html-css'">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'" >Live Demo</button>
-            </div>
-          </div>
         </div>
-      </div>
-      <img
-      src="./assets/arrow_light.png"
-      src-light = "./assets/arrow_light.png"
-      src-dark = "./assets/arrow_dark.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='#contact'"/></section>
+        <img src="./assets/arrow_light.png" src-light="./assets/arrow_light.png" src-dark="./assets/arrow_dark.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#contact'"/>
+    </section>
 
-        <!-- Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="animated">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <div class="icons"><i class="fa-solid fa-at"></i></div>
-          <p><a href="mailto:vaggeliskavouras3@gmail.com">Email</a></p>
-        </div>
-        <vr>
-        <div class="contact-info-container">
-          <div class="icons"><i class="fa-solid fa-inbox"></i></div>
-          <p><a href="https://www.linkedin.com/in/vkavouras/">LinkedIn</a></p>
+        <p class="section__text__p1">Get in Touch</p>
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+            <div class="contact-info-container">
+                <div class="icons"><i class="fa-solid fa-at"></i></div>
+                <p><a href="mailto:vaggeliskavouras3@gmail.com">Email</a></p>
+            </div>
+            <vr>
+            <div class="contact-info-container">
+                <div class="icons"><i class="fa-solid fa-inbox"></i></div>
+                <p><a href="https://www.linkedin.com/in/vkavouras/">LinkedIn</a></p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
-      <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
+        <nav>
+            <div class="nav-links-container">
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
-    </body>
+</body>
 </html>

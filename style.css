@@ -1,10 +1,10 @@
 /* GENERAL */
 
+/* Importing Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
-
-/* Default Light Mode */
+/* Default Light Mode Variables */
 :root { 
   --primary-color: white;
   --primary-color-2: rgb(250, 250, 250);
@@ -20,7 +20,7 @@
   --icon-inverted-color: #000000;
 }
 
-/* Dark Mode */
+/* Dark Mode Variables */
 [theme="dark"] {
   --primary-color: rgb(29, 29, 29);
   --primary-color-2: rgb(39, 39, 39);
@@ -34,32 +34,32 @@
   --button-border-2: rgb(0, 0, 0) 0.1rem solid;
   --container-border: rgb(145, 50, 220);
   --icon-inverted-color: #ffffff;
-
 }
 
-.wave {
-  z-index: 1;
-  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.5s;        /* Change to speed up or slow down */
-  animation-iteration-count: infinite;  /* Never stop waving :) */
-  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
-  display: inline-block;
+/* Resetting Default Styles */
+* {
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes wave-animation {
-    0% { transform: rotate( 0.0deg) }
-   10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
-   20% { transform: rotate(-8.0deg) }
-   30% { transform: rotate(14.0deg) }
-   40% { transform: rotate(-4.0deg) }
-   50% { transform: rotate(10.0deg) }
-   60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
-  100% { transform: rotate( 0.0deg) }
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--background-color);
+  overflow: hidden; /* Prevent scrolling while splash is visible */
+}
 
+#splash-screen.hide + body {
+  overflow: auto; /* Allow scrolling after splash screen is hidden */
+}
+
+/* Splash Screen Styles */
 #splash-screen {
-  background-color:var(--primary-color);
+  background-color: var(--primary-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -76,44 +76,23 @@
   visibility: hidden;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
+/* Typography Styles */
 h3 {
   color: var(--secondary-color);
 }
 
-body {
-  transition: background-color 0.5s ease, color 0.5s ease;
-  font-family: "Poppins", sans-serif;
-  background-color: var(--background-color);
-  overflow: hidden; /* Prevent scrolling while splash is visible */
-}
-
-#splash-screen.hide + body {
-  overflow: auto; /* Allow scrolling after splash screen is hidden */
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 p {
-  font-family: "Poppins" , sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--secondary-color-2);
 }
 
-/* TRANSITION */
-
+/* Transition Styles */
 a,
 .btn {
   transition: all 300ms ease;
 }
 
-/* DESKTOP NAV */
-
+/* Navigation Styles */
 nav,
 .nav-links {
   display: flex;
@@ -130,7 +109,6 @@ nav {
   list-style: none;
   font-size: 1.5rem;
 }
-
 
 a {
   color: var(--secondary-color);
@@ -174,8 +152,7 @@ nav a:hover {
   cursor: default;
 }
 
-/* HAMBURGER MENU */
-
+/* Hamburger Menu Styles */
 #hamburger-nav {
   display: none;
 }
@@ -228,16 +205,41 @@ nav a:hover {
   max-height: 0;
   overflow: hidden;
   transition: all 0.3 ease-in-out;
+  border: 0.3px solid var(--container-border); /* Outline for the menu */
+  border-radius: 10px; /* Optional: adds rounded corners */
 }
 
 .menu-links a {
+  position: relative;
   display: block;
   padding: 10px;
   text-align: center;
   font-size: 1.5rem;
   color: var(--secondary-color);
   text-decoration: none;
-  transition: all 0.3 ease-in-out;
+  overflow: hidden; /* Ensures pseudo-elements within are clipped */
+  transition: color 0.3s ease;
+}
+
+.menu-links a::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center; /* Ensures the animation starts from the left */
+}
+
+.menu-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.menu-links a:hover {
+  color: var(--secondary-color);
+  text-decoration-color: var(--secondary-color);
 }
 
 .menu-links li {
@@ -250,8 +252,7 @@ nav a:hover {
   max-height: 300px;
 }
 
-/* SECTIONS */
-
+/* Section Styles */
 section {
   padding-top: 4vh;
   height: 96vh;
@@ -262,22 +263,22 @@ section {
 
 .section-container {
   display: flex;
+  gap: 4rem;
+  height: 80%;
 }
 
-/* PROFILE SECTION */
+.section__pic-container {
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
+}
 
+/* Profile Section Styles */
 #profile {
   display: flex;
   justify-content: center;
   gap: 5rem;
   height: 80vh;
-}
-
-.section__pic-container {
-  display: flex;
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
 }
 
 .section__text {
@@ -311,9 +312,8 @@ section {
   gap: 1rem;
 }
 
-/* ICONS */
-
-.icons{
+/* Icon Styles */
+.icons {
   color: var(--icon-inverted-color);
 }
 
@@ -327,8 +327,7 @@ section {
   transform: rotate(360deg);
 }
 
-/* BUTTONS */
-
+/* Button Styles */
 .btn-container {
   display: flex;
   justify-content: center;
@@ -407,12 +406,7 @@ section {
   background: var(--secondary-color);
 }
 
-.btn-container {
-  gap: 1rem;
-}
-
-/* ABOUT SECTION */
-
+/* About Section Styles */
 #about {
   position: relative;
 }
@@ -453,19 +447,7 @@ section {
   text-align: center;
 }
 
-.section-container {
-  gap: 4rem;
-  height: 80%;
-}
-
-.section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
-}
-
-/* EXPERIENCE SECTION */
-
+/* Experience Section Styles */
 #experience {
   position: relative;
 }
@@ -503,11 +485,11 @@ article .icon {
   cursor: default;
 }
 
-article div{
+article div {
   text-align: center;
 }
 
-/* PROJECTS SECTION */
+/* Projects Section Styles */
 #projects {
   position: relative;
 }
@@ -533,8 +515,7 @@ article div{
   border-color: var(--container-border);
 }
 
-/* CONTACT */
-
+/* Contact Section Styles */
 #contact {
   display: flex;
   justify-content: center;
@@ -573,8 +554,7 @@ article div{
   height: 2.5rem;
 }
 
-/* FOOTER SECTION */
-
+/* Footer Section Styles */
 footer {
   height: 26vh;
   margin: 0 1rem;
@@ -586,31 +566,31 @@ footer p {
 
 /* Dropdown Menu Styles */
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-toggle {
-    background-color: var(--button-background);
-    color: var(--secondary-color);
-    border: var(--button-border);
-    padding: 1rem;
-    width: 8rem;
-    border-radius: 2rem;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 300ms ease, color 300ms ease;
+  background-color: var(--button-background);
+  color: var(--secondary-color);
+  border: var(--button-border);
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 .dropdown-toggle:hover {
-    background-color: var(--button-text-hover);
-    color: var(--primary-color);
+  background-color: var(--button-text-hover);
+  color: var(--primary-color);
 }
 
 .dropdown-content {
   position: absolute;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-10px);
   min-width: 8rem;
   width: auto;
   display: none;
@@ -620,43 +600,51 @@ footer p {
   border-radius: 2rem;
   overflow: hidden;
   opacity: 0;
-  transform: translateY(-10px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  transition-delay: 0.1s;
   pointer-events: none;
 }
 
-
 .dropdown-content a {
-    color: var(--secondary-color);
-    padding: 12px 16px;
-    text-decoration: none; /* Remove underline */
-    display: block; /* Use flexbox for alignment */
-    pointer-events: auto;
-    align-items: center; /* Center items vertically */
-    transition: background-color 300ms ease, color 300ms ease;
-
+  color: var(--secondary-color);
+  padding: 12px 16px;
+  text-decoration: none; /* Remove underline */
+  display: block; /* Use flexbox for alignment */
+  pointer-events: auto;
+  align-items: center; /* Center items vertically */
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
 .dropdown-content a:hover {
-    background-color: var(--primary-color-3);
+  background-color: var(--primary-color-3);
 }
 
 .dropdown:hover .dropdown-content {
-  opacity: 1; /* Fully visible */
-  transform: translateY(0); /* Move to original position */
-  pointer-events: auto; /* Allow interaction */
+  display: block; /* Ensure it's visible when hovered */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Flag Icon Styles */
 .flag-icon {
-    width: 20px; /* Adjust size as needed */
-    height: auto;
-    margin-right: 8px; /* Space between flag and text */
-    vertical-align: middle; /* Align with text */
+  width: 20px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 8px; /* Space between flag and text */
+  vertical-align: middle; /* Align with text */
 }
 
-/* ANIMATIONS */
+/* Animation Keyframes */
+@keyframes wave-animation {
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
+  100% { transform: rotate( 0.0deg) }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -668,49 +656,59 @@ footer p {
   }
 }
 
+/* Animation Classes */
+.wave {
+  z-index: 1;
+  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s;        /* Change to speed up or slow down */
+  animation-iteration-count: infinite;  /* Never stop waving :) */
+  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
 .fade-in {
   animation: fadeIn 1s ease-out forwards;
 }
 
 .animated {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
 }
 
 .animated.visible {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section {
-    opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
-    visibility: hidden;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  visibility: hidden;
 }
 
 .section.visible {
-    visibility: visible;
+  visibility: visible;
 }
 
 .card {
-    transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .card:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 /* Adjust existing animations to be smoother */
 .animated {
-    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
 }
 
 /* Example of adjusting a specific steep animation */
 .some-steep-animation-class {
-    transition: transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
 }
 
 /* Fade-in effect for navigation links */
@@ -725,6 +723,7 @@ footer p {
   opacity: 1;
   transform: translateY(0);
 }
+
 .nav-links li a {
   position: relative;
   display: inline-block;
@@ -747,17 +746,17 @@ footer p {
 .nav-links li a:hover::after {
   transform: scaleX(1);
 }
-.btn.close::after {
-  content: 'X';
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem; /* Adjust size as needed */
-  color: var(--primary-color); /* Adjust color as needed */
+
+/* Button Active State */
+.btn.active {
+    background-color: var(--button-background-hover); /* Slightly change background color when active */
 }
 
-.btn.close {
-  color: transparent; /* Hide the original text */
+.btn:hover, .btn.active {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn:hover::after, .btn.active::after {
+    transform: scaleY(1);
 }
