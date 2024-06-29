@@ -450,6 +450,8 @@ section {
 /* Experience Section Styles */
 #experience {
   position: relative;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .experience-sub-title {
@@ -458,6 +460,9 @@ section {
   font-size: 1.75rem;
   margin-bottom: 2rem;
   text-align: center; /* Align the title to the center */
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 .experience-details-container {
@@ -465,6 +470,9 @@ section {
   justify-content: center;
   flex-direction: column;
   align-items: center; /* Center align the items vertically */
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1s;
 }
 
 .article-container {
@@ -472,6 +480,9 @@ section {
   flex-wrap: wrap;
   justify-content: center; /* Center align the items horizontally */
   gap: 2.5rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 1.5s;
 }
 
 article {
@@ -479,6 +490,14 @@ article {
   flex-direction: column;
   align-items: center; /* Center align the items vertically */
   width: 10rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 2s;
+}
+
+article:hover {
+  transform: translateY(-5px);
 }
 
 article .icon {
@@ -701,22 +720,40 @@ footer p {
   background-color: #f0f0f0;
 }
 
-/* Adjust existing animations to be smoother */
-.animated {
-  transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Example of adjusting a specific steep animation */
-.some-steep-animation-class {
-  transition: transform 0.8s ease-in-out;
+/* Button Hover Effect */
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Fade-in effect for navigation links */
+/* Card Hover Effect */
+.card:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Fade-in Effect for Sections */
+.section {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  visibility: hidden;
+}
+
+.section.visible {
+  visibility: visible;
+}
+
+/* Slide-in Effect for Navigation Links */
 .nav-links a {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-  transition-delay: 0.3s; /* Adjust delay based on when you want them to start appearing */
 }
 
 .nav-links a.visible {
@@ -724,39 +761,80 @@ footer p {
   transform: translateY(0);
 }
 
-.nav-links li a {
-  position: relative;
-  display: inline-block;
-  overflow: hidden; /* Ensures pseudo-elements within are clipped */
+/* Smooth Transition for Dropdown Menu */
+.dropdown-content {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.nav-links li a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--secondary-color); /* Use your theme color */
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
-  transform-origin: left; /* Ensures the animation starts from the left */
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.nav-links li a:hover::after {
-  transform: scaleX(1);
+/* Smooth Transition for Hamburger Menu */
+.hamburger-icon span {
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-/* Button Active State */
-.btn.active {
-    background-color: var(--button-background-hover); /* Slightly change background color when active */
+.hamburger-icon.open span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
 }
 
-.btn:hover, .btn.active {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
 }
 
-.btn:hover::after, .btn.active::after {
-    transform: scaleY(1);
+.hamburger-icon.open span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
 }
+
+/* Smooth Transition for Menu Links */
+.menu-links {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.menu-links.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth Transition for Icons */
+.icon {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon:hover {
+  transform: rotate(360deg);
+  color: var(--secondary-color);
+}
+
+/* Keyframes for Fade-in Effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Applying Fade-in Effect to Sections */
+.section {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Applying Smooth Transition to All Elements */
+* {
+  transition: all 0.3s ease;
+}
+
+
+
+
+
