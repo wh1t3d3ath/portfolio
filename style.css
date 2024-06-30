@@ -40,6 +40,7 @@
 * {
   margin: 0;
   padding: 0;
+  transition: all 0.3s ease;
 }
 
 html {
@@ -320,11 +321,12 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .icon:hover {
-  transform: rotate(360deg);
+  transform: scale(1.1); /* Subtle scale-up effect */
+  color: var(--secondary-color);
 }
 
 /* Button Styles */
@@ -675,6 +677,61 @@ footer p {
   }
 }
 
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes minimalFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Animation Classes */
 .wave {
   z-index: 1;
@@ -690,16 +747,20 @@ footer p {
 }
 
 .animated {
-  visibility: hidden;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
 }
 
 .animated.visible {
-  visibility: visible;
   opacity: 1;
   transform: translateY(0);
+}
+
+.animated.not-visible {
+  opacity: 0.5;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .section {
@@ -710,6 +771,27 @@ footer p {
 
 .section.visible {
   visibility: visible;
+}
+
+/* Apply unique animations to each section */
+#profile.animated.visible {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+#about.animated.visible {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+#experience.animated.visible {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+#projects.animated.visible {
+  animation: minimalFadeInUp 1s ease-out forwards;
+}
+
+#contact.animated.visible {
+  animation: fadeInUp 1s ease-out forwards;
 }
 
 .card {
@@ -808,7 +890,7 @@ html {
 }
 
 .icon:hover {
-  transform: rotate(360deg);
+  transform: scale(1.1); /* Subtle scale-up effect */
   color: var(--secondary-color);
 }
 
@@ -833,8 +915,3 @@ html {
 * {
   transition: all 0.3s ease;
 }
-
-
-
-
-

@@ -143,6 +143,6 @@
   }
   /* Disable rotation on icons to reduce repaints */
   .icon:hover {
-    transform: none;
+    transform: scale(1.1); /* Subtle scale-up effect */
   }
 }

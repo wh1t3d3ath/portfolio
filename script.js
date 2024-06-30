@@ -6,13 +6,8 @@ const themeIcons = document.querySelectorAll(".icon");
 // Set the initial theme based on system preference or local storage
 function setInitialTheme() {
     const isSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let theme = localStorage.getItem('theme');
-    if (theme) {
-        document.body.setAttribute('theme', theme);
-    } else {
-        theme = isSystemDarkMode ? 'dark' : 'light';
-        document.body.setAttribute('theme', theme);
-    }
+    let theme = localStorage.getItem('theme') || (isSystemDarkMode ? 'dark' : 'light');
+    document.body.setAttribute('theme', theme);
     applyThemeIcons(theme);
     updateThemeStyles(theme);
 }
@@ -165,3 +160,29 @@ function updateAge() {
 }
 
 document.addEventListener('DOMContentLoaded', updateAge);
+
+// Add interesting animations on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1  // Adjust this as needed
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.classList.remove('not-visible');
+            } else {
+                entry.target.classList.remove('visible');
+                entry.target.classList.add('not-visible');
+            }
+        });
+    }, observerOptions);
+
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+});
