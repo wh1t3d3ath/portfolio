@@ -190,7 +190,7 @@
   }
   /* Adjust logo font size */
   .logo {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
   /* Adjust navigation links layout */
   .nav-links {
@@ -270,10 +270,13 @@
   section {
     margin: 4rem 2%; /* Increased margin to increase gap */
   }
+
+  p{
+    font-size: 1rem;
+  }
   /* Center lottie-container content */
   .lottie-container {
-    width: 200px;
-    height: 200px;
+    height: fit-content;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -281,8 +284,7 @@
   }
   /* Adjust section picture container dimensions and margin */
   .section__pic-container {
-    width: 200px;
-    height: 200px;
+    height: fit-content;
     margin: 0 auto 1rem;
   }
   /* Remove top margin from about-containers */
@@ -301,10 +303,10 @@
     font-size: 1rem;
   }
   .logo {
-    font-size: 1.25rem;
+    font-size: 2rem;
   }
   .section__text__p2 {
-    font-size: 1rem;
+    font-size: .3rem;
   }
   .title {
     font-size: 1.5rem;
