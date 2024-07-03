@@ -16,11 +16,20 @@
   }
   /* Center lottie-container content */
   .lottie-container {
-    width: auto;
-    height: auto;
-    display: flex;
+    height: fit-content;
+    width: 500px;
+    margin: auto;
     justify-content: center;
     align-items: center;
+    margin: 0 auto; /* Center horizontally */
+  }
+
+  /* Remove top margin from about-containers */
+  .about-containers {
+    margin-top: 0;
+  }
+  section {
+    margin: 4rem 5%; /* Increased margin to increase gap */
   }
 }
 
@@ -51,7 +60,7 @@
     display: block;
   }
   /* Hide arrow elements */
-  .arrow {
+  .fas.fa-arrow-down.icon.arrow {
     display: none;
   }
   /* Adjust section and section-container height */
@@ -61,12 +70,46 @@
   }
   /* Add margin to section */
   section {
-    margin: 0 5%;
+    margin: 4rem 5%; /* Increased margin to increase gap */
   }
   /* Center lottie-container content */
   .lottie-container {
-    width: 275px;
-    height: 275px;
+    height: fit-content;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto; /* Center horizontally */
+  }
+
+  /* Remove top margin from about-containers */
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+/* Media Queries for screen width up to 768px */
+@media (max-width: 768px) {
+  .fas.fa-arrow-down.icon.arrow {
+    display: none;
+  }
+  /* Adjust profile section height and margin */
+  #profile {
+    height: 75vh;
+    margin-bottom: 4rem;
+  }
+  /* Adjust section and section-container height */
+  section,
+  .section-container {
+    height: fit-content;
+  }
+  /* Add margin to section */
+  section {
+    margin: 4rem 3%; /* Increased margin to increase gap */
+  }
+  /* Center lottie-container content */
+  .lottie-container {
+    width: 250px;
+    height: 250px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -74,13 +117,19 @@
   }
   /* Adjust section picture container dimensions and margin */
   .section__pic-container {
-    width: 275px;
-    height: 275px;
-    margin: 0 auto 2rem;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 1.5rem;
   }
   /* Remove top margin from about-containers */
   .about-containers {
     margin-top: 0;
+  }
+  
+  /* Remove hover effects for buttons */
+  .btn:hover, .btn:hover::after {
+    transform: none;
+    box-shadow: none;
   }
 }
 
@@ -113,12 +162,22 @@
     gap: 1rem;
   }
   /* Adjust contact info container layout */
-  .contact-info-container {
-    margin: 0;
+  .contact-info-upper-container {
+    display: flex;
+    gap: 1rem;
+  }
+.icons{
     display: flex;
     flex-direction: column;
-    align-items: center;
+  }
+
+  .contact-info-container {
+    display: flex;
     gap: 1rem;
+  }
+  /* Hide text in contact info container */
+  .contact-info-container p {
+    display: none;
   }
   /* Adjust font size for contact info and navigation links */
   .contact-info-container p,
@@ -184,4 +243,77 @@
   .icon:hover {
     transform: scale(1.1); /* Subtle scale-up effect */
   }
+  section {
+    margin: 4rem 3%; /* Increased margin to increase gap */
+  }
+  
+  /* Remove hover effects for buttons */
+  .btn:hover, .btn:hover::after {
+    transform: none;
+    box-shadow: none;
+  }
 }
+
+/* Media Queries for screen width up to 480px */
+@media screen and (max-width: 480px) {
+  /* Adjust profile section height and margin */
+  #profile {
+    height: 70vh;
+    margin-bottom: 2rem;
+  }
+  /* Adjust section and section-container height */
+  section,
+  .section-container {
+    height: fit-content;
+  }
+  /* Add margin to section */
+  section {
+    margin: 4rem 2%; /* Increased margin to increase gap */
+  }
+  /* Center lottie-container content */
+  .lottie-container {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Adjust section picture container dimensions and margin */
+  .section__pic-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1rem;
+  }
+  /* Remove top margin from about-containers */
+  .about-containers {
+    margin-top: 0;
+  }
+  /* Adjust font size for smaller screens */
+  article {
+    font-size: 0.9rem;
+  }
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  .experience-sub-title {
+    font-size: 1rem;
+  }
+  .logo {
+    font-size: 1.25rem;
+  }
+  .section__text__p2 {
+    font-size: 1rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  /* Remove hover effects for buttons */
+  .btn:hover, .btn:hover::after {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
