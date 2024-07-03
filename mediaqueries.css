@@ -261,6 +261,7 @@
     height: 70vh;
     margin-bottom: 2rem;
   }
+
   /* Adjust section and section-container height */
   section,
   .section-container {
@@ -305,9 +306,7 @@
   .logo {
     font-size: 2rem;
   }
-  .section__text__p2 {
-    font-size: .3rem;
-  }
+
   .title {
     font-size: 1.5rem;
   }
