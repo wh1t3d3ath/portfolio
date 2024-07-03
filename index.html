@@ -10,17 +10,16 @@
     <title>My Portfolio</title>
     
     <!-- External Scripts and Stylesheets -->
-    <link rel="shortcut icon" type="x-icon" href="./assets/scroll-solid.svg">
+    <link rel="shortcut icon" type="x-icon" href="./assets/icons/portfolio.png">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-
     <!-- Splash Screen -->
     <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;">
-        <lottie-player src="./assets/lotti/splash.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+        <dotlottie-player src="https://lottie.host/f6fd76fa-bf3d-47e1-9594-ca365dac923a/JTES7YEv6f.lottie" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
     </div> 
 
     <!-- Navigation -->
@@ -38,7 +37,7 @@
                 <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
                 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-                <li><img id="modeToogle2" class="icon color-icon" src="./assets/theme_light.png" src-light="./assets/theme_light.png" src-dark="./assets/theme_dark.png" alt="Color theme icon"></li>
+                <li><i id="modeToogle2" class="fas fa-adjust color-icon icons"></i></li>
             </div>
         </div>
     </nav>
@@ -52,35 +51,36 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><img id="modeToogle" class="icon color-icon" src="./assets/theme_light.png" src-light="./assets/theme_light.png" src-dark="./assets/theme_dark.png" alt="Color theme icon"></li>
+                <li><i id="modeToogle" style="cursor: pointer;" class="fas fa-adjust color-icon icons"></i></li>
             </ul>
         </div>
     </nav>
 
     <!-- Profile Section -->
-    <section id="profile">
-        <div class="section__text">
+    <section id="profile" class="profile-section">
+        <div class="profile-pic animated-element" id="profile-pic"></div>
+        <div class="profile-info animated-element" id="profile-info">
             <p class="section__text__p1">Hello, I'm</p>
-            <h1 class="title">Vaggelis Kavouras<span class="wave">👋</span></h1>
-            <p class="section__text__p2">Software Developer</p>
+            <h1 class="title animated-element" id="profile-name">Vaggelis Kavouras<span class="wave">👋</span></h1>
+            <p class="section__text__p2 animated-element" id="profile-description">Software Developer</p>
             <div class="btn-container">
                 <div class="dropdown">
                     <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
                     <div class="dropdown-content">
-                        <a href="./assets/CV_Vaggelis_Kavouras_English.pdf"><img src="./assets/usa.png" alt="USA Flag" class="flag-icon"> English</a>
-                        <a href="./assets/CV_Vaggelis_Kavouras_Greek.pdf"><img src="./assets/greece.png" alt="Greece Flag" class="flag-icon"> Greek</a>
+                        <a href="./assets/CV/CV_Vaggelis_Kavouras_English.pdf"><img src="./assets/icons/usa.png" alt="USA Flag" class="flag-icon"> English</a>
+                        <a href="./assets/CV/CV_Vaggelis_Kavouras_Greek.pdf"><img src="./assets/icons/greece.png" alt="Greece Flag" class="flag-icon"> Greek</a>
                     </div>
                 </div>
                 <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
             </div>
-            <div id="socials-container">
-                <img src="./assets/linkedin_light.png" src-light="./assets/linkedin_light.png" src-dark="./assets/linkedin_dark.png" alt="My LinkedIn profile" class="icon linked-icon" onclick="location.href='https://www.linkedin.com/in/vkavouras/'"/>
-                <img src="./assets/github_light.png" src-light="./assets/github_light.png" src-dark="./assets/github_dark.png" alt="My Github profile" class="icon" onclick="location.href='https://github.com/dacrab'"/>
+            <div id="socials-container" class="profile-icons animated-element">
+                <i class="fab fa-linkedin icon linked-icon icons" onclick="location.href='https://www.linkedin.com/in/vkavouras/'"></i>
+                <i class="fab fa-github icon icons" onclick="location.href='https://github.com/dacrab'"></i>
             </div>
         </div>
         <br>
         <div class="lottie-container">
-            <dotlottie-player src="./assets/lotti/landingPerson.json" speed="1" loop autoplay></dotlottie-player>
+            <dotlottie-player src="https://lottie.host/ec2681d0-ab67-4f7d-a35a-c870c0a588aa/BVfwAmcRde.lottie" speed="1" loop autoplay></dotlottie-player>
             <br>
         </div>
     </section>
@@ -91,32 +91,32 @@
         <h1 class="title">About Me</h1>
         <div class="section-container"> 
             <div class="lottie-container">
-                <dotlottie-player src="./assets/lotti/codingPerson.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                <dotlottie-player src="https://lottie.host/66e29c4b-aa09-4cc6-a4cc-37b824c92390/CMDbVbXDsG.lottie" style="width: auto; height: auto;" background="transparent" speed="1" loop autoplay></dotlottie-player>
             </div>
             <div class="about-details-container">
                 <div class="about-containers animated">
                     <div class="details-container">
-                        <div class="icons"><i class="fa-solid fa-medal"></i></div>
+                        <div class="icons"><i class="fas fa-medal icons"></i></div>
                         <h3>Experience</h3>
                         <br>
                         <p>2+ years Software Development</p>
                     </div>
                     <div class="details-container">
-                        <div class="icons"><i class="fa-solid fa-user-graduate"></i></div>
+                        <div class="icons"><i class="fas fa-user-graduate icons"></i></div>
                         <h3>Education</h3>
                         <br>
-                        <p>IT Techitian<br>
+                        <p>IT Technician<br>
                         (Multimedia/Web Designer - Developer/Video Games) <br> <br> C2 English Degree</p>
                     </div>
                 </div>
                 <div class="text-container">
                     <p>
-                        👋 Hello! I'm a <span id="age"></span>-year-old IT Technician from Thessaloniki, Greece. With a robust foundation in software development, web design, and game development, I am skilled at leading projects and solving complex technical challenges. I am committed to delivering high-quality solutions and am eager to use my skills and passion for technology to contribute to innovative projects and drive success in the IT industry.
+                        <span class="wave">👋</span> Hello! I'm a <span id="age"></span>-year-old IT Technician from Thessaloniki, Greece. With a robust foundation in software development, web design, and game development, I am skilled at leading projects and solving complex technical challenges. I am committed to delivering high-quality solutions and am eager to use my skills and passion for technology to contribute to innovative projects and drive success in the IT industry.
                     </p>
                 </div>
             </div>
         </div>
-        <img src="./assets/arrow_light.png" src-light="./assets/arrow_light.png" src-dark="./assets/arrow_dark.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#experience'"/>
+        <i class="fas fa-arrow-down icon arrow" onclick="location.href='#experience'"></i>
     </section>
 
     <!-- Experience Section -->
@@ -129,42 +129,42 @@
                     <h2 class="experience-sub-title">Software Development</h2>
                     <div class="article-container">
                         <article>
-                            <div class="icons"><i class="fa-brands fa-html5"></i></div>
+                            <div class="icons"><i class="fab fa-html5 icons"></i></div>
                             <div>
                                 <h3>HTML</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-brands fa-css3-alt"></i></div>     
+                            <div class="icons"><i class="fab fa-css3-alt icons"></i></div>     
                             <div>
                                 <h3>CSS</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-brands fa-js"></i></div>               
+                            <div class="icons"><i class="fab fa-js icons"></i></div>               
                             <div>
                                 <h3>JavaScript</h3>
                                 <p>Beginner</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-brands fa-java"></i></div>
+                            <div class="icons"><i class="fab fa-java icons"></i></div>
                             <div>
                                 <h3>Java</h3>
                                 <p>Beginner</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-solid fa-c"></i></div>                
+                            <div class="icons"><i class="fas fa-code icons"></i></div>                
                             <div>
                                 <h3>C / C++</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-brands fa-php"></i></div>                
+                            <div class="icons"><i class="fab fa-php icons"></i></div>                
                             <div>
                                 <h3>PHP</h3>
                                 <p>Basic</p>
@@ -175,49 +175,49 @@
                 <br>
                 <div class="section__pic-container">
                     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-                    <dotlottie-player src="./assets/lotti/showcase.json" background="transparent" speed="1" loop autoplay></dotlottie-player>
+                    <dotlottie-player src="https://lottie.host/73016d3d-9858-42f7-82ab-fc9f2f387a2b/7LWc6nKCUr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
                 </div>            
                 <br>
                 <div class="details-container">
                     <h2 class="experience-sub-title">Content Creation</h2>
                     <div class="article-container">
                         <article>
-                            <div class="icons"><i class="fa-solid fa-keyboard"></i></div>                
+                            <div class="icons"><i class="fas fa-keyboard icons"></i></div>                
                             <div>
                                 <h3>Unreal Engine</h3>
                                 <p>Beginner</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-brands fa-unity"></i></div>
+                            <div class="icons"><i class="fab fa-unity icons"></i></div>
                             <div>
                                 <h3>Unity</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-solid fa-camera"></i></div>
+                            <div class="icons"><i class="fas fa-camera-retro icons"></i></div>
                             <div>
                                 <h3>Adobe Photoshop</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-solid fa-clapperboard"></i></div>
+                            <div class="icons"><i class="fas fa-film icons"></i></div>
                             <div>
                                 <h3>Abobe Premier</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-brands fa-wordpress"></i></div>
+                            <div class="icons"><i class="fab fa-wordpress icons"></i></div>
                             <div>
                                 <h3>WordPress</h3>
                                 <p>Basic</p>
                             </div>
                         </article>
                         <article>
-                            <div class="icons"><i class="fa-solid fa-cube"></i></div>
+                            <div class="icons"><i class="fas fa-cube icons"></i></div>
                             <div>
                                 <h3>3Ds Max</h3>
                                 <p>Basic</p>
@@ -227,7 +227,7 @@
                 </div>
             </div>
         </div>
-        <img src="./assets/arrow_light.png" src-light="./assets/arrow_light.png" src-dark="./assets/arrow_dark.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#projects'"/>
+        <i class="fas fa-arrow-down icon arrow" onclick="location.href='#projects'"></i>
     </section>
 
     <!-- Projects Section -->
@@ -267,7 +267,7 @@
                 </div>
             </div>
         </div>
-        <img src="./assets/arrow_light.png" src-light="./assets/arrow_light.png" src-dark="./assets/arrow_dark.png" alt="Arrow icon" class="icon arrow" onclick="location.href='#contact'"/>
+        <i class="fas fa-arrow-down icon arrow" onclick="location.href='#contact'"></i>
     </section>
 
     <!-- Contact Section -->
@@ -275,13 +275,16 @@
         <p class="section__text__p1">Get in Touch</p>
         <h1 class="title">Contact Me</h1>
         <div class="contact-info-upper-container">
+            <!-- Lottie Animation -->
+            <div class="lottie-container">
+                <dotlottie-player src="https://lottie.host/89786656-4880-42e7-9f18-82895c67895a/37mBlD7a1R.lottie" speed="1" style="width: 400px; height: 400px;" loop autoplay></dotlottie-player>
+            </div>
             <div class="contact-info-container">
-                <div class="icons"><i class="fa-solid fa-at"></i></div>
+                <div class="icons"><i class="fas fa-at icons"></i></div>
                 <p><a href="mailto:vaggeliskavouras3@gmail.com">Email</a></p>
             </div>
-            <vr>
             <div class="contact-info-container">
-                <div class="icons"><i class="fa-solid fa-inbox"></i></div>
+                <div class="icons"> <i class="fab fa-linkedin"></i></div>
                 <p><a href="https://www.linkedin.com/in/vkavouras/">LinkedIn</a></p>
             </div>
         </div>
@@ -302,5 +305,10 @@
         <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
+
+    <!-- Back to the Top Button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 </body>
 </html>

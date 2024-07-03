@@ -1,32 +1,33 @@
 // Theme Handling
+
+// Get theme toggle buttons and theme icons
 const btn = document.getElementById("modeToogle");
 const btn2 = document.getElementById("modeToogle2");
 const themeIcons = document.querySelectorAll(".icon");
 
-// Set the initial theme based on system preference or local storage
+/**
+ * Set the initial theme based on system preference or local storage
+ */
 function setInitialTheme() {
     const isSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let theme = localStorage.getItem('theme') || (isSystemDarkMode ? 'dark' : 'light');
+    const theme = localStorage.getItem('theme') || (isSystemDarkMode ? 'dark' : 'light');
     document.body.setAttribute('theme', theme);
     applyThemeIcons(theme);
-    updateThemeStyles(theme);
 }
 
-// Update theme icons based on the current theme
+/**
+ * Update theme icons based on the current theme
+ * @param {string} theme - The current theme ('dark' or 'light')
+ */
 function applyThemeIcons(theme) {
     themeIcons.forEach(icon => {
         icon.src = theme === 'dark' ? icon.getAttribute("src-dark") : icon.getAttribute("src-light");
     });
 }
 
-// Update CSS variables for theme styles
-function updateThemeStyles(theme) {
-    const root = document.documentElement;
-    root.style.setProperty('--primary-color', theme === 'dark' ? '#292929' : '#ffffff');
-    root.style.setProperty('--background-color', theme === 'dark' ? '#333333' : '#ffffff');
-}
-
-// Toggle between dark and light theme
+/**
+ * Toggle between dark and light theme
+ */
 function toggleTheme() {
     const currentTheme = document.body.getAttribute('theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -47,13 +48,13 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 });
 
 // Set theme on DOM content loaded
-document.addEventListener('DOMContentLoaded', function () {
-    const currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.body.setAttribute('theme', currentTheme);
-    applyThemeIcons(currentTheme);
-});
+document.addEventListener('DOMContentLoaded', setInitialTheme);
 
 // Splash Screen Handling
+
+/**
+ * Hide splash screen after a delay
+ */
 window.addEventListener('load', function () {
     setTimeout(function () {
         const splashScreen = document.getElementById('splash-screen');
@@ -66,6 +67,10 @@ window.addEventListener('load', function () {
 });
 
 // Menu Handling
+
+/**
+ * Toggle the visibility of the menu
+ */
 function toggleMenu() {
     const menu = document.querySelector(".menu-links");
     const icon = document.querySelector(".hamburger-icon");
@@ -87,6 +92,10 @@ function toggleMenu() {
 }
 
 // Dropdown menu handling
+
+/**
+ * Handle dropdown menu visibility
+ */
 document.addEventListener('DOMContentLoaded', function () {
     const dropdown = document.querySelector('.dropdown');
     const dropdownContent = document.querySelector('.dropdown-content');
@@ -124,6 +133,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Animations and Effects
+
+/**
+ * Add intersection observer to animate elements on scroll
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -138,19 +151,27 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => link.classList.add('visible'));
 });
 
-// Trigger pulse effect on a target element
+/**
+ * Trigger pulse effect on a target element
+ */
 function triggerPulseEffect() {
     const targetElement = document.getElementById('target-element-id');
     targetElement.classList.add('pulse-effect');
 }
 
 // Utility Functions
+
+/**
+ * Update the current year in the footer
+ */
 document.addEventListener('DOMContentLoaded', function() {
     const yearSpan = document.getElementById('current-year');
     yearSpan.textContent = new Date().getFullYear();
 });
 
-// Update age based on birthdate
+/**
+ * Update age based on birthdate
+ */
 function updateAge() {
     const birthdate = new Date('2004-05-25'); // Set your birthdate here (YYYY-MM-DD)
     const diff = Date.now() - birthdate.getTime();
@@ -161,7 +182,9 @@ function updateAge() {
 
 document.addEventListener('DOMContentLoaded', updateAge);
 
-// Add interesting animations on scroll
+/**
+ * Add interesting animations on scroll
+ */
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         root: null,
@@ -185,4 +208,49 @@ document.addEventListener('DOMContentLoaded', () => {
     elementsToAnimate.forEach(element => {
         observer.observe(element);
     });
+});
+
+// Scroll to Top Function
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Show/Hide Back to Top Button
+window.addEventListener('scroll', function() {
+  const backToTopButton = document.getElementById('back-to-top');
+  if (window.scrollY > 300) { // Show button after scrolling down 300px
+    backToTopButton.classList.add('show-back-to-top');
+  } else {
+    backToTopButton.classList.remove('show-back-to-top');
+  }
+});
+
+// Function to hide splash screen and show profile animations
+function hideSplashScreen() {
+  const splashScreen = document.getElementById('splash-screen');
+  const profileSection = document.getElementById('profile');
+  const animatedElements = document.querySelectorAll('.animated-element');
+
+  // Add an event listener for the end of the splash screen animation
+  splashScreen.addEventListener('animationend', () => {
+    splashScreen.style.display = 'none';
+    profileSection.classList.add('animated', 'visible', 'slideInFromLeft'); // Add 'slideInFromLeft' class
+
+    // Trigger animations for each specific element
+    animatedElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add('visible');
+      }, index * 500); // Adjust the delay as needed
+    });
+  });
+
+  // Start the splash screen hide animation
+  splashScreen.classList.add('hide');
+}
+
+// Hide splash screen and show profile animations after a delay
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    hideSplashScreen();
+  }, 2000); // Adjust the delay as needed
 });

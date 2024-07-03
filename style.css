@@ -6,34 +6,34 @@
 
 /* Default Light Mode Variables */
 :root { 
-  --primary-color: white;
-  --primary-color-2: rgb(250, 250, 250);
-  --primary-color-3: rgb(181, 181, 181);
-  --background-color: rgb(255, 255, 255);
-  --secondary-color: rgb(45, 0, 95);
-  --secondary-color-2: rgb(33, 19, 39);
-  --button-background: rgb(53, 53, 53);
+  --primary-color: #fff;
+  --primary-color-2: #fafafa;
+  --primary-color-3: #b5b5b5;
+  --background-color: #fff;
+  --secondary-color: #2d005f;
+  --secondary-color-2: #211327;
+  --button-background: #353535;
   --button-text-hover: grey;
-  --button-border: rgb(45, 0, 95) 0.1rem solid;
-  --button-border-2: rgb(255, 255, 255) 0.1rem solid;
-  --container-border: rgb(45, 0, 95);
-  --icon-inverted-color: #000000;
+  --button-border: #2d005f 0.1rem solid;
+  --button-border-2: #fff 0.1rem solid;
+  --container-border: #2d005f;
+  --icon-inverted-color: #000;
 }
 
 /* Dark Mode Variables */
 [theme="dark"] {
-  --primary-color: rgb(29, 29, 29);
-  --primary-color-2: rgb(39, 39, 39);
-  --primary-color-3: rgb(74, 74, 74);
-  --background-color: rgb(33, 33, 33);
-  --secondary-color: rgb(255, 255, 255);
-  --secondary-color-2: rgb(205, 205, 205);
-  --button-background: rgb(202, 202, 202);
+  --primary-color: #1d1d1d;
+  --primary-color-2: #272727;
+  --primary-color-3: #4a4a4a;
+  --background-color: #212121;
+  --secondary-color: #fff;
+  --secondary-color-2: #cdcdcd;
+  --button-background: #cacaca;
   --button-text-hover: lightgrey;
-  --button-border: rgb(145, 50, 220) 0.1rem solid;
-  --button-border-2: rgb(0, 0, 0) 0.1rem solid;
-  --container-border: rgb(145, 50, 220);
-  --icon-inverted-color: #ffffff;
+  --button-border: #9132dc 0.1rem solid;
+  --button-border-2: #000 0.1rem solid;
+  --container-border: #9132dc;
+  --icon-inverted-color: #fff;
 }
 
 /* Resetting Default Styles */
@@ -73,6 +73,7 @@ body {
 }
 
 #splash-screen.hide {
+  animation: fadeOut 1s ease-out forwards;
   opacity: 0;
   visibility: hidden;
 }
@@ -85,6 +86,7 @@ h3 {
 p {
   font-family: "Poppins", sans-serif;
   color: var(--secondary-color-2);
+  font-size: 1.2rem;
 }
 
 /* Transition Styles */
@@ -278,6 +280,7 @@ section {
 #profile {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 5rem;
   height: 80vh;
 }
@@ -316,6 +319,7 @@ section {
 /* Icon Styles */
 .icons {
   color: var(--icon-inverted-color);
+  font-size: 1.5rem;
 }
 
 .icon {
@@ -327,6 +331,13 @@ section {
 .icon:hover {
   transform: scale(1.1); /* Subtle scale-up effect */
   color: var(--secondary-color);
+}
+
+/* Profile Section Icon Styles */
+#profile .icon {
+  height: 3rem;
+  color: var(--icon-inverted-color);
+  font-size: 2rem;
 }
 
 /* Button Styles */
@@ -413,6 +424,12 @@ section {
   position: relative;
 }
 
+#about .lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .about-containers {
   gap: 2rem;
   margin-bottom: 2rem;
@@ -433,10 +450,20 @@ section {
   border-radius: 2rem;
 }
 
+/* Arrow Icon Styles */
 .arrow {
+  font-size: 4rem;
   position: absolute;
   right: -5rem;
   bottom: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: var(--icon-inverted-color);
+}
+
+.arrow:hover {
+  transform: scale(1.5); /* Scale up the icon */
+  color: var(--secondary-color); /* Change color on hover */
 }
 
 .details-container {
@@ -541,25 +568,40 @@ article div {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center; /* Center align the items horizontally */
   height: 70vh;
+  text-align: center; /* Center align the text */
+  background-color: var(--background-color); /* Use background color variable */
+  color: var(--secondary-color-2); /* Use text color variable */
+}
+
+#contact .lottie-container {
+  display: flex;
+  justify-content: center; /* Centers the Lottie animation horizontally */
+  align-items: center; /* Centers the Lottie animation vertically */
+  margin-top: 20px; /* Adjust top margin as needed */
+  margin-bottom: 20px; /* Adjust bottom margin as needed */
 }
 
 .contact-info-upper-container {
   display: flex;
   justify-content: center;
+  align-items: center; /* Center align the items vertically */
   border-radius: 2rem;
   border: var(--button-border);
   border-color: var(--container-border);
-  background: var(--background-color);
+  background: var(--background-color); /* Use background color variable */
   margin: 2rem auto;
-  padding: 0.5rem;
+  padding: 1rem; /* Adjust padding as needed */
+  flex-direction: column; /* Stack items vertically */
+  color: var(--secondary-color-2); /* Use text color variable */
 }
 
 .contact-info-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem; /* Adjust gap as needed */
   margin: 1rem;
 }
 
@@ -639,13 +681,6 @@ footer p {
   background-color: var(--primary-color-3);
 }
 
-.dropdown:hover .dropdown-content {
-  display: block; /* Ensure it's visible when hovered */
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
 /* Flag Icon Styles */
 .flag-icon {
   width: 20px; /* Adjust size as needed */
@@ -666,6 +701,15 @@ footer p {
   100% { transform: rotate( 0.0deg) }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -674,17 +718,6 @@ footer p {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes slideInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -773,11 +806,6 @@ footer p {
   visibility: visible;
 }
 
-/* Apply unique animations to each section */
-#profile.animated.visible {
-  animation: slideInFromLeft 1s ease-out forwards;
-}
-
 #about.animated.visible {
   animation: slideInFromRight 1s ease-out forwards;
 }
@@ -786,132 +814,38 @@ footer p {
   animation: fadeInUp 1s ease-out forwards;
 }
 
-#projects.animated.visible {
-  animation: minimalFadeInUp 1s ease-out forwards;
-}
-
-#contact.animated.visible {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.card {
-  transition: background-color 0.3s ease;
-}
-
-.card:hover {
-  background-color: #f0f0f0;
-}
-
-/* Smooth Scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Button Hover Effect */
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Card Hover Effect */
-.card:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Fade-in Effect for Sections */
-.section {
+/* Back to Top Button Styles */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
   visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1000;
 }
 
-.section.visible {
+.back-to-top.show-back-to-top {
+  opacity: 1;
   visibility: visible;
 }
 
-/* Slide-in Effect for Navigation Links */
-.nav-links a {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+.back-to-top i {
+  font-size: 1.5rem;
 }
 
-.nav-links a.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Smooth Transition for Dropdown Menu */
-.dropdown-content {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.dropdown:hover .dropdown-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Smooth Transition for Hamburger Menu */
-.hamburger-icon span {
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-.hamburger-icon.open span:nth-child(1) {
-  transform: translateY(11px) rotate(45deg);
-}
-
-.hamburger-icon.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-icon.open span:nth-child(3) {
-  transform: translateY(-11px) rotate(-45deg);
-}
-
-/* Smooth Transition for Menu Links */
-.menu-links {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.menu-links.open {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Smooth Transition for Icons */
-.icon {
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.icon:hover {
-  transform: scale(1.1); /* Subtle scale-up effect */
-  color: var(--secondary-color);
-}
-
-/* Keyframes for Fade-in Effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Applying Fade-in Effect to Sections */
-.section {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-/* Applying Smooth Transition to All Elements */
-* {
-  transition: all 0.3s ease;
+.back-to-top:hover {
+  transform: scale(1.1); /* Scale up the button */
+  background-color: var(--primary-color); /* Change background color */
+  color: var(--secondary-color); /* Change icon color */
 }

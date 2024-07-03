@@ -1,64 +1,84 @@
 /* Media Queries for screen width up to 1400px */
 @media screen and (max-width: 1400px) {
+  /* Adjust profile section height and margin */
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
   }
+  /* Ensure profile and section-container are displayed as block */
   #profile,
   .section-container {
     display: block;
   }
+  /* Enable flex-wrap for about-containers */
   .about-containers {
     flex-wrap: wrap;
   }
+  /* Center lottie-container content */
   .lottie-container {
     width: auto;
     height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 /* Media Queries for screen width up to 1200px */
 @media screen and (max-width: 1200px) {
+  /* Hide desktop navigation and show hamburger navigation */
   #desktop-nav {
     display: none;
   }
   #hamburger-nav {
     display: flex;
   }
+  /* Adjust last child of hamburger navigation */
   #hamburger-nav li:last-child {
     width: max-content;
     display: flex;
     margin: auto;
     padding: 10px;
   }
+  /* Add margin to experience section */
   #experience,
   .experience-details-container {
     margin-top: 2rem;
   }
+  /* Ensure profile and section-container are displayed as block */
   #profile,
   .section-container {
     display: block;
   }
+  /* Hide arrow elements */
   .arrow {
     display: none;
   }
+  /* Adjust section and section-container height */
   section,
   .section-container {
     height: fit-content;
   }
+  /* Add margin to section */
   section {
     margin: 0 5%;
   }
+  /* Center lottie-container content */
   .lottie-container {
     width: 275px;
     height: 275px;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  /* Adjust section picture container dimensions and margin */
   .section__pic-container {
     width: 275px;
     height: 275px;
     margin: 0 auto 2rem;
   }
+  /* Remove top margin from about-containers */
   .about-containers {
     margin-top: 0;
   }
@@ -66,60 +86,79 @@
 
 /* Media Queries for screen width up to 600px */
 @media screen and (max-width: 600px) {
+  /* Adjust contact section and footer height */
   #contact,
   footer {
-    height: 40vh;
+    height: auto;
   }
+  /* Adjust profile section height and margin */
   #profile {
     height: 83vh;
     margin-bottom: 0;
   }
+  /* Adjust article font size */
   article {
     font-size: 1rem;
   }
+  /* Adjust footer navigation height and margin */
   footer nav {
     height: fit-content;
     margin-bottom: 2rem;
   }
+  /* Enable flex-wrap and add gap to containers */
   .about-containers,
   .contact-info-upper-container,
   .btn-container {
     flex-wrap: wrap;
     gap: 1rem;
   }
+  /* Adjust contact info container layout */
   .contact-info-container {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
+  /* Adjust font size for contact info and navigation links */
   .contact-info-container p,
   .nav-links li a {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
+  /* Adjust experience subtitle font size */
   .experience-sub-title {
     font-size: 1.25rem;
   }
+  /* Adjust logo font size */
   .logo {
     font-size: 1.5rem;
   }
+  /* Adjust navigation links layout */
   .nav-links {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
   }
+  /* Adjust lottie-container and section picture container dimensions and alignment */
   .lottie-container,
   .section__pic-container {
-    width: 100%;
-    height: auto;
+    width: 275px;
+    height: 275px;
     justify-content: center;
   }
+  /* Adjust section text font size */
   .section__text__p2 {
     font-size: 1.25rem;
   }
+  /* Adjust title font size */
   .title {
     font-size: 2rem;
   }
+  /* Justify text in text container */
   .text-container {
     text-align: justify;
-  }  
+  }
+  /* Center dropdown content */
   .dropdown {
     display: flex;
     justify-content: center;
