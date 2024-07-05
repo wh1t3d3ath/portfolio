@@ -116,7 +116,7 @@ nav {
 a {
   color: var(--secondary-color);
   text-decoration: none;
-  text-decoration-color: var(--primary-color);
+  text-decoration-color: var(--secondary-color);
   position: relative;
   overflow: hidden;
   transition: color 0.3s ease;
@@ -312,10 +312,13 @@ section {
 }
 
 #socials-container {
+  position: relative;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
   gap: 1rem;
+  z-index: -10; /* Ensure it has a lower z-index than the dropdown */
+
 }
 
 /* Icon Styles */
@@ -632,6 +635,7 @@ footer p {
 /* Dropdown Menu Styles */
 .dropdown {
   position: relative;
+  z-index: 100;
 }
 
 .dropdown-toggle {
@@ -656,17 +660,17 @@ footer p {
 .dropdown-content {
   position: absolute;
   transform: translateX(-50%) translateY(-10px);
-  min-width: 8rem;
-  width: auto;
-  display: none;
-  background-color: var(--primary-color-2);
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 10;
-  border-radius: 2rem;
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  pointer-events: none;
+    min-width: 8rem;
+    width: auto;
+    display: none;
+    background-color: var(--primary-color-2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100; /* Increased z-index to ensure it overlaps */
+    border-radius: 2rem;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none;
 }
 
 .dropdown-content a {
@@ -675,6 +679,7 @@ footer p {
   text-decoration: none; /* Remove underline */
   display: block; /* Use flexbox for alignment */
   pointer-events: auto;
+  z-index: 10;
   align-items: center; /* Center items vertically */
   transition: background-color 300ms ease, color 300ms ease;
 }
@@ -798,6 +803,41 @@ footer p {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
+/* Animation for elements becoming visible */
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Animation for elements becoming not visible */
+.not-visible {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Scroll Indicator Styles */
+.scroll-indicator {
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 46%;
+  z-index: 10;
+
+  align-self: center;
+}
+
+.scroll-indicator dotlottie-player {
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure the parent container is positioned relative */
+section {
+  position: relative;
+}
+
 .section {
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
@@ -851,4 +891,3 @@ footer p {
   background-color: var(--container-border); /* Change background color */
   color: var(--primary-color-3); /* Change icon color */
 }
-

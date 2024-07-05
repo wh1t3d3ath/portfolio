@@ -31,6 +31,27 @@
   section {
     margin: 4rem 5%; /* Increased margin to increase gap */
   }
+  /* Hide scroll indicator */
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* Experience Section */
+  #experience {
+    margin-top: 4rem;
+  }
+  .experience-sub-title {
+    font-size: 1.5rem;
+  }
+  .experience-details-container {
+    padding: 2rem;
+  }
+  .article-container {
+    gap: 2rem;
+  }
+  article {
+    width: 8rem;
+  }
 }
 
 /* Media Queries for screen width up to 1200px */
@@ -85,6 +106,27 @@
   .about-containers {
     margin-top: 0;
   }
+  /* Hide scroll indicator */
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* Experience Section */
+  #experience {
+    margin-top: 3rem;
+  }
+  .experience-sub-title {
+    font-size: 1.5rem;
+  }
+  .experience-details-container {
+    padding: 1.5rem;
+  }
+  .article-container {
+    gap: 1.5rem;
+  }
+  article {
+    width: 7rem;
+  }
 }
 
 /* Media Queries for screen width up to 768px */
@@ -130,6 +172,35 @@
   .btn:hover, .btn:hover::after {
     transform: none;
     box-shadow: none;
+  }
+  /* Hide scroll indicator */
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* Experience Section */
+  #experience {
+    margin-top: 2rem;
+  }
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  .experience-details-container {
+    padding: 1rem;
+  }
+  .article-container {
+    gap: 1rem;
+  }
+  article {
+    width: 6rem;
+  }
+
+  /* Hide text and show icons on buttons for mobile devices */
+  .project-btn .btn-text {
+    display: none;
+  }
+  .project-btn .btn-icon {
+    display: inline-block;
   }
 }
 
@@ -252,6 +323,10 @@
     transform: none;
     box-shadow: none;
   }
+  /* Hide scroll indicator */
+  .scroll-indicator {
+    display: none;
+  }
 }
 
 /* Media Queries for screen width up to 480px */
@@ -315,6 +390,10 @@
   .btn:hover, .btn:hover::after {
     transform: none;
     box-shadow: none;
+  }
+  /* Hide scroll indicator */
+  .scroll-indicator {
+    display: none;
   }
 }
 
