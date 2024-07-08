@@ -1,37 +1,38 @@
-/* Media Queries for screen width up to 1400px */
+/* Media Queries */
+
+/* Screen width up to 1400px */
 @media screen and (max-width: 1400px) {
-  /* Adjust profile section height and margin */
+  /* Profile Section */
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
   }
-  /* Ensure profile and section-container are displayed as block */
+
   #profile,
   .section-container {
     display: block;
   }
-  /* Enable flex-wrap for about-containers */
+
+  /* About Section */
   .about-containers {
     flex-wrap: wrap;
+    margin-top: 0;
   }
-  /* Center lottie-container content */
+
   .lottie-container {
     height: fit-content;
     width: 500px;
-    margin: auto;
+    margin: 0 auto;
     justify-content: center;
     align-items: center;
-    margin: 0 auto; /* Center horizontally */
   }
 
-  /* Remove top margin from about-containers */
-  .about-containers {
-    margin-top: 0;
-  }
+  /* General Section Styles */
   section {
-    margin: 4rem 5%; /* Increased margin to increase gap */
+    margin: 4rem 5%;
   }
-  /* Hide scroll indicator */
+
+  /* Scroll Indicator */
   .scroll-indicator {
     display: none;
   }
@@ -40,115 +41,119 @@
   #experience {
     margin-top: 4rem;
   }
+
   .experience-sub-title {
     font-size: 1.5rem;
   }
+
   .experience-details-container {
     padding: 2rem;
   }
+
   .article-container {
     gap: 2rem;
   }
+
   article {
     width: 8rem;
   }
 }
 
-/* Media Queries for screen width up to 1200px */
+/* Screen width up to 1200px */
 @media screen and (max-width: 1200px) {
-  /* Hide desktop navigation and show hamburger navigation */
+  /* Navigation */
   #desktop-nav {
     display: none;
   }
+
+  nav{
+    height: 12vh;
+  }
+
   #hamburger-nav {
+    background-color: var(--color-bg);
     display: flex;
   }
-  /* Adjust last child of hamburger navigation */
+
   #hamburger-nav li:last-child {
     width: max-content;
     display: flex;
     margin: auto;
     padding: 10px;
   }
-  /* Add margin to experience section */
-  #experience,
-  .experience-details-container {
-    margin-top: 2rem;
-  }
-  /* Ensure profile and section-container are displayed as block */
+
+  /* Layout */
   #profile,
   .section-container {
     display: block;
   }
-  /* Hide arrow elements */
-  .fas.fa-arrow-down.icon.arrow {
-    display: none;
-  }
-  /* Adjust section and section-container height */
+
   section,
   .section-container {
     height: fit-content;
   }
-  /* Add margin to section */
+
   section {
-    margin: 4rem 5%; /* Increased margin to increase gap */
-  }
-  /* Center lottie-container content */
-  .lottie-container {
-    height: fit-content;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto; /* Center horizontally */
+    margin: 4rem 5%;
   }
 
-  /* Remove top margin from about-containers */
+  /* Icons */
+  .fas.fa-arrow-down.icon.arrow {
+    display: none;
+  }
+
+  /* About Section */
+  .lottie-container {
+    height: fit-content;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
   .about-containers {
     margin-top: 0;
-  }
-  /* Hide scroll indicator */
-  .scroll-indicator {
-    display: none;
   }
 
   /* Experience Section */
   #experience {
     margin-top: 3rem;
   }
+
   .experience-sub-title {
     font-size: 1.5rem;
   }
+
   .experience-details-container {
     padding: 1.5rem;
   }
+
   .article-container {
     gap: 1.5rem;
   }
+
   article {
     width: 7rem;
   }
 }
 
-/* Media Queries for screen width up to 768px */
+/* Screen width up to 768px */
 @media (max-width: 768px) {
-  .fas.fa-arrow-down.icon.arrow {
-    display: none;
-  }
-  /* Adjust profile section height and margin */
+  /* Layout */
   #profile {
     height: 75vh;
     margin-bottom: 4rem;
   }
-  /* Adjust section and section-container height */
+
   section,
   .section-container {
     height: fit-content;
   }
-  /* Add margin to section */
+
   section {
-    margin: 4rem 3%; /* Increased margin to increase gap */
+    margin: 4rem 3%;
   }
-  /* Center lottie-container content */
+
+  /* Images and Containers */
   .lottie-container {
     width: 250px;
     height: 250px;
@@ -157,87 +162,103 @@
     justify-content: center;
     align-items: center;
   }
-  /* Adjust section picture container dimensions and margin */
+
   .section__pic-container {
     width: 250px;
     height: 250px;
     margin: 0 auto 1.5rem;
   }
-  /* Remove top margin from about-containers */
-  .about-containers {
-    margin-top: 0;
-  }
-  
-  /* Remove hover effects for buttons */
+
+  /* Buttons */
   .btn:hover, .btn:hover::after {
     transform: none;
     box-shadow: none;
-  }
-  /* Hide scroll indicator */
-  .scroll-indicator {
-    display: none;
   }
 
   /* Experience Section */
   #experience {
     margin-top: 2rem;
   }
+
   .experience-sub-title {
     font-size: 1.25rem;
   }
+
   .experience-details-container {
     padding: 1rem;
   }
+
   .article-container {
     gap: 1rem;
   }
+
   article {
     width: 6rem;
   }
 
-  /* Hide text and show icons on buttons for mobile devices */
+  /* Project Buttons */
   .project-btn .btn-text {
     display: none;
   }
+
   .project-btn .btn-icon {
     display: inline-block;
   }
 }
 
-/* Media Queries for screen width up to 600px */
+/* Screen width up to 600px */
 @media screen and (max-width: 600px) {
-  /* Adjust contact section and footer height */
+  /* Layout */
   #contact,
   footer {
     height: auto;
   }
-  /* Adjust profile section height and margin */
+
   #profile {
     height: 83vh;
     margin-bottom: 0;
   }
-  /* Adjust article font size */
-  article {
-    font-size: 1rem;
-  }
-  /* Adjust footer navigation height and margin */
+
   footer nav {
     height: fit-content;
     margin-bottom: 2rem;
   }
-  /* Enable flex-wrap and add gap to containers */
+
+  /* Typography */
+  article {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  /* Containers */
   .about-containers,
   .contact-info-upper-container,
   .btn-container {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  /* Adjust contact info container layout */
+
   .contact-info-upper-container {
     display: flex;
     gap: 1rem;
   }
-.icons{
+
+  .icons {
     display: flex;
     flex-direction: column;
   }
@@ -246,138 +267,97 @@
     display: flex;
     gap: 1rem;
   }
-  /* Hide text in contact info container */
+
   .contact-info-container p {
     display: none;
   }
-  /* Adjust font size for contact info and navigation links */
-  .contact-info-container p,
-  .nav-links li a {
-    font-size: 1.2rem;
-  }
-  /* Adjust experience subtitle font size */
-  .experience-sub-title {
-    font-size: 1.25rem;
-  }
-  /* Adjust logo font size */
-  .logo {
-    font-size: 2.5rem;
-  }
-  /* Adjust navigation links layout */
+
+  /* Navigation */
   .nav-links {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
   }
-  /* Adjust lottie-container and section picture container dimensions and alignment */
+
+  /* Images and Containers */
   .lottie-container,
   .section__pic-container {
     width: 275px;
     height: 275px;
     justify-content: center;
   }
-  /* Adjust section text font size */
-  .section__text__p2 {
-    font-size: 1.25rem;
-  }
-  /* Adjust title font size */
-  .title {
-    font-size: 2rem;
-  }
-  /* Justify text in text container */
+
+  /* Text */
   .text-container {
     text-align: justify;
   }
-  /* Center dropdown content */
+
+  /* Dropdown */
   .dropdown {
     display: flex;
     justify-content: center;
     width: 100%;
   }
+
   .dropdown-content {
     justify-content: center;
     top: 100%;
     width: auto;
     transform: translateX(-50%);
   }
-  /* Simplify animations */
+
+  /* Animations */
   .animated, .section {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     animation-duration: 0.5s;
   }
-  /* Reduce the intensity of hover effects */
-  .btn:hover, .btn:hover::after {
-    transform: scale(1.02);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  /* Disable rotation on icons to reduce repaints */
+
   .icon:hover {
-    transform: scale(1.1); /* Subtle scale-up effect */
+    transform: scale(1.1);
   }
-  section {
-    margin: 4rem 3%; /* Increased margin to increase gap */
-  }
-  
-  /* Remove hover effects for buttons */
+
+  /* Buttons */
   .btn:hover, .btn:hover::after {
     transform: none;
     box-shadow: none;
   }
-  /* Hide scroll indicator */
-  .scroll-indicator {
-    display: none;
-  }
 }
 
-/* Media Queries for screen width up to 480px */
+/* Screen width up to 480px */
 @media screen and (max-width: 480px) {
-  /* Adjust profile section height and margin */
+  /* Layout */
   #profile {
     height: 70vh;
     margin-bottom: 2rem;
   }
 
-  /* Adjust section and section-container height */
   section,
   .section-container {
     height: fit-content;
   }
-  /* Add margin to section */
+
   section {
-    margin: 4rem 2%; /* Increased margin to increase gap */
+    margin: 4rem 2%;
   }
 
-  p{
+  /* Typography */
+  p {
     font-size: 1rem;
   }
-  /* Center lottie-container content */
-  .lottie-container {
-    height: fit-content;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  /* Adjust section picture container dimensions and margin */
-  .section__pic-container {
-    height: fit-content;
-    margin: 0 auto 1rem;
-  }
-  /* Remove top margin from about-containers */
-  .about-containers {
-    margin-top: 0;
-  }
-  /* Adjust font size for smaller screens */
+
   article {
     font-size: 0.9rem;
   }
+
   .contact-info-container p,
   .nav-links li a {
     font-size: 1rem;
   }
+
   .experience-sub-title {
     font-size: 1rem;
   }
+
   .logo {
     font-size: 2rem;
   }
@@ -385,15 +365,24 @@
   .title {
     font-size: 1.5rem;
   }
-  
-  /* Remove hover effects for buttons */
+
+  /* Images and Containers */
+  .lottie-container {
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .section__pic-container {
+    height: fit-content;
+    margin: 0 auto 1rem;
+  }
+
+  /* Buttons */
   .btn:hover, .btn:hover::after {
     transform: none;
     box-shadow: none;
   }
-  /* Hide scroll indicator */
-  .scroll-indicator {
-    display: none;
-  }
 }
-
