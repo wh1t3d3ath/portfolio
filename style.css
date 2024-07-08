@@ -18,6 +18,7 @@
   --button-border-2: #fff 0.1rem solid;
   --container-border: #2d005f;
   --icon-inverted-color: #000;
+  --scroll-indicator-filter: invert(0%);
 }
 
 /* Dark Mode Variables */
@@ -34,6 +35,7 @@
   --button-border-2: #000 0.1rem solid;
   --container-border: #9132dc;
   --icon-inverted-color: #fff;
+  --scroll-indicator-filter: invert(100%);
 }
 
 /* Resetting Default Styles */
@@ -208,7 +210,7 @@ nav a:hover {
   width: fit-content;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
   border: 0.3px solid var(--container-border); /* Outline for the menu */
   border-radius: 10px; /* Optional: adds rounded corners */
 }
@@ -318,7 +320,6 @@ section {
   margin-top: 1rem;
   gap: 1rem;
   z-index: -10; /* Ensure it has a lower z-index than the dropdown */
-
 }
 
 /* Icon Styles */
@@ -486,12 +487,13 @@ section {
   position: relative;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
+  margin-top: 2rem;
 }
 
 .experience-sub-title {
   color: var(--secondary-color);
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   margin-bottom: 2rem;
   text-align: center; /* Align the title to the center */
   opacity: 0;
@@ -503,17 +505,18 @@ section {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center; /* Center align the items vertically */
+  align-items: center; 
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
   animation-delay: 1s;
+  padding: 1rem;
 }
 
 .article-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Center align the items horizontally */
-  gap: 2.5rem;
+  gap: 1rem;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
   animation-delay: 1.5s;
@@ -523,7 +526,8 @@ article {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center align the items vertically */
-  width: 10rem;
+  width: calc(50% - 0.5rem);
+  min-width: 120px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
@@ -660,17 +664,17 @@ footer p {
 .dropdown-content {
   position: absolute;
   transform: translateX(-50%) translateY(-10px);
-    min-width: 8rem;
-    width: auto;
-    display: none;
-    background-color: var(--primary-color-2);
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 100; /* Increased z-index to ensure it overlaps */
-    border-radius: 2rem;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    pointer-events: none;
+  min-width: 8rem;
+  width: auto;
+  display: none;
+  background-color: var(--primary-color-2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 100; /* Increased z-index to ensure it overlaps */
+  border-radius: 2rem;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
 }
 
 .dropdown-content a {
@@ -805,16 +809,16 @@ footer p {
 
 /* Animation for elements becoming visible */
 .visible {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 /* Animation for elements becoming not visible */
 .not-visible {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 /* Scroll Indicator Styles */
@@ -824,8 +828,9 @@ footer p {
   bottom: 20px;
   left: 46%;
   z-index: 10;
-
   align-self: center;
+  filter: var(--scroll-indicator-filter);
+  transition: filter 0.3s ease;
 }
 
 .scroll-indicator dotlottie-player {

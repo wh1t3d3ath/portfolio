@@ -2,39 +2,27 @@
 
 /* Screen width up to 1400px */
 @media screen and (max-width: 1400px) {
-  /* Profile Section */
+  /* Layout */
+  #profile,
+  .section-container {
+    display: block;
+    width: 100%;
+  }
+
   #profile {
     height: 83vh;
     margin-bottom: 6rem;
   }
 
-  #profile,
-  .section-container {
-    display: block;
+  section {
+    margin: 4rem 0;
+    width: 100%;
   }
 
   /* About Section */
   .about-containers {
     flex-wrap: wrap;
     margin-top: 0;
-  }
-
-  .lottie-container {
-    height: fit-content;
-    width: 500px;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* General Section Styles */
-  section {
-    margin: 4rem 5%;
-  }
-
-  /* Scroll Indicator */
-  .scroll-indicator {
-    display: none;
   }
 
   /* Experience Section */
@@ -57,17 +45,32 @@
   article {
     width: 8rem;
   }
+
+  /* Lottie Container */
+  .lottie-container {
+    height: fit-content;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    display: none;
+  }
 }
 
 /* Screen width up to 1200px */
 @media screen and (max-width: 1200px) {
   /* Navigation */
-  #desktop-nav {
-    display: none;
+  nav {
+    height: 12vh;
   }
 
-  nav{
-    height: 12vh;
+  #desktop-nav {
+    display: none;
   }
 
   #hamburger-nav {
@@ -86,15 +89,18 @@
   #profile,
   .section-container {
     display: block;
+    width: 100%;
   }
 
   section,
   .section-container {
     height: fit-content;
+    width: 100%;
   }
 
   section {
-    margin: 4rem 5%;
+    margin: 4rem 0;
+    width: 100%;
   }
 
   /* Icons */
@@ -103,13 +109,6 @@
   }
 
   /* About Section */
-  .lottie-container {
-    height: fit-content;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-  }
-
   .about-containers {
     margin-top: 0;
   }
@@ -134,43 +133,51 @@
   article {
     width: 7rem;
   }
+
+  /* Lottie Container */
+  .lottie-container {
+    height: fit-content;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* Screen width up to 768px */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   /* Layout */
   #profile {
-    height: 75vh;
+    height: auto;
+    min-height: 75vh;
     margin-bottom: 4rem;
   }
 
   section,
   .section-container {
     height: fit-content;
+    width: 100%;
   }
 
   section {
-    margin: 4rem 3%;
+    margin: 4rem 0;
+    width: 100%;
   }
 
   /* Images and Containers */
-  .lottie-container {
-    width: 250px;
-    height: 250px;
-    margin: auto;
+  .lottie-container,
+  .section__pic-container {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .section__pic-container {
-    width: 250px;
-    height: 250px;
-    margin: 0 auto 1.5rem;
-  }
-
   /* Buttons */
-  .btn:hover, .btn:hover::after {
+  .btn:hover,
+  .btn:hover::after {
     transform: none;
     box-shadow: none;
   }
@@ -190,10 +197,13 @@
 
   .article-container {
     gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   article {
-    width: 6rem;
+    width: calc(50% - 1rem);
+    min-width: 6rem;
   }
 
   /* Project Buttons */
@@ -209,14 +219,15 @@
 /* Screen width up to 600px */
 @media screen and (max-width: 600px) {
   /* Layout */
+  #profile {
+    height: auto;
+    min-height: 83vh;
+    margin-bottom: 0;
+  }
+
   #contact,
   footer {
     height: auto;
-  }
-
-  #profile {
-    height: 83vh;
-    margin-bottom: 0;
   }
 
   footer nav {
@@ -225,24 +236,24 @@
   }
 
   /* Typography */
-  article {
-    font-size: 1rem;
-  }
-
-  .experience-sub-title {
-    font-size: 1.25rem;
-  }
-
   .logo {
     font-size: 2.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
   }
 
   .section__text__p2 {
     font-size: 1.25rem;
   }
 
-  .title {
-    font-size: 2rem;
+  article {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
   }
 
   /* Containers */
@@ -258,11 +269,6 @@
     gap: 1rem;
   }
 
-  .icons {
-    display: flex;
-    flex-direction: column;
-  }
-
   .contact-info-container {
     display: flex;
     gap: 1rem;
@@ -270,6 +276,11 @@
 
   .contact-info-container p {
     display: none;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: column;
   }
 
   /* Navigation */
@@ -282,8 +293,9 @@
   /* Images and Containers */
   .lottie-container,
   .section__pic-container {
-    width: 275px;
-    height: 275px;
+    width: 100%;
+    max-width: 275px;
+    height: auto;
     justify-content: center;
   }
 
@@ -307,7 +319,8 @@
   }
 
   /* Animations */
-  .animated, .section {
+  .animated,
+  .section {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     animation-duration: 0.5s;
   }
@@ -317,72 +330,118 @@
   }
 
   /* Buttons */
-  .btn:hover, .btn:hover::after {
+  .btn:hover,
+  .btn:hover::after {
     transform: none;
     box-shadow: none;
+  }
+
+  /* Experience Section */
+  #experience {
+    margin-top: 2rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .experience-details-container {
+    padding: 1rem;
+  }
+
+  .article-container {
+    gap: 1rem;
+  }
+
+  article {
+    width: 6rem;
+  }
+
+  /* About Section */
+  .about-containers {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .about-details-container {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
+  .about-containers .details-container {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .text-container {
+    text-align: center;
+    width: 100%;
+  }
+
+  .section-container {
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Adjust font sizes for better fit */
+  .section__text__p1 {
+    font-size: 1rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .section__text__p2 {
+    font-size: 1.1rem;
   }
 }
 
 /* Screen width up to 480px */
 @media screen and (max-width: 480px) {
   /* Layout */
-  #profile {
-    height: 70vh;
-    margin-bottom: 2rem;
-  }
-
   section,
   .section-container {
     height: fit-content;
+    width: 100%;
   }
 
-  section {
-    margin: 4rem 2%;
+  .section-container {
+    padding: 0;
   }
 
-  /* Typography */
-  p {
-    font-size: 1rem;
+  #projects,
+  #experience,
+  #contact {
+    margin: 2rem 1rem;
   }
 
-  article {
-    font-size: 0.9rem;
+  /* Project Section */
+  .project-img {
+    border-radius: 1.5rem;
+    width: 100%;
+    height: auto;
   }
 
-  .contact-info-container p,
-  .nav-links li a {
-    font-size: 1rem;
-  }
-
-  .experience-sub-title {
-    font-size: 1rem;
-  }
-
-  .logo {
-    font-size: 2rem;
-  }
-
-  .title {
+  .project-title {
+    margin: 1rem 0;
     font-size: 1.5rem;
   }
 
-  /* Images and Containers */
-  .lottie-container {
-    height: fit-content;
-    margin: auto;
+  .btn-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 1rem;
   }
 
-  .section__pic-container {
-    height: fit-content;
-    margin: 0 auto 1rem;
-  }
-
-  /* Buttons */
-  .btn:hover, .btn:hover::after {
-    transform: none;
-    box-shadow: none;
+  .project-btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
 }

@@ -87,6 +87,17 @@ function toggleMenu() {
     icon.classList.toggle("open");
 }
 
+function closeMenuOnResize() {
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".hamburger-icon");
+  if (window.innerWidth > 1200) {
+    menu.classList.remove("open");
+    icon.classList.remove("open");
+  }
+}
+
+window.addEventListener('resize', closeMenuOnResize);
+
 // Dropdown menu handling
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -218,6 +229,12 @@ window.addEventListener('load', function() {
     setTimeout(hideSplashScreen, 2000);
     setTimeout(() => {
         document.body.style.overflow = 'auto';
+        AOS.init({
+            duration: 1000,
+            once: false,
+            mirror: true, // Enable animations when scrolling up
+            anchorPlacement: 'top-bottom' // Trigger animation when the top of the element hits the bottom of the viewport
+        });
     }, 3000);
 });
 
