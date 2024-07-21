@@ -1,325 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    
-    <!-- Page Title -->
-    <title>My Portfolio</title>
-    
-    <!-- External Scripts and Stylesheets -->
-    <link rel="shortcut icon" type="image/x-icon" href="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-portfolio-social-media-agency-flaticons-lineal-color-flat-icons-4.png">
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-    <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaggelis Kavouras - Software Developer Portfolio</title>
+    <meta name="description" content="Explore my projects, skills, and experience in web development and game design.">
+    <link rel="icon" href="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-portfolio-social-media-agency-flaticons-lineal-color-flat-icons-4.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://kit.fontawesome.com/ee64ada057.js" as="script">
+    <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous" defer></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" async></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" defer></script>
 </head>
 <body>
-    <!-- Splash Screen -->
     <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;">
         <dotlottie-player src="https://lottie.host/f6fd76fa-bf3d-47e1-9594-ca365dac923a/JTES7YEv6f.lottie" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
-    </div> 
-
-    <!-- Navigation -->
-    <!-- Hamburger Menu for Mobile -->
+    </div>
     <nav id="hamburger-nav">
         <div class="logo">Vaggelis Kavouras</div>
         <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
+            <div class="hamburger-icon" onclick="toggleMenu()" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <div class="menu-links">
+            <ul class="menu-links">
                 <li><a href="#about" onclick="toggleMenu()">About</a></li>
                 <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
                 <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-                <li><i id="modeToogle" class="fas fa-adjust color-icon icons" onclick="toggleTheme()"></i></li>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Desktop Navigation -->
-    <nav id="desktop-nav">
-        <div class="logo">Vaggelis Kavouras</div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><i id="modeToogle" style="cursor: pointer;" class="fas fa-adjust color-icon icons" onclick="toggleTheme()"></i></li>
+                <li><i id="modeToggle2" class="fas fa-adjust color-icon icons" onclick="toggleTheme()"></i></li>
             </ul>
         </div>
     </nav>
-
-    <!-- Profile Section -->
-    <section id="profile" class="profile-section" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200" data-aos-anchor-placement="top-bottom">
-        <div class="profile-pic animated-element" id="profile-pic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300" data-aos-anchor-placement="top-bottom"></div>
-        <div class="profile-info animated-element" id="profile-info" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400" data-aos-anchor-placement="top-bottom">
-            <p class="section__text__p1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-anchor-placement="top-bottom">Hello, I'm</p>
-            <h1 class="title animated-element" id="profile-name" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-anchor-placement="top-bottom">Vaggelis Kavouras<span class="wave">👋</span></h1>
-            <p class="section__text__p2 animated-element" id="profile-description" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700" data-aos-anchor-placement="top-bottom">Software Developer</p>
-            <div class="btn-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" data-aos-anchor-placement="top-bottom">
-                <div class="dropdown">
-                    <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
-                    <div class="dropdown-content">
-                        <a href="./assets/CV/CV_Vaggelis_Kavouras_English.pdf"><img src="https://img.icons8.com/color/480/usa-circular.png" alt="USA Flag" class="flag-icon"> English</a>
-                        <a href="./assets/CV/CV_Vaggelis_Kavouras_Greek.pdf"><img src="https://img.icons8.com/color/480/greece-circular.png" alt="Greece Flag" class="flag-icon"> Greek</a>
+    <nav id="desktop-nav">
+        <div class="logo">Vaggelis Kavouras</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><i id="modeToggle" class="fas fa-adjust color-icon icons" onclick="toggleTheme()" style="cursor: pointer;"></i></li>
+        </ul>
+    </nav>
+    <section id="profile" class="profile-section">
+        <div class="profile-pic animated-element" id="profile-pic"></div>
+        <div class="profile-info animated-element" id="profile-info">
+            <div class="section-text-container">
+                <p class="section__text__p1">Hello, I'm</p>
+                <h1 class="title animated-element" id="profile-name">Vaggelis Kavouras<span class="wave">👋</span></h1>
+                <p class="section__text__p2 animated-element" id="profile-description">Software Developer</p>
+                <div class="btn-container">
+                    <div class="dropdown">
+                        <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
+                        <div class="dropdown-content">
+                            <a href="./assets/CV/CV_Vaggelis_Kavouras_English.pdf"><img src="https://img.icons8.com/color/480/usa-circular.png" alt="USA Flag" class="flag-icon" loading="lazy"> English</a>
+                            <a href="./assets/CV/CV_Vaggelis_Kavouras_Greek.pdf"><img src="https://img.icons8.com/color/480/greece-circular.png" alt="Greece Flag" class="flag-icon" loading="lazy"> Greek</a>
+                        </div>
                     </div>
+                    <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
                 </div>
-                <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
-            </div>
-            <div id="socials-container" class="profile-icons animated-element" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900" data-aos-anchor-placement="top-bottom">
-                <i class="fab fa-linkedin icon linked-icon icons" onclick="location.href='https://www.linkedin.com/in/vkavouras/'"></i>
-                <i class="fab fa-github icon icons" onclick="location.href='https://github.com/dacrab'"></i>
+                <div id="socials-container" class="profile-icons animated-element">
+                    <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin icon linked-icon icons"></i>
+                    </a>
+                    <a href="https://github.com/DaCrab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github icon github-icon icons"></i>
+                    </a>
+                </div>
             </div>
         </div>
-        <br>
-        <div class="lottie-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000" data-aos-anchor-placement="top-bottom">
+        <div class="lottie-container">
             <dotlottie-player src="https://lottie.host/ec2681d0-ab67-4f7d-a35a-c870c0a588aa/BVfwAmcRde.lottie" speed="1" loop autoplay></dotlottie-player>
-            <br>
         </div>
-        <div class="scroll-indicator" data-target="#about" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-anchor-placement="top-bottom">
-            <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <div class="scroll-indicator-container">
+            <div class="scroll-indicator" data-target="#about">
+                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            </div>
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-aos-anchor-placement="top-bottom">
-        <p class="section__text__p1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-anchor-placement="top-bottom">Get To Know More</p>
-        <h1 class="title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-anchor-placement="top-bottom">About Me</h1>
-        <div class="section-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-anchor-placement="top-bottom">
-            <div class="lottie-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-anchor-placement="top-bottom">
+    <section id="about">
+        <div class="section-text-container">
+            <p class="section__text__p1">Get To Know More</p>
+            <h1 class="title">About Me</h1>
+        </div>
+        <div class="section-container">
+            <div class="lottie-container">
                 <dotlottie-player src="https://lottie.host/66e29c4b-aa09-4cc6-a4cc-37b824c92390/CMDbVbXDsG.lottie" style="width: auto; height: auto;" background="transparent" speed="1" loop autoplay></dotlottie-player>
             </div>
-            <div class="about-details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700" data-aos-anchor-placement="top-bottom">
-                <div class="about-containers animated" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" data-aos-anchor-placement="top-bottom">
-                    <div class="details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900" data-aos-anchor-placement="top-bottom">
-                        <div class="icons"><i class="fas fa-medal icons"></i></div>
+            <div class="about-details-container">
+                <div class="about-containers animated">
+                    <div class="details-container">
+                        <div class="icons"><i class="fas fa-medal icons" aria-label="Experience"></i></div>
                         <h3>Experience</h3>
-                        <br>
                         <p>2+ years Software Development</p>
                     </div>
-                    <div class="details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000" data-aos-anchor-placement="top-bottom">
-                        <div class="icons"><i class="fas fa-user-graduate icons"></i></div>
+                    <div class="details-container">
+                        <div class="icons"><i class="fas fa-user-graduate icons" aria-label="Education"></i></div>
                         <h3>Education</h3>
-                        <br>
-                        <p>IT Technician<br>
-                        (Multimedia/Web Designer - Developer/Video Games) <br> <br> C2 English Degree</p>
+                        <p>IT Technician<br>(Multimedia/Web Designer - Developer/Video Games)<br>C2 English Degree</p>
                     </div>
                 </div>
-                <div class="text-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-anchor-placement="top-bottom">
-                    <p>
-                        <span class="wave">👋</span> Hello! I'm a <span id="age"></span>-year-old IT Technician from Thessaloniki, Greece. With a robust foundation in software development, web design, and game development, I am skilled at leading projects and solving complex technical challenges. I am committed to delivering high-quality solutions and am eager to use my skills and passion for technology to contribute to innovative projects and drive success in the IT industry.
-                    </p>
+                <div class="text-container">
+                    <p><span class="wave">👋</span> Hello! I'm a <span id="age"></span>-year-old IT Technician from Thessaloniki, Greece. With a robust foundation in software development, web design, and game development, I am skilled at leading projects and solving complex technical challenges. I am committed to delivering high-quality solutions and eager to contribute to innovative projects in the IT industry.</p>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" data-target="#experience" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-anchor-placement="top-bottom">
-            <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <div class="scroll-indicator-container">
+            <div class="scroll-indicator" data-target="#experience">
+                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            </div>
         </div>
     </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="animated" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-aos-anchor-placement="top-bottom">
-        <p class="section__text__p1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-anchor-placement="top-bottom">Explore My</p>
-        <h1 class="title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-anchor-placement="top-bottom">Experience</h1>
-        <div class="experience-details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-anchor-placement="top-bottom">
-            <div class="about-containers" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-anchor-placement="top-bottom">
-                <div class="details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700" data-aos-anchor-placement="top-bottom">
-                    <h2 class="experience-sub-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" data-aos-anchor-placement="top-bottom">Software Development</h2>
-                    <div class="article-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900" data-aos-anchor-placement="top-bottom">
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-html5 icons"></i></div>
-                            <div>
-                                <h3>HTML</h3>
-                                <p>Basic</p>
-                            </div>
+    <section id="experience" class="animated">
+        <div class="section-text-container">
+            <p class="section__text__p1">Explore My</p>
+            <h1 class="title">Experience</h1>
+        </div>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Software Development</h2>
+                    <div class="article-container">
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-html5 icons" aria-label="HTML"></i></div>
+                            <h3>HTML</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-css3-alt icons"></i></div>     
-                            <div>
-                                <h3>CSS</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-css3-alt icons" aria-label="CSS"></i></div>
+                            <h3>CSS</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-js icons"></i></div>               
-                            <div>
-                                <h3>JavaScript</h3>
-                                <p>Beginner</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-js icons" aria-label="JavaScript"></i></div>
+                            <h3>JavaScript</h3>
+                            <p>Beginner</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1300" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-java icons"></i></div>
-                            <div>
-                                <h3>Java</h3>
-                                <p>Beginner</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-java icons" aria-label="Java"></i></div>
+                            <h3>Java</h3>
+                            <p>Beginner</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fas fa-code icons"></i></div>                
-                            <div>
-                                <h3>C / C++</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fas fa-code icons" aria-label="C/C++"></i></div>
+                            <h3>C / C++</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1500" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-php icons"></i></div>                
-                            <div>
-                                <h3>PHP</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-php icons" aria-label="PHP"></i></div>
+                            <h3>PHP</h3>
+                            <p>Basic</p>
                         </article>
                     </div>
                 </div>
-                <br>
-                <div class="section__pic-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1600" data-aos-anchor-placement="top-bottom">
+                <div class="section__pic-container">
                     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
                     <dotlottie-player src="https://lottie.host/73016d3d-9858-42f7-82ab-fc9f2f387a2b/7LWc6nKCUr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
-                </div>            
-                <br>
-                <div class="details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1700" data-aos-anchor-placement="top-bottom">
-                    <h2 class="experience-sub-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1800" data-aos-anchor-placement="top-bottom">Content Creation</h2>
-                    <div class="article-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1900" data-aos-anchor-placement="top-bottom">
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2000" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fas fa-keyboard icons"></i></div>                
-                            <div>
-                                <h3>Unreal Engine</h3>
-                                <p>Beginner</p>
-                            </div>
+                </div>
+                <div class="details-container">
+                    <h2 class="experience-sub-title">Content Creation</h2>
+                    <div class="article-container">
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fas fa-keyboard icons" aria-label="Unreal Engine"></i></div>
+                            <h3>Unreal Engine</h3>
+                            <p>Beginner</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2100" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-unity icons"></i></div>
-                            <div>
-                                <h3>Unity</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-unity icons" aria-label="Unity"></i></div>
+                            <h3>Unity</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2200" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fas fa-camera-retro icons"></i></div>
-                            <div>
-                                <h3>Adobe Photoshop</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div the="icons"><i class="fas fa-camera-retro icons" aria-label="Adobe Photoshop"></i></div>
+                            <h3>Adobe Photoshop</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2300" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fas fa-film icons"></i></div>
-                            <div>
-                                <h3>Abobe Premier</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fas fa-film icons" aria-label="Adobe Premier"></i></div>
+                            <h3>Adobe Premier</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2400" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fab fa-wordpress icons"></i></div>
-                            <div>
-                                <h3>WordPress</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fab fa-wordpress icons" aria-label="WordPress"></i></div>
+                            <h3>WordPress</h3>
+                            <p>Basic</p>
                         </article>
-                        <article data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2500" data-aos-anchor-placement="top-bottom">
-                            <div class="icons"><i class="fas fa-cube icons"></i></div>
-                            <div>
-                                <h3>3Ds Max</h3>
-                                <p>Basic</p>
-                            </div>
+                        <article class="animate-on-scroll">
+                            <div class="icons"><i class="fas fa-cube icons" aria-label="3Ds Max"></i></div>
+                            <h3>3Ds Max</h3>
+                            <p>Basic</p>
                         </article>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" data-target="#projects" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2600" data-aos-anchor-placement="top-bottom">
-            <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <div class="scroll-indicator-container">
+            <div class="scroll-indicator" data-target="#projects">
+                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            </div>
         </div>
     </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="animated" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-aos-anchor-placement="top-bottom">
-        <p class="section__text__p1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-anchor-placement="top-bottom">Browse My Recent</p>
-        <h1 class="title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-anchor-placement="top-bottom">Projects</h1>
-        <div class="experience-details-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-anchor-placement="top-bottom">
-            <div class="about-containers" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-anchor-placement="top-bottom">
-                <div class="details-container color-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700" data-aos-anchor-placement="top-bottom">
-                    <div class="article-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800" data-aos-anchor-placement="top-bottom">
-                        <img src="https://img.freepik.com/free-vector/cross-platform-frameworks-abstract-concept-illustration_335657-1825.jpg?t=st=1720100807~exp=1720104407~hmac=4f98051dba052237644d5263d239ad7185d422245a215df1adfb29fba8e438a4&w=826" alt="Project 1" class="project-img"/>
+    <section id="projects" class="animated">
+        <div class="section-text-container">
+            <p class="section__text__p1">Browse My Recent</p>
+            <h1 class="title">Projects</h1>
+        </div>
+        <div class="experience-details-container">
+            <div class="about-containers">
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://img.freepik.com/free-vector/cross-platform-frameworks-abstract-concept-illustration_335657-1825.jpg?t=st=1720100807~exp=1720104407~hmac=4f98051dba052237644d5263d239ad7185d422245a215df1adfb29fba8e438a4&w=826" alt="Project 1" class="project-img" loading="lazy">
                     </div>
-                    <h2 class="experience-sub-title project-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="900" data-aos-anchor-placement="top-bottom">Cooking Website</h2>
-                    <div class="btn-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000" data-aos-anchor-placement="top-bottom">
+                    <h2 class="experience-sub-title project-title">Cooking Website</h2>
+                    <div class="btn-container">
                         <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/RecipeSwap'">
                             <span class="btn-text">Github</span>
-                            <i class="fas fa-code-branch btn-icon"></i>
+                            <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
                         </button>
                         <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://dacrab.github.io/RecipeSwap'">
                             <span class="btn-text">Live Demo</span>
-                            <i class="fas fa-external-link-alt btn-icon"></i>
+                            <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
                         </button>
                     </div>
                 </div>
-                <div class="details-container color-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1100" data-aos-anchor-placement="top-bottom">
-                    <div class="article-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1200" data-aos-anchor-placement="top-bottom">
-                        <img src="https://img.freepik.com/free-vector/action-game-abstract-concept-illustration_335657-3751.jpg?t=st=1720098963~exp=1720102563~hmac=4ea4a085a33802a581aba5fcc23ac1eb1d3d77821bc7d6f64e7e48c4bc8d6066&w=826" alt="Project 2" class="project-img"/>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://img.freepik.com/free-vector/action-game-abstract-concept-illustration_335657-3751.jpg?t=st=1720098963~exp=1720102563~hmac=4ea4a085a33802a581aba5fcc23ac1eb1d3d77821bc7d6f64e7e48c4bc8d6066&w=826" alt="Project 2" class="project-img" loading="lazy">
                     </div>
-                    <h2 class="experience-sub-title project-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1300" data-aos-anchor-placement="top-bottom">Unity Game</h2>
-                    <div class="btn-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1400" data-aos-anchor-placement="top-bottom">
+                    <h2 class="experience-sub-title project-title">Unity Game</h2>
+                    <div class="btn-container">
                         <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/Dragon-Blaze'">
                             <span class="btn-text">Github</span>
-                            <i class="fas fa-code-branch btn-icon"></i>
+                            <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
                         </button>
                         <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://itch.io/embed-upload/10842144?color=333333'">
-                            <span class="btn-text">Live Demo</span>
-                            <i class="fas fa-external-link-alt btn-icon" onclick="location.href='https://dacrab.github.io/Dragon-Blaze'"></i>
+                            <span the="btn-text">Live Demo</span>
+                            <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
                         </button>
                     </div>
                 </div>
-                <div class="details-container color-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1500" data-aos-anchor-placement="top-bottom">
-                    <div class="article-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1600" data-aos-anchor-placement="top-bottom">
-                        <img src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1239.jpg?t=st=1720101406~exp=1720105006~hmac=9f6b46023a2d3af283466edeed15465011b24bd0707fd99650d2f38f894ecdb8&w=826" alt="Project 3" class="project-img"/>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1239.jpg?t=st=1720101406~exp=1720105006~hmac=9f6b46023a2d3af283466edeed15465011b24bd0707fd99650d2f38f894ecdb8&w=826" alt="Project 3" class="project-img" loading="lazy">
                     </div>
-                    <h2 class="experience-sub-title project-title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1700" data-aos-anchor-placement="top-bottom">Calculator Made in JavaScript</h2>
-                    <div class="btn-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1800" data-aos-anchor-placement="top-bottom">
+                    <h2 class="experience-sub-title project-title">Calculator Made in JavaScript</h2>
+                    <div class="btn-container">
                         <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/calculator-js-html-css'">
                             <span class="btn-text">Github</span>
-                            <i class="fas fa-code-branch btn-icon"></i>
+                            <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
                         </button>
                         <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'">
                             <span class="btn-text">Live Demo</span>
-                            <i class="fas fa-external-link-alt btn-icon" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'"></i>
+                            <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" data-target="#contact" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1900" data-aos-anchor-placement="top-bottom">
-            <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+        <div class="scroll-indicator-container">
+            <div class="scroll-indicator" data-target="#contact">
+                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            </div>
         </div>
     </section>
-    <br>
 
     <!-- Contact Section -->
-    <section id="contact" class="animated" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200" data-aos-anchor-placement="top-bottom">
-        <p class="section__text__p1" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-anchor-placement="top-bottom">Get in Touch</p>
-        <h1 class="title" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-anchor-placement="top-bottom">Contact Me</h1>
-        <div class="contact-info-upper-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-anchor-placement="top-bottom">
-            <!-- Lottie Animation -->
-            <div class="lottie-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600" data-aos-anchor-placement="top-bottom">
+    <section id="contact" class="animated">
+        <div class="section-text-container">
+            <p class="section__text__p1">Get in Touch</p>
+            <h1 class="title">Contact Me</h1>
+        </div>
+        <div class="contact-info-upper-container">
+            <div class="lottie-container">
                 <dotlottie-player src="https://lottie.host/89786656-4880-42e7-9f18-82895c67895a/37mBlD7a1R.lottie" speed="1" style="width: 400px; height: 400px;" loop autoplay></dotlottie-player>
             </div>
-            <div class="contact-info-container" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="700" data-aos-anchor-placement="top-bottom">
-                <div class="icons"><i class="fas fa-at icons" onclick="location.href='mailto:vkavouras@proton.me'"></i></div>
-                <p><a href="mailto:vkavouras@proton.me">Email</a></p>
-                <vr></vr>
-                <div class="icons"> <i class="fab fa-linkedin" onclick="location.href='https://www.linkedin.com/in/vkavouras/'"></i></div>
-                <p><a href="https://www.linkedin.com/in/vkavouras/">LinkedIn</a></p>
+            <div class="contact-info-container">
+                <div class="contact-item" id="email-container">
+                    <a href="#" id="email-link">
+                        <div class="icons"><i class="fas fa-at" aria-label="Email"></i></div>
+                        <p>Email</p>
+                    </a>
+                    <div id="email-tooltip" class="tooltip">Email copied!</div>
+                </div>
+                <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                    <div class="icons"><i class="fab fa-linkedin" aria-label="LinkedIn"></i></div>
+                    <p>LinkedIn</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <nav>
             <div class="nav-links-container">
@@ -334,9 +308,6 @@
         <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <!-- Back to the Top Button -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>

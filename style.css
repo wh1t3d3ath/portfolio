@@ -1,44 +1,60 @@
 /* GENERAL */
 
 /* Importing Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@3000;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
 
-/* Default Light Mode Variables */
-:root { 
+/* CSS Variables */
+:root {
+  /* Light Mode Variables */
   --primary-color: #fff;
-  --primary-color-2: #fafafa;
-  --primary-color-3: #b5b5b5;
+  --primary-color-light: #fafafa;
+  --primary-color-dark: #b5b5b5;
   --background-color: #fff;
   --secondary-color: #2d005f;
-  --secondary-color-2: #211327;
+  --secondary-color-dark: #211327;
   --button-background: #353535;
-  --button-text-hover: grey;
-  --button-border: #2d005f 0.1rem solid;
-  --button-border-2: #fff 0.1rem solid;
+  --button-text-hover: #808080;
+  --button-border: 0.1rem solid #2d005f;
+  --button-border-light: 0.1rem solid #fff;
   --container-border: #2d005f;
   --icon-inverted-color: #000;
   --scroll-indicator-filter: invert(0%);
+
+  /* Dark Mode Variables */
+  --dark-primary-color: #1d1d1d;
+  --dark-primary-color-light: #272727;
+  --dark-primary-color-dark: #4a4a4a;
+  --dark-background-color: #212121;
+  --dark-secondary-color: #fff;
+  --dark-secondary-color-light: #cdcdcd;
+  --dark-button-background: #cacaca;
+  --dark-button-text-hover: #d3d3d3;
+  --dark-button-border: 0.1rem solid #9132dc;
+  --dark-button-border-light: 0.1rem solid #000;
+  --dark-container-border: #9132dc;
+  --dark-icon-inverted-color: #fff;
+  --dark-scroll-indicator-filter: invert(100%);
 }
 
-/* Dark Mode Variables */
+/* Dark Mode Specific Styles */
 [theme="dark"] {
-  --primary-color: #1d1d1d;
-  --primary-color-2: #272727;
-  --primary-color-3: #4a4a4a;
-  --background-color: #212121;
-  --secondary-color: #fff;
-  --secondary-color-2: #cdcdcd;
-  --button-background: #cacaca;
-  --button-text-hover: lightgrey;
-  --button-border: #9132dc 0.1rem solid;
-  --button-border-2: #000 0.1rem solid;
-  --container-border: #9132dc;
-  --icon-inverted-color: #fff;
-  --scroll-indicator-filter: invert(100%);
+  --primary-color: var(--dark-primary-color);
+  --primary-color-light: var(--dark-primary-color-light);
+  --primary-color-dark: var(--dark-primary-color-dark);
+  --background-color: var(--dark-background-color);
+  --secondary-color: var(--dark-secondary-color);
+  --secondary-color-dark: var(--dark-secondary-color-light);
+  --button-background: var(--dark-button-background);
+  --button-text-hover: var(--dark-button-text-hover);
+  --button-border: var(--dark-button-border);
+  --button-border-light: var(--dark-button-border-light);
+  --container-border: var(--dark-container-border);
+  --icon-inverted-color: var(--dark-icon-inverted-color);
+  --scroll-indicator-filter: var(--dark-scroll-indicator-filter);
 }
 
-/* Resetting Default Styles */
+/* Base Element Styles */
 * {
   margin: 0;
   padding: 0;
@@ -50,9 +66,9 @@ html {
 }
 
 body {
-  transition: background-color 0.5s ease, color 0.5s ease;
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
   overflow: hidden; /* Prevent scrolling while splash is visible */
 }
 
@@ -66,83 +82,89 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-  opacity: 1;
-  visibility: visible;
 }
 
 #splash-screen.hide {
-  animation: fadeOut 1s ease-out forwards;
   opacity: 0;
   visibility: hidden;
 }
 
 /* Typography Styles */
+h3, p {
+  font-family: "Poppins", sans-serif;
+  color: var(--secondary-color-dark);
+}
+
 h3 {
   color: var(--secondary-color);
 }
 
 p {
-  font-family: "Poppins", sans-serif;
-  color: var(--secondary-color-2);
   font-size: 1.2rem;
 }
 
-/* Transition Styles */
-a,
-.btn {
-  transition: all 300ms ease;
-}
-
 /* Navigation Styles */
-nav,
-.nav-links {
-  display: flex;
-  align-items: center;
-}
-
 nav {
+  display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 17vh;
 }
 
 .nav-links {
+  display: flex;
   gap: 2rem;
   list-style: none;
   font-size: 1.5rem;
 }
 
-a {
+.nav-links a {
   color: var(--secondary-color);
   text-decoration: none;
-  text-decoration-color: var(--secondary-color);
   position: relative;
   overflow: hidden;
   transition: color 0.3s ease;
+  padding: 0.25rem 0;
+  display: inline-block;
+  box-sizing: border-box;
 }
 
-a::after {
+.nav-links a::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 2px;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   background-color: var(--secondary-color);
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }
 
-a:hover::after {
+.nav-links a:hover::after {
   transform: scaleX(1);
 }
 
 nav a:hover {
   color: var(--secondary-color);
-  text-decoration-color: var(--secondary-color);
+}
+
+.nav-links li:last-child {
+  display: flex;
+  align-items: center;
+}
+
+#modeToggle {
+  cursor: pointer;
+  padding: 0.25rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .logo {
@@ -171,14 +193,14 @@ nav a:hover {
   height: 24px;
   width: 30px;
   cursor: pointer;
-  color: var(--secondary-color); /* Ensure this is the desired color */
+  color: var(--secondary-color);
 }
 
 .hamburger-icon span {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: var(--secondary-color); /* Ensure this is the desired color */
+  background-color: var(--secondary-color);
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
@@ -194,11 +216,8 @@ nav a:hover {
   transform: translateY(-11px) rotate(-45deg);
 }
 
+/* Menu Links Styles */
 .menu-links {
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  opacity: 0;
-  transform: translateY(-20px);
-  display: block; /* Ensure it's always block but hidden */
   position: absolute;
   top: 100%;
   right: 0;
@@ -207,8 +226,22 @@ nav a:hover {
   max-height: 0;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  border: 0.3px solid var(--container-border); /* Outline for the menu */
-  border-radius: 10px; /* Optional: adds rounded corners */
+  border: none;
+  border-radius: 10px;
+  opacity: 0;
+  padding: 0;
+}
+
+.menu-links.open {
+  border: 0.3px solid var(--container-border);
+  max-height: 300px;
+  padding: 1rem;
+  opacity: 1;
+}
+
+.menu-links:not(.open) {
+  border: none;
+  padding: 0;
 }
 
 .menu-links a {
@@ -219,7 +252,7 @@ nav a:hover {
   font-size: 1.5rem;
   color: var(--secondary-color);
   text-decoration: none;
-  overflow: hidden; /* Ensures pseudo-elements within are clipped */
+  overflow: hidden;
   transition: color 0.3s ease;
 }
 
@@ -229,10 +262,11 @@ nav a:hover {
   height: 2px;
   bottom: 0;
   left: 0;
+  right: 0;
   background-color: var(--secondary-color);
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
-  transform-origin: center; /* Ensures the animation starts from the left */
+  transform-origin: center;
 }
 
 .menu-links a:hover::after {
@@ -241,18 +275,10 @@ nav a:hover {
 
 .menu-links a:hover {
   color: var(--secondary-color);
-  text-decoration-color: var(--secondary-color);
 }
 
 .menu-links li {
   list-style: none;
-}
-
-.menu-links.open {
-  margin-top: 1rem;
-  opacity: 1;
-  transform: translateY(0);
-  max-height: 300px;
 }
 
 /* Section Styles */
@@ -262,6 +288,7 @@ section {
   margin: 0 10rem;
   box-sizing: border-box;
   min-height: fit-content;
+  position: relative;
 }
 
 .section-container {
@@ -281,8 +308,14 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 1rem;
   height: 80vh;
+  position: relative;
+}
+
+#profile .lottie-container {
+  width: 1000px;
+  height: 1000px;
 }
 
 .section__text {
@@ -294,12 +327,12 @@ section {
   font-weight: 600;
 }
 
-.section__text__p1 {
+.section__text__p1,
+.section__text__p2 {
   text-align: center;
 }
 
 .section__text__p2 {
-  text-align: center;
   font-size: 1.75rem;
   margin-bottom: 1rem;
 }
@@ -316,23 +349,46 @@ section {
   justify-content: center;
   margin-top: 1rem;
   gap: 1rem;
-  z-index: -10; /* Ensure it has a lower z-index than the dropdown */
+  z-index: 1;
 }
 
-/* Icon Styles */
+#socials-container a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: transform 0.3s ease;
+  padding: 10px;
+  position: relative;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+#socials-container a:hover {
+  transform: scale(1.1);
+}
+
+#socials-container a i {
+  pointer-events: none;
+}
+
 .icons {
-  color: var(--icon-inverted-color);
-  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icons:hover {
+  color: var(--secondary-color);
 }
 
 .icon {
   cursor: pointer;
   height: 2rem;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .icon:hover {
-  transform: scale(1.1); /* Subtle scale-up effect */
   color: var(--secondary-color);
 }
 
@@ -341,13 +397,22 @@ section {
   height: 3rem;
   color: var(--icon-inverted-color);
   font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#profile .icon:hover {
+  transform: scale(1.1);
+  color: var(--secondary-color);
 }
 
 /* Button Styles */
 .btn-container {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 1rem;
+  z-index: 10;
 }
 
 .btn {
@@ -356,7 +421,6 @@ section {
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   overflow: hidden;
   position: relative;
@@ -371,7 +435,7 @@ section {
   left: 0;
   background-color: var(--secondary-color);
   z-index: -1;
-  transition: transform 0.5s ease;  /* Increased from 0.3s to 0.5s for a slower transition */
+  transition: transform 0.5s ease;
   transform: scaleY(0);
   transform-origin: bottom;
 }
@@ -388,7 +452,7 @@ section {
 .btn-color-1,
 .btn-color-2 {
   border: var(--button-border);
-  color: var(--secondary-color-2);
+  color: var(--secondary-color-dark);
 }
 
 .btn-color-1:hover,
@@ -435,8 +499,7 @@ section {
 
 .about-containers {
   gap: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
 .about-details-container {
@@ -465,14 +528,14 @@ section {
 }
 
 .arrow:hover {
-  transform: scale(1.5); /* Scale up the icon */
-  color: var(--secondary-color); /* Change color on hover */
+  transform: scale(1.5);
+  color: var(--secondary-color);
 }
 
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: var(--primary-color-2);
+  background: var(--primary-color-light);
   border-radius: 2rem;
   border: var(--button-border);
   border-color: var(--container-border);
@@ -482,8 +545,6 @@ section {
 /* Experience Section Styles */
 #experience {
   position: relative;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
   margin-top: 2rem;
 }
 
@@ -492,10 +553,7 @@ section {
   font-weight: 600;
   font-size: 1.25rem;
   margin-bottom: 2rem;
-  text-align: center; /* Align the title to the center */
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-delay: 0.5s;
+  text-align: center;
 }
 
 .experience-details-container {
@@ -503,32 +561,23 @@ section {
   justify-content: center;
   flex-direction: column;
   align-items: center; 
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-delay: 1s;
   padding: 1rem;
 }
 
 .article-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center align the items horizontally */
+  justify-content: center;
   gap: 1rem;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-delay: 1.5s;
 }
 
 article {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align the items vertically */
+  align-items: center;
   width: calc(50% - 0.5rem);
   min-width: 120px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  animation: fadeIn 1s ease-out forwards;
-  animation-delay: 2s;
 }
 
 article:hover {
@@ -550,7 +599,7 @@ article div {
 
 .color-container {
   border-color: var(--container-border);
-  background: var(--primary-color-2);
+  background: var(--primary-color-light);
 }
 
 .project-img {
@@ -574,41 +623,87 @@ article div {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center; /* Center align the items horizontally */
+  align-items: center;
   height: 70vh;
-  text-align: center; /* Center align the text */
-  background-color: var(--background-color); /* Use background color variable */
-  color: var(--secondary-color-2); /* Use text color variable */
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--secondary-color-dark);
+  margin-top: 1.4rem;
 }
 
 #contact .lottie-container {
   display: flex;
-  justify-content: center; /* Centers the Lottie animation horizontally */
-  align-items: center; /* Centers the Lottie animation vertically */
-  margin-top: 20px; /* Adjust top margin as needed */
-  margin-bottom: 20px; /* Adjust bottom margin as needed */
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
 
 .contact-info-upper-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Center align the items vertically */
+  align-items: center;
   border-radius: 2rem;
   border: var(--button-border);
   border-color: var(--container-border);
-  background: var(--background-color); /* Use background color variable */
+  background: var(--background-color);
   margin: 2rem auto;
-  padding: 1rem; /* Adjust padding as needed */
-  flex-direction: column; /* Stack items vertically */
-  color: var(--secondary-color-2); /* Use text color variable */
+  padding: 1rem;
+  flex-direction: column;
+  color: var(--secondary-color-dark);
 }
 
 .contact-info-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem; /* Adjust gap as needed */
-  margin: 1rem;
+  gap: 2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: scale(1.1);
+}
+
+.contact-item .icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-item:hover .icons {
+  background-color: var(--secondary-color);
+}
+
+.contact-item .icons i {
+  font-size: 1.5rem;
+  color: var(--icon-inverted-color);
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover .icons i {
+  color: var(--primary-color);
+}
+
+.contact-item p {
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover p {
+  color: var(--secondary-color);
 }
 
 .contact-info-container p {
@@ -636,7 +731,7 @@ footer p {
 /* Dropdown Menu Styles */
 .dropdown {
   position: relative;
-  z-index: 100;
+  z-index: 10;
 }
 
 .dropdown-toggle {
@@ -658,128 +753,75 @@ footer p {
   color: var(--primary-color);
 }
 
+/* Dropdown Menu Styles */
 .dropdown-content {
   position: absolute;
-  transform: translateX(-50%) translateY(-10px);
-  min-width: 8rem;
-  width: auto;
-  display: none;
-  background-color: var(--primary-color-2);
+  top: 100%;
+  left: 0;
+  background-color: var(--primary-color-light);
+  min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 100; /* Increased z-index to ensure it overlaps */
-  border-radius: 2rem;
+  z-index: 11;
+  border-radius: 1rem;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  pointer-events: none;
+  visibility: hidden;
+  border: var(--button-border);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(-10px);
+}
+
+.dropdown-content.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .dropdown-content a {
   color: var(--secondary-color);
   padding: 12px 16px;
-  text-decoration: none; /* Remove underline */
-  display: block; /* Use flexbox for alignment */
-  pointer-events: auto;
-  z-index: 10;
-  align-items: center; /* Center items vertically */
-  transition: background-color 300ms ease, color 300ms ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.dropdown-content a:not(:last-child) {
+  border-bottom: 1px solid var(--primary-color-dark);
 }
 
 .dropdown-content a:hover {
-  background-color: var(--primary-color-3);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 /* Flag Icon Styles */
 .flag-icon {
-  width: 20px; /* Adjust size as needed */
+  width: 24px;
   height: auto;
-  margin-right: 8px; /* Space between flag and text */
-  vertical-align: middle; /* Align with text */
+  margin-right: 12px;
+  vertical-align: middle;
 }
 
 /* Animation Keyframes */
 @keyframes wave-animation {
-  0% { transform: rotate( 0.0deg) }
-  10% { transform: rotate(14.0deg) }  /* The following five values can be played with to make the waving more or less extreme */
-  20% { transform: rotate(-8.0deg) }
-  30% { transform: rotate(14.0deg) }
-  40% { transform: rotate(-4.0deg) }
-  50% { transform: rotate(10.0deg) }
-  60% { transform: rotate( 0.0deg) }  /* Reset for the last half to pause */
-  100% { transform: rotate( 0.0deg) }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes minimalFadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
 }
 
 /* Animation Classes */
 .wave {
   z-index: 1;
-  animation-name: wave-animation;  /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.5s;        /* Change to speed up or slow down */
-  animation-iteration-count: infinite;  /* Never stop waving :) */
-  transform-origin: 70% 70%;       /* Pivot around the bottom-left palm */
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
   display: inline-block;
 }
 
@@ -798,20 +840,92 @@ footer p {
   transform: translateY(0);
 }
 
+#email-container {
+  position: relative;
+  display: inline-block;
+}
+
+#email-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-align: center;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 2px solid var(--container-border);
+  margin-bottom: 10px;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: var(--container-border) transparent transparent transparent;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--secondary-color) transparent transparent transparent;
+}
+
+@keyframes pulse {
+  0% { transform: translateX(-50%) translateY(0) scale(1); }
+  50% { transform: translateX(-50%) translateY(0) scale(1.05); }
+  100% { transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.tooltip.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: pulse 0.5s ease-in-out;
+}
+
+#email-link {
+  position: relative;
+}
+
 .animated.not-visible {
   opacity: 0.5;
   transform: translateY(10px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* Animation for elements becoming visible */
 .visible {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* Animation for elements becoming not visible */
 .not-visible {
   opacity: 0;
   transform: translateY(20px);
@@ -819,13 +933,20 @@ footer p {
 }
 
 /* Scroll Indicator Styles */
+.scroll-indicator-container {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
 .scroll-indicator {
   cursor: pointer;
-  position: absolute;
-  bottom: 20px;
-  left: 46%;
-  z-index: 10;
-  align-self: center;
+  width: 70px;
+  height: 70px;
   filter: var(--scroll-indicator-filter);
   transition: filter 0.3s ease;
 }
@@ -879,7 +1000,7 @@ section {
   z-index: 1000;
 }
 
-.back-to-top.show-back-to-top {
+.back-to-top.show {
   opacity: 1;
   visibility: visible;
 }
@@ -889,7 +1010,6 @@ section {
 }
 
 .back-to-top:hover {
-  transform: scale(1.1); /* Scale up the button */
-  background-color: var(--container-border); /* Change background color */
-  color: var(--primary-color-3); /* Change icon color */
+  transform: scale(1.1);
+  background-color: var(--secondary-color);
 }
