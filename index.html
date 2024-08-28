@@ -8,21 +8,19 @@
     <link rel="icon" href="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-portfolio-social-media-agency-flaticons-lineal-color-flat-icons-4.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://kit.fontawesome.com/ee64ada057.js" as="script">
+    <!-- Load scripts -->
     <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous" defer></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" async></script>
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" defer></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 </head>
 <body>
-    <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;">
-        <dotlottie-player src="https://lottie.host/f6fd76fa-bf3d-47e1-9594-ca365dac923a/JTES7YEv6f.lottie" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></dotlottie-player>
-    </div>
+    <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;"></div>
+
+    <!-- Navigation -->
     <nav id="hamburger-nav">
         <div class="logo">Vaggelis Kavouras</div>
         <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()" tabindex="0">
+            <div class="hamburger-icon" id="hamburger-icon" tabindex="0">
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="menu-links">
@@ -44,254 +42,249 @@
             <li><i id="modeToggle" class="fas fa-adjust color-icon icons" onclick="toggleTheme()" style="cursor: pointer;"></i></li>
         </ul>
     </nav>
-    <section id="profile" class="profile-section">
-        <div class="profile-pic animated-element" id="profile-pic"></div>
-        <div class="profile-info animated-element" id="profile-info">
+
+    <!-- Main content sections -->
+    <main>
+        <!-- Profile section -->
+        <section id="profile" class="profile-section">
+            <div class="profile-pic animated-element" id="profile-pic"></div>
+            <div class="profile-info animated-element" id="profile-info">
+                <div class="section-text-container">
+                    <p class="section__text__p1 animated-element">Hello, I'm</p>
+                    <h1 class="title animated-element" id="profile-name">Vaggelis Kavouras<span class="wave">👋</span></h1>
+                    <p class="section__text__p2 animated-element" id="profile-description">Software Developer</p>
+                    <div class="btn-container">
+                        <div class="dropdown">
+                            <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
+                            <div class="dropdown-content">
+                                <a href="./assets/CV/CV_Vaggelis_Kavouras_English.pdf"><img src="https://img.icons8.com/color/480/usa-circular.png" alt="USA Flag" class="flag-icon" loading="lazy"> English</a>
+                                <a href="./assets/CV/CV_Vaggelis_Kavouras_Greek.pdf"><img src="https://img.icons8.com/color/480/greece-circular.png" alt="Greece Flag" class="flag-icon" loading="lazy"> Greek</a>
+                            </div>
+                        </div>
+                        <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
+                    </div>
+                    <div id="socials-container" class="profile-icons animated-element">
+                        <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin icon linked-icon icons"></i>
+                        </a>
+                        <a href="https://github.com/DaCrab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fab fa-github icon github-icon icons"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="lottie-container"></div>
+            <div class="scroll-indicator-container">
+                <div class="scroll-indicator" data-target="#about"></div>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about">
             <div class="section-text-container">
-                <p class="section__text__p1">Hello, I'm</p>
-                <h1 class="title animated-element" id="profile-name">Vaggelis Kavouras<span class="wave">👋</span></h1>
-                <p class="section__text__p2 animated-element" id="profile-description">Software Developer</p>
-                <div class="btn-container">
-                    <div class="dropdown">
-                        <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
-                        <div class="dropdown-content">
-                            <a href="./assets/CV/CV_Vaggelis_Kavouras_English.pdf"><img src="https://img.icons8.com/color/480/usa-circular.png" alt="USA Flag" class="flag-icon" loading="lazy"> English</a>
-                            <a href="./assets/CV/CV_Vaggelis_Kavouras_Greek.pdf"><img src="https://img.icons8.com/color/480/greece-circular.png" alt="Greece Flag" class="flag-icon" loading="lazy"> Greek</a>
+                <p class="section__text__p1">Get To Know More</p>
+                <h1 class="title">About Me</h1>
+            </div>
+            <div class="section-container">
+                <div class="lottie-container"></div>
+                <div class="about-details-container">
+                    <div class="about-containers animated">
+                        <div class="details-container">
+                            <div class="icons"><i class="fas fa-medal icons" aria-label="Experience"></i></div>
+                            <h3>Experience</h3>
+                            <p>2+ years Software Development</p>
+                        </div>
+                        <div class="details-container">
+                            <div class="icons"><i class="fas fa-user-graduate icons" aria-label="Education"></i></div>
+                            <h3>Education</h3>
+                            <p>IT Technician<br>(Multimedia/Web Designer - Developer/Video Games)<br>C2 English Degree</p>
                         </div>
                     </div>
-                    <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
-                </div>
-                <div id="socials-container" class="profile-icons animated-element">
-                    <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin icon linked-icon icons"></i>
-                    </a>
-                    <a href="https://github.com/DaCrab" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <i class="fab fa-github icon github-icon icons"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="lottie-container">
-            <dotlottie-player src="https://lottie.host/ec2681d0-ab67-4f7d-a35a-c870c0a588aa/BVfwAmcRde.lottie" speed="1" loop autoplay></dotlottie-player>
-        </div>
-        <div class="scroll-indicator-container">
-            <div class="scroll-indicator" data-target="#about">
-                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
-            </div>
-        </div>
-    </section>
-    <section id="about">
-        <div class="section-text-container">
-            <p class="section__text__p1">Get To Know More</p>
-            <h1 class="title">About Me</h1>
-        </div>
-        <div class="section-container">
-            <div class="lottie-container">
-                <dotlottie-player src="https://lottie.host/66e29c4b-aa09-4cc6-a4cc-37b824c92390/CMDbVbXDsG.lottie" style="width: auto; height: auto;" background="transparent" speed="1" loop autoplay></dotlottie-player>
-            </div>
-            <div class="about-details-container">
-                <div class="about-containers animated">
-                    <div class="details-container">
-                        <div class="icons"><i class="fas fa-medal icons" aria-label="Experience"></i></div>
-                        <h3>Experience</h3>
-                        <p>2+ years Software Development</p>
-                    </div>
-                    <div class="details-container">
-                        <div class="icons"><i class="fas fa-user-graduate icons" aria-label="Education"></i></div>
-                        <h3>Education</h3>
-                        <p>IT Technician<br>(Multimedia/Web Designer - Developer/Video Games)<br>C2 English Degree</p>
-                    </div>
-                </div>
-                <div class="text-container">
-                    <p><span class="wave">👋</span> Hello! I'm a <span id="age"></span>-year-old IT Technician from Thessaloniki, Greece. With a robust foundation in software development, web design, and game development, I am skilled at leading projects and solving complex technical challenges. I am committed to delivering high-quality solutions and eager to contribute to innovative projects in the IT industry.</p>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator-container">
-            <div class="scroll-indicator" data-target="#experience">
-                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
-            </div>
-        </div>
-    </section>
-    <section id="experience" class="animated">
-        <div class="section-text-container">
-            <p class="section__text__p1">Explore My</p>
-            <h1 class="title">Experience</h1>
-        </div>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Software Development</h2>
-                    <div class="article-container">
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-html5 icons" aria-label="HTML"></i></div>
-                            <h3>HTML</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-css3-alt icons" aria-label="CSS"></i></div>
-                            <h3>CSS</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-js icons" aria-label="JavaScript"></i></div>
-                            <h3>JavaScript</h3>
-                            <p>Beginner</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-java icons" aria-label="Java"></i></div>
-                            <h3>Java</h3>
-                            <p>Beginner</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fas fa-code icons" aria-label="C/C++"></i></div>
-                            <h3>C / C++</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-php icons" aria-label="PHP"></i></div>
-                            <h3>PHP</h3>
-                            <p>Basic</p>
-                        </article>
-                    </div>
-                </div>
-                <div class="section__pic-container">
-                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
-                    <dotlottie-player src="https://lottie.host/73016d3d-9858-42f7-82ab-fc9f2f387a2b/7LWc6nKCUr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
-                </div>
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Content Creation</h2>
-                    <div class="article-container">
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fas fa-keyboard icons" aria-label="Unreal Engine"></i></div>
-                            <h3>Unreal Engine</h3>
-                            <p>Beginner</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-unity icons" aria-label="Unity"></i></div>
-                            <h3>Unity</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div the="icons"><i class="fas fa-camera-retro icons" aria-label="Adobe Photoshop"></i></div>
-                            <h3>Adobe Photoshop</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fas fa-film icons" aria-label="Adobe Premier"></i></div>
-                            <h3>Adobe Premier</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fab fa-wordpress icons" aria-label="WordPress"></i></div>
-                            <h3>WordPress</h3>
-                            <p>Basic</p>
-                        </article>
-                        <article class="animate-on-scroll">
-                            <div class="icons"><i class="fas fa-cube icons" aria-label="3Ds Max"></i></div>
-                            <h3>3Ds Max</h3>
-                            <p>Basic</p>
-                        </article>
+                    <div class="text-container">
+                        <p><span class="wave">👋</span> Hey there! I'm a <span id="age"></span>-year-old <span class="highlight">tech enthusiast</span> from Thessaloniki, Greece. I've got a solid background in <span class="highlight">coding</span>, <span class="highlight">making websites look awesome</span>, and even <span class="highlight">creating games</span>. I love taking charge of projects and tackling tricky tech problems. I'm all about delivering top-notch work and paying attention to the little details that make a big difference. Tech is my jam, and I'm always geeking out over the latest trends. This keeps me ready to jump into cool, <span class="highlight">cutting-edge projects</span> in the tech world!</p>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator-container">
-            <div class="scroll-indicator" data-target="#projects">
-                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
+            <div class="scroll-indicator-container">
+                <div class="scroll-indicator" data-target="#experience"></div>
             </div>
-        </div>
-    </section>
-    <section id="projects" class="animated">
-        <div class="section-text-container">
-            <p class="section__text__p1">Browse My Recent</p>
-            <h1 class="title">Projects</h1>
-        </div>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="https://img.freepik.com/free-vector/cross-platform-frameworks-abstract-concept-illustration_335657-1825.jpg?t=st=1720100807~exp=1720104407~hmac=4f98051dba052237644d5263d239ad7185d422245a215df1adfb29fba8e438a4&w=826" alt="Project 1" class="project-img" loading="lazy">
-                    </div>
-                    <h2 class="experience-sub-title project-title">Cooking Website</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/RecipeSwap'">
-                            <span class="btn-text">Github</span>
-                            <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
-                        </button>
-                        <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://dacrab.github.io/RecipeSwap'">
-                            <span class="btn-text">Live Demo</span>
-                            <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="https://img.freepik.com/free-vector/action-game-abstract-concept-illustration_335657-3751.jpg?t=st=1720098963~exp=1720102563~hmac=4ea4a085a33802a581aba5fcc23ac1eb1d3d77821bc7d6f64e7e48c4bc8d6066&w=826" alt="Project 2" class="project-img" loading="lazy">
-                    </div>
-                    <h2 class="experience-sub-title project-title">Unity Game</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/Dragon-Blaze'">
-                            <span class="btn-text">Github</span>
-                            <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
-                        </button>
-                        <button class="btn btn-color-2 project-btn live-demo-btn unity-game-btn" onclick="location.href='https://itch.io/embed-upload/10842144?color=333333'">
-                            <span class="btn-text">Live Demo</span>
-                            <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="details-container color-container">
-                    <div class="article-container">
-                        <img src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1239.jpg?t=st=1720101406~exp=1720105006~hmac=9f6b46023a2d3af283466edeed15465011b24bd0707fd99650d2f38f894ecdb8&w=826" alt="Project 3" class="project-img" loading="lazy">
-                    </div>
-                    <h2 class="experience-sub-title project-title">Calculator Made in JavaScript</h2>
-                    <div class="btn-container">
-                        <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/calculator-js-html-css'">
-                            <span class="btn-text">Github</span>
-                            <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
-                        </button>
-                        <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'">
-                            <span class="btn-text">Live Demo</span>
-                            <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator-container">
-            <div class="scroll-indicator" data-target="#contact">
-                <dotlottie-player src="https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie" background="transparent" speed="1" loop autoplay></dotlottie-player>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="animated">
-        <div class="section-text-container">
-            <p class="section__text__p1">Get in Touch</p>
-            <h1 class="title">Contact Me</h1>
-        </div>
-        <div class="contact-info-upper-container">
-            <div class="lottie-container">
-                <dotlottie-player src="https://lottie.host/89786656-4880-42e7-9f18-82895c67895a/37mBlD7a1R.lottie" speed="1" style="width: 400px; height: 400px;" loop autoplay></dotlottie-player>
+        <!-- Experience section -->
+        <section id="experience" class="animated">
+            <div class="section-text-container">
+                <p class="section__text__p1">Explore My</p>
+                <h1 class="title">Experience</h1>
             </div>
-            <div class="contact-info-container">
-                <div class="contact-item" id="email-container">
-                    <a href="#" id="email-link">
-                        <div class="icons"><i class="fas fa-at" aria-label="Email"></i></div>
-                        <p>Email</p>
-                    </a>
-                    <div id="email-tooltip" class="tooltip">Email copied!</div>
+            <div class="experience-details-container">
+                <div class="about-containers">
+                    <div class="details-container">
+                        <h2 class="experience-sub-title">Software Development</h2>
+                        <div class="article-container">
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-html5 icons" aria-label="HTML"></i></div>
+                                <h3>HTML</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-css3-alt icons" aria-label="CSS"></i></div>
+                                <h3>CSS</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-js icons" aria-label="JavaScript"></i></div>
+                                <h3>JavaScript</h3>
+                                <p>Beginner</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-java icons" aria-label="Java"></i></div>
+                                <h3>Java</h3>
+                                <p>Beginner</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fas fa-code icons" aria-label="C/C++"></i></div>
+                                <h3>C / C++</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-php icons" aria-label="PHP"></i></div>
+                                <h3>PHP</h3>
+                                <p>Basic</p>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="section__pic-container"></div>
+                    <div class="details-container">
+                        <h2 class="experience-sub-title">Content Creation</h2>
+                        <div class="article-container">
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fas fa-keyboard icons" aria-label="Unreal Engine"></i></div>
+                                <h3>Unreal Engine</h3>
+                                <p>Beginner</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-unity icons" aria-label="Unity"></i></div>
+                                <h3>Unity</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div the="icons"><i class="fas fa-camera-retro icons" aria-label="Adobe Photoshop"></i></div>
+                                <h3>Adobe Photoshop</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fas fa-film icons" aria-label="Adobe Premier"></i></div>
+                                <h3>Adobe Premier</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fab fa-wordpress icons" aria-label="WordPress"></i></div>
+                                <h3>WordPress</h3>
+                                <p>Basic</p>
+                            </article>
+                            <article class="animate-on-scroll">
+                                <div class="icons"><i class="fas fa-cube icons" aria-label="3Ds Max"></i></div>
+                                <h3>3Ds Max</h3>
+                                <p>Basic</p>
+                            </article>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" class="contact-item">
-                    <div class="icons"><i class="fab fa-linkedin" aria-label="LinkedIn"></i></div>
-                    <p>LinkedIn</p>
-                </a>
             </div>
-        </div>
-    </section>
+            <div class="scroll-indicator-container">
+                <div class="scroll-indicator" data-target="#projects"></div>
+            </div>
+        </section>
 
+        <!-- Projects section -->
+        <section id="projects" class="animated">
+            <div class="section-text-container">
+                <p class="section__text__p1">Browse My Recent</p>
+                <h1 class="title">Projects</h1>
+            </div>
+            <div class="experience-details-container">
+                <div class="about-containers">
+                    <div class="details-container color-container">
+                        <div class="article-container">
+                            <img src="https://img.freepik.com/free-vector/cross-platform-frameworks-abstract-concept-illustration_335657-1825.jpg?t=st=1720100807~exp=1720104407~hmac=4f98051dba052237644d5263d239ad7185d422245a215df1adfb29fba8e438a4&w=826" alt="Project 1" class="project-img" loading="lazy">
+                        </div>
+                        <h2 class="experience-sub-title project-title">Cooking Website</h2>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/RecipeSwap'">
+                                <span class="btn-text">Github</span>
+                                <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
+                            </button>
+                            <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://dacrab.github.io/RecipeSwap'">
+                                <span class="btn-text">Live Demo</span>
+                                <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="details-container color-container">
+                        <div class="article-container">
+                            <img src="https://img.freepik.com/free-vector/action-game-abstract-concept-illustration_335657-3751.jpg?t=st=1720098963~exp=1720102563~hmac=4ea4a085a33802a581aba5fcc23ac1eb1d3d77821bc7d6f64e7e48c4bc8d6066&w=826" alt="Project 2" class="project-img" loading="lazy">
+                        </div>
+                        <h2 class="experience-sub-title project-title">Unity Game</h2>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/Dragon-Blaze'">
+                                <span class="btn-text">Github</span>
+                                <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
+                            </button>
+                            <button class="btn btn-color-2 project-btn live-demo-btn unity-game-btn" onclick="location.href='https://itch.io/embed-upload/10842144?color=333333'">
+                                <span class="btn-text">Live Demo</span>
+                                <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="details-container color-container">
+                        <div class="article-container">
+                            <img src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1239.jpg?t=st=1720101406~exp=1720105006~hmac=9f6b46023a2d3af283466edeed15465011b24bd0707fd99650d2f38f894ecdb8&w=826" alt="Project 3" class="project-img" loading="lazy">
+                        </div>
+                        <h2 class="experience-sub-title project-title">Calculator Made in JavaScript</h2>
+                        <div class="btn-container">
+                            <button class="btn btn-color-2 project-btn github-btn" onclick="location.href='https://github.com/dacrab/calculator-js-html-css'">
+                                <span class="btn-text">Github</span>
+                                <i class="fas fa-code-branch btn-icon" aria-label="GitHub"></i>
+                            </button>
+                            <button class="btn btn-color-2 project-btn live-demo-btn" onclick="location.href='https://dacrab.github.io/calculator-js-html-css/'">
+                                <span class="btn-text">Live Demo</span>
+                                <i class="fas fa-external-link-alt btn-icon" aria-label="Live Demo"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator-container">
+                <div class="scroll-indicator" data-target="#contact"></div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact" class="animated">
+            <div class="section-text-container">
+                <p class="section__text__p1">Get in Touch</p>
+                <h1 class="title">Contact Me</h1>
+            </div>
+            <div class="contact-info-upper-container">
+                <div class="lottie-container"></div>
+                <div class="contact-info-container">
+                    <div class="contact-item" id="email-container">
+                        <a href="#" id="email-link">
+                            <div class="icons"><i class="fas fa-at" aria-label="Email"></i></div>
+                            <p>Email</p>
+                        </a>
+                        <div id="email-tooltip" class="tooltip">Email copied!</div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <div class="icons"><i class="fab fa-linkedin" aria-label="LinkedIn"></i></div>
+                        <p>LinkedIn</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <footer>
         <nav>
             <div class="nav-links-container">
@@ -305,9 +298,13 @@
         </nav>
         <p>Copyright &#169; <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
-    <script src="script.js"></script>
-    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
+
+    <!-- Main script -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>

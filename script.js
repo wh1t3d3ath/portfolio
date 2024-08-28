@@ -1,26 +1,58 @@
-// Theme Handling
-const themeHandler = (() => {
-  const getSystemPreference = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+// Utility module
+const util = (() => {
+  const $ = (selector, parent = document) => parent.querySelector(selector);
+  const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
 
+  return {
+    $, $$,
+    getSystemPreference: () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+    updateElement: (id, value) => $(`#${id}`).textContent = value,
+    scrollToTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+    debounce: (func, wait) => {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), wait);
+      };
+    },
+    attr: (el, attr, value) => value === undefined ? el.getAttribute(attr) : el.setAttribute(attr, value),
+    toggleClass: (el, className, force) => el.classList.toggle(className, force),
+    calculateAge: (birthdate) => {
+      const birth = new Date(birthdate);
+      const now = new Date();
+      let age = now.getFullYear() - birth.getFullYear();
+      const monthDiff = now.getMonth() - birth.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) {
+        age--;
+      }
+      return age;
+    }
+  };
+})();
+
+// Theme handler module
+const themeHandler = (() => {
   const setTheme = (theme) => {
-    document.documentElement.setAttribute('theme', theme);
+    util.attr(document.documentElement, 'theme', theme);
     localStorage.setItem('theme', theme);
     updateThemeIcon(theme);
     animateThemeTransition(theme);
   };
 
   const toggleTheme = () => {
-    const currentTheme = document.documentElement.getAttribute('theme') || getSystemPreference();
+    const currentTheme = util.attr(document.documentElement, 'theme') || util.getSystemPreference();
     setTheme(currentTheme === 'light' ? 'dark' : 'light');
   };
 
   const updateThemeIcon = (theme) => {
     const iconClass = `fas fa-${theme === 'dark' ? 'sun' : 'moon'} color-icon icons`;
-    document.querySelectorAll('#modeToggle, #modeToggle2').forEach(icon => {
+    util.$$('#modeToggle, #modeToggle2').forEach(icon => {
       if (icon) {
         icon.className = iconClass;
-        icon.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        icon.style.transform = 'rotate(360deg) scale(1.1)';
+        Object.assign(icon.style, {
+          transition: 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          transform: 'rotate(360deg) scale(1.1)'
+        });
         setTimeout(() => icon.style.transform = 'rotate(360deg) scale(1)', 250);
       }
     });
@@ -44,45 +76,39 @@ const themeHandler = (() => {
     });
   };
 
-  const initTheme = () => setTheme(localStorage.getItem('theme') || getSystemPreference());
+  const initTheme = () => setTheme(localStorage.getItem('theme') || util.getSystemPreference());
 
   return { initTheme, toggleTheme, setTheme };
 })();
 
-// Event Listeners
-document.addEventListener("DOMContentLoaded", () => {
-  themeHandler.initTheme();
-  // Other initialization code...
-});
-
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-  themeHandler.setTheme(e.matches ? "dark" : "light");
-});
-
-// Menu Handling
+// Menu handler module
 const menuHandler = (() => {
   const toggleMenu = () => {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
+    const menu = util.$(".menu-links");
+    const icon = util.$(".hamburger-icon");
     const isOpen = menu.classList.contains("open");
 
-    menu.style.opacity = isOpen ? "0" : "1";
-    menu.style.transform = `translateY(${isOpen ? "-10px" : "0"}) scale(${isOpen ? "0.98" : "1"})`;
-    menu.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    Object.assign(menu.style, {
+      opacity: isOpen ? "0" : "1",
+      transform: `translateY(${isOpen ? "-10px" : "0"}) scale(${isOpen ? "0.98" : "1"})`,
+      transition: "opacity 0.4s ease, transform 0.4s ease"
+    });
 
-    icon.classList.toggle("open");
-    icon.style.transition = "transform 0.4s ease";
-    icon.style.transform = isOpen ? "rotate(0deg) scale(1)" : "rotate(180deg) scale(1.05)";
+    util.toggleClass(icon, "open");
+    Object.assign(icon.style, {
+      transition: "transform 0.4s ease",
+      transform: isOpen ? "rotate(0deg) scale(1)" : "rotate(180deg) scale(1.05)"
+    });
 
-    setTimeout(() => menu.classList.toggle("open"), isOpen ? 400 : 0);
+    setTimeout(() => util.toggleClass(menu, "open"), isOpen ? 400 : 0);
   };
 
   const closeMenuOnResize = () => {
     if (window.innerWidth > 1200) {
-      const menu = document.querySelector(".menu-links");
-      const icon = document.querySelector(".hamburger-icon");
-      menu.classList.remove("open");
-      icon.classList.remove("open");
+      const menu = util.$(".menu-links");
+      const icon = util.$(".hamburger-icon");
+      util.toggleClass(menu, "open", false);
+      util.toggleClass(icon, "open", false);
       icon.style.transform = "rotate(0deg) scale(1)";
     }
   };
@@ -90,15 +116,15 @@ const menuHandler = (() => {
   return { toggleMenu, closeMenuOnResize };
 })();
 
-// Dropdown Menu Handling
+// Dropdown handler module
 const dropdownHandler = (() => {
   const setupDropdownMenu = () => {
-    const dropdown = document.querySelector(".dropdown");
-    const dropdownContent = document.querySelector(".dropdown-content");
-    const downloadCvButton = document.getElementById("downloadCvButton");
+    const dropdown = util.$(".dropdown");
+    const dropdownContent = util.$(".dropdown-content");
+    const downloadCvButton = util.$("#downloadCvButton");
 
     const toggleDropdown = (show) => {
-      dropdownContent.classList.toggle('open', show);
+      util.toggleClass(dropdownContent, 'open', show);
       dropdownContent.style.display = show ? 'block' : 'none';
       if (show) setTimeout(() => dropdownContent.classList.add('open'), 10);
     };
@@ -118,7 +144,7 @@ const dropdownHandler = (() => {
     document.addEventListener("click", (event) => {
       if (!dropdown.contains(event.target)) {
         toggleDropdown(false);
-        downloadCvButton.classList.remove("active");
+        util.toggleClass(downloadCvButton, "active", false);
       }
     });
   };
@@ -126,13 +152,13 @@ const dropdownHandler = (() => {
   return { setupDropdownMenu };
 })();
 
-// Animations and Effects
+// Animation handler module
 const animationHandler = (() => {
   const setupScrollAnimations = () => {
     if (window.innerWidth <= 768) {
-      document.querySelectorAll(".animated, .animate-on-scroll").forEach((element) => {
-        element.classList.add("visible");
-        element.classList.remove("not-visible");
+      util.$$(".animated, .animate-on-scroll").forEach((element) => {
+        util.toggleClass(element, "visible", true);
+        util.toggleClass(element, "not-visible", false);
       });
       return;
     }
@@ -140,15 +166,15 @@ const animationHandler = (() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.target && entry.target.classList) {
-          entry.target.classList.toggle("visible", entry.isIntersecting);
-          entry.target.classList.toggle("not-visible", !entry.isIntersecting);
+          util.toggleClass(entry.target, "visible", entry.isIntersecting);
+          util.toggleClass(entry.target, "not-visible", !entry.isIntersecting);
         }
       });
     }, { rootMargin: "0px", threshold: 0.2 });
 
-    document.querySelectorAll(".animated, .animate-on-scroll").forEach((element) => {
+    util.$$(".animated, .animate-on-scroll").forEach((element) => {
       if (element) {
-        element.classList.add("not-visible");
+        util.toggleClass(element, "not-visible", true);
         observer.observe(element);
       }
     });
@@ -157,37 +183,24 @@ const animationHandler = (() => {
   return { setupScrollAnimations };
 })();
 
-// Utility Functions
-const utilityFunctions = (() => {
-  const updateCurrentYear = () => {
-    document.getElementById("current-year").textContent = new Date().getFullYear();
-  };
-
-  const updateAge = () => {
-    const birthdate = new Date("2004-05-25");
-    const age = Math.floor((Date.now() - birthdate) / (365.25 * 24 * 60 * 60 * 1000));
-    document.getElementById("age").textContent = age;
-  };
-
-  return { updateCurrentYear, updateAge };
-})();
-
-// Scroll to Top Function
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-// Splash Screen and Initial Theme
+// Splash screen handler module
 const splashScreenHandler = (() => {
   const hideSplashScreen = () => {
-    const splashScreen = document.getElementById("splash-screen");
-    const profileSection = document.getElementById("profile");
+    const splashScreen = util.$("#splash-screen");
+    const profileSection = util.$("#profile");
 
     splashScreen.addEventListener("transitionend", () => {
       splashScreen.style.display = "none";
-      profileSection.classList.add("visible");
+      util.toggleClass(profileSection, "visible", true);
+      
+      // Initialize animations after splash screen is hidden
+      startEntranceAnimation();
     });
 
-    splashScreen.style.opacity = "0";
-    splashScreen.style.transition = "opacity 1s ease";
+    Object.assign(splashScreen.style, {
+      opacity: "0",
+      transition: "opacity 1s ease"
+    });
   };
 
   const applyInitialTheme = () => {
@@ -195,34 +208,87 @@ const splashScreenHandler = (() => {
     const savedTheme = localStorage.getItem('theme');
     const initialTheme = savedTheme || (prefersDarkScheme ? 'dark' : 'light');
     
-    document.documentElement.setAttribute('theme', initialTheme);
-    document.body.classList.add(`${initialTheme}-theme`);
+    util.attr(document.documentElement, 'theme', initialTheme);
+    util.toggleClass(document.body, `${initialTheme}-theme`, true);
     
-    document.querySelectorAll('#modeToggle, #modeToggle2').forEach(icon => {
+    util.$$('#modeToggle, #modeToggle2').forEach(icon => {
       if (icon) {
         icon.className = `fas fa-${initialTheme === 'dark' ? 'sun' : 'moon'} color-icon icons`;
       }
     });
   };
 
-  applyInitialTheme();
+  const startEntranceAnimation = () => {
+    const mainContent = util.$("main");
+    const sections = util.$$("main > section");
+    const nav = util.$("nav");
+
+    sections.forEach(el => {
+      Object.assign(el.style, {
+        opacity: "0",
+        filter: "blur(10px)",
+        transform: "translateY(20px)",
+        transition: "opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease"
+      });
+    });
+
+    Object.assign(mainContent.style, {
+      opacity: "1",
+      visibility: "visible"
+    });
+
+    Object.assign(nav.style, {
+      opacity: "0",
+      transition: "opacity 0.5s ease"
+    });
+    setTimeout(() => {
+      nav.style.opacity = "1";
+    }, 200);
+
+    sections.forEach((section, index) => {
+      setTimeout(() => {
+        Object.assign(section.style, {
+          opacity: "1",
+          filter: "blur(0)",
+          transform: "translateY(0)"
+        });
+        animateSection(section);
+      }, (index + 1) * 300);
+    });
+
+    setTimeout(() => {
+      animationHandler.setupScrollAnimations();
+      initializeScrollReveal();
+    }, sections.length * 300 + 500);
+  };
+
+  const animateSection = (section) => {
+    const elements = util.$$('.animated-element', section);
+    elements.forEach((el, index) => {
+      setTimeout(() => {
+        el.style.animation = `fadeInSlide 0.6s ${index * 0.1}s forwards ease-out`;
+      }, index * 100);
+    });
+  };
 
   return { hideSplashScreen, applyInitialTheme };
 })();
 
-// Arrow Navigation
+// Arrow navigation handler module
 const arrowNavigationHandler = (() => {
   const setupArrowNavigation = () => {
-    const arrow = document.querySelector(".icon.arrow");
+    const arrow = util.$(".icon.arrow");
     const handleScroll = () => {
       const shouldShow = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
-      arrow.style.opacity = shouldShow ? "1" : "0";
-      arrow.style.transform = `translateY(${shouldShow ? "0" : "20px"}) scale(${shouldShow ? "1" : "0.8"})`;
+      Object.assign(arrow.style, {
+        opacity: shouldShow ? "1" : "0",
+        transform: `translateY(${shouldShow ? "0" : "20px"}) scale(${shouldShow ? "1" : "0.8"})`
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    document.querySelectorAll(".arrow").forEach((arrow) => {
+    util.$$(".arrow").forEach((arrow) => {
       arrow.addEventListener("click", function () {
         const href = this.getAttribute("onclick").match(/'#([^']+)'/)[1];
         const section = document.getElementById(href);
@@ -236,7 +302,7 @@ const arrowNavigationHandler = (() => {
   return { setupArrowNavigation };
 })();
 
-// Scroll Indicators
+// Scroll indicator handler module
 const scrollIndicatorHandler = (() => {
   const setupScrollIndicators = () => {
     document.addEventListener("click", function (event) {
@@ -253,86 +319,65 @@ const scrollIndicatorHandler = (() => {
   return { setupScrollIndicators };
 })();
 
-// Event Listeners
-document.addEventListener("DOMContentLoaded", () => {
-  themeHandler.initTheme();
-  utilityFunctions.updateAge();
-  dropdownHandler.setupDropdownMenu();
-  animationHandler.setupScrollAnimations();
-  utilityFunctions.updateCurrentYear();
-  arrowNavigationHandler.setupArrowNavigation();
-  scrollIndicatorHandler.setupScrollIndicators();
-  initializeScrollReveal();
+// Lottie animations handler module
+const lottieHandler = (() => {
+  const lottieAnimations = {
+    splashScreen: "https://lottie.host/f6fd76fa-bf3d-47e1-9594-ca365dac923a/JTES7YEv6f.lottie",
+    profile: "https://lottie.host/ec2681d0-ab67-4f7d-a35a-c870c0a588aa/BVfwAmcRde.lottie",
+    scrollIndicator: "https://lottie.host/3f35f92c-c5d0-45f8-9eb8-bf7f24f5b8f9/tAqmylkYkr.lottie",
+    about: "https://lottie.host/66e29c4b-aa09-4cc6-a4cc-37b824c92390/CMDbVbXDsG.lottie",
+    experience: "https://lottie.host/73016d3d-9858-42f7-82ab-fc9f2f387a2b/7LWc6nKCUr.lottie",
+    contact: "https://lottie.host/89786656-4880-42e7-9f18-82895c67895a/37mBlD7a1R.lottie"
+  };
 
-  document.querySelectorAll(".icons").forEach((icon) => {
-    const label = icon.getAttribute("aria-label") || icon.getAttribute("title") || icon.textContent;
-    if (!icon.getAttribute("aria-label")) {
-      icon.setAttribute("aria-label", label);
-    }
-  });
+  const createLottiePlayer = (src, options = {}) => {
+    const player = document.createElement('dotlottie-player');
+    player.src = src;
+    player.setAttribute('background', 'transparent');
+    player.setAttribute('speed', '1');
+    player.setAttribute('loop', '');
+    player.setAttribute('autoplay', '');
+    
+    if (options.width) player.style.width = options.width;
+    if (options.height) player.style.height = options.height;
+    
+    return player;
+  };
 
-  const hamburgerIcon = document.querySelector(".hamburger-icon");
-  if (hamburgerIcon) {
-    hamburgerIcon.addEventListener("click", menuHandler.toggleMenu);
-  }
+  const insertLottieAnimations = () => {
+    const lottieContainers = {
+      '#splash-screen': { src: lottieAnimations.splashScreen, options: { width: '200px', height: '200px' } },
+      '#profile .lottie-container': { src: lottieAnimations.profile },
+      '#about .lottie-container': { src: lottieAnimations.about },
+      '#experience .section__pic-container': { src: lottieAnimations.experience },
+      '#contact .lottie-container': { src: lottieAnimations.contact, options: { width: '400px', height: '400px' } }
+    };
 
-  document.querySelectorAll('#modeToggle, #modeToggle2, .hamburger-menu .fa-adjust').forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      themeHandler.toggleTheme();
+    Object.entries(lottieContainers).forEach(([selector, { src, options }]) => {
+      const container = util.$(selector);
+      if (container) {
+        container.appendChild(createLottiePlayer(src, options));
+      }
     });
-  });
-});
 
-window.addEventListener("resize", menuHandler.closeMenuOnResize);
-
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-  themeHandler.setTheme(e.matches ? "dark" : "light");
-});
-
-// Optimize scroll event listener
-const handleScroll = (() => {
-  let lastKnownScrollPosition = 0;
-  let ticking = false;
-
-  const updateBackToTopButton = (scrollPos) => {
-    const backToTopButton = document.getElementById("back-to-top");
-    backToTopButton.classList.toggle("show", scrollPos > 300);
+    util.$$('.scroll-indicator').forEach(indicator => {
+      indicator.appendChild(createLottiePlayer(lottieAnimations.scrollIndicator));
+    });
   };
 
-  return () => {
-    lastKnownScrollPosition = window.scrollY;
-
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateBackToTopButton(lastKnownScrollPosition);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  };
+  return { insertLottieAnimations };
 })();
 
-window.addEventListener("scroll", handleScroll, { passive: true });
-
-window.addEventListener("load", () => {
-  splashScreenHandler.applyInitialTheme();
-  setTimeout(splashScreenHandler.hideSplashScreen, 2000);
-  setTimeout(() => document.body.style.overflow = "auto", 3000);
-});
-
-// ScrollReveal Animations
-// ScrollReveal Animations
+// Initialize ScrollReveal
 const initializeScrollReveal = () => {
   const isMobile = window.innerWidth <= 768;
 
-  document.querySelectorAll('#contact .icons, #contact .contact-icon').forEach(icon => {
+  util.$$('#contact .icons, #contact .contact-icon').forEach(icon => {
     Object.assign(icon.style, { opacity: '1', transform: 'none', transition: 'none' });
   });
 
   if (isMobile) {
-    document.querySelectorAll('#contact .contact-item p').forEach(text => {
+    util.$$('#contact .contact-item p').forEach(text => {
       text.style.display = 'none';
     });
     return;
@@ -351,10 +396,6 @@ const initializeScrollReveal = () => {
   });
 
   const getConfig = (desktopConfig) => ({ ...desktopConfig, duration: 600, delay: 50 });
-
-  // Navigation
-  sr.reveal('nav .logo', getConfig({ origin: 'left', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('nav .nav-links li', getConfig({ origin: 'top', interval: 100, distance: '20px', opacity: 0, scale: 0.95 }));
 
   // Profile Section
   sr.reveal('#profile .section__text__p1', getConfig({ origin: 'left', distance: '30px', opacity: 0, scale: 0.95 }));
@@ -398,36 +439,103 @@ const initializeScrollReveal = () => {
   sr.reveal('.scroll-indicator-container', getConfig({ origin: 'bottom', distance: '20px', opacity: 0, scale: 0.95 }));
 };
 
-document.addEventListener('DOMContentLoaded', initializeScrollReveal);
-window.addEventListener('resize', initializeScrollReveal);
-
-document.addEventListener('DOMContentLoaded', initializeScrollReveal);
-window.addEventListener('resize', initializeScrollReveal);
-
+// Event listeners
 document.addEventListener("DOMContentLoaded", () => {
-  const emailLink = document.getElementById("email-link");
-  const emailTooltip = document.getElementById("email-tooltip");
+  themeHandler.initTheme();
+  util.updateElement("age", calculateAge("2004-05-25"));
+  util.updateElement("current-year", new Date().getFullYear());
+  dropdownHandler.setupDropdownMenu();
+  arrowNavigationHandler.setupArrowNavigation();
+  scrollIndicatorHandler.setupScrollIndicators();
+
+  util.$$(".icons").forEach(icon => {
+    const label = icon.getAttribute("aria-label") || icon.getAttribute("title") || icon.textContent;
+    if (!icon.getAttribute("aria-label")) {
+      icon.setAttribute("aria-label", label);
+    }
+  });
+
+  const hamburgerIcon = util.$(".hamburger-icon");
+  if (hamburgerIcon) {
+    hamburgerIcon.addEventListener("click", menuHandler.toggleMenu);
+  }
+
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches('#modeToggle, #modeToggle2, .hamburger-menu .fa-adjust')) {
+      e.preventDefault();
+      e.stopPropagation();
+      themeHandler.toggleTheme();
+    }
+  });
+
+  const backToTopButton = util.$("#back-to-top");
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", util.scrollToTop);
+  }
+
+  // Optimize scroll event listener
+  const handleScroll = util.debounce(() => {
+    const scrollPos = window.scrollY;
+    const backToTopButton = util.$("#back-to-top");
+    if (backToTopButton) {
+      Object.assign(backToTopButton.style, {
+        opacity: scrollPos > 300 ? "1" : "0",
+        visibility: scrollPos > 300 ? "visible" : "hidden"
+      });
+    }
+  }, 100);
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  lottieHandler.insertLottieAnimations();
+});
+
+window.addEventListener("resize", menuHandler.closeMenuOnResize);
+
+window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+  themeHandler.setTheme(e.matches ? "dark" : "light");
+});
+
+window.addEventListener("load", () => {
+  splashScreenHandler.applyInitialTheme();
+  setTimeout(splashScreenHandler.hideSplashScreen, 2000);
+  setTimeout(() => document.body.style.overflow = "auto", 3000);
+});
+
+// Email copy functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const emailLink = util.$("#email-link");
+  const emailTooltip = util.$("#email-tooltip");
   const email = "vkavouras@proton.me";
 
   const showTooltip = (message) => {
     emailTooltip.textContent = message;
-    emailTooltip.classList.add("visible");
-    setTimeout(() => emailTooltip.classList.remove("visible"), 2000);
+    util.toggleClass(emailTooltip, "visible", true);
+    setTimeout(() => util.toggleClass(emailTooltip, "visible", false), 2000);
   };
 
   emailLink.addEventListener("click", (e) => {
     e.preventDefault();
     navigator.clipboard.writeText(email)
       .then(() => showTooltip("Email copied!"))
-      .catch((err) => {
-        console.error("Could not copy text: ", err);
-        showTooltip("Failed to copy");
-      });
+      .catch(() => showTooltip("Failed to copy"));
   });
 
   document.addEventListener("click", (e) => {
     if (!emailLink.contains(e.target)) {
-      emailTooltip.classList.remove("visible");
+      util.toggleClass(emailTooltip, "visible", false);
     }
   });
 });
+
+// Helper function to calculate age
+function calculateAge(birthdate) {
+  const birth = new Date(birthdate);
+  const now = new Date();
+  let age = now.getFullYear() - birth.getFullYear();
+  const monthDiff = now.getMonth() - birth.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) {
+    age--;
+  }
+  return age;
+}
