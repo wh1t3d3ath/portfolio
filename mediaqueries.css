@@ -1,8 +1,7 @@
 /* Media Queries */
 
-/* Screen width up to 1400px */
 @media screen and (max-width: 1400px) {
-  /* Layout */
+  /* Layout adjustments */
   #profile,
   .section-container {
     display: block;
@@ -53,13 +52,12 @@
     width: 8rem;
   }
 
-  /* Hide Scroll Indicator */
+  /* Hide elements */
   .scroll-indicator {
     display: none;
   }
 }
 
-/* Screen width up to 1200px */
 @media screen and (max-width: 1200px) {
   /* Navigation */
   #desktop-nav {
@@ -82,7 +80,7 @@
     height: 12vh;
   }
 
-  /* Layout */
+  /* Layout adjustments */
   #profile,
   .section-container {
     display: block;
@@ -93,7 +91,7 @@
     margin: 4rem 5%;
   }
 
-  /* About Section */
+  /* About and Experience Sections */
   .lottie-container {
     height: 300px;
     width: 300px;
@@ -107,7 +105,6 @@
     margin-top: 0;
   }
 
-  /* Experience Section */
   #experience {
     margin-top: 3rem;
   }
@@ -128,14 +125,14 @@
     width: 7rem;
   }
 
-  /* Hide Arrow Icon */
+  /* Hide elements */
   .fas.fa-arrow-down.icon.arrow {
     display: none;
   }
 }
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  /* Layout */
+
+@media screen and (max-width: 768px) {
+  /* Layout adjustments */
   #profile {
     height: 75vh;
     margin-bottom: 4rem;
@@ -191,13 +188,12 @@
     display: inline-block;
   }
 
-  /* Button Container */
+  /* Button and Dropdown */
   .btn-container {
     flex-direction: column;
     align-items: center;
   }
 
-  /* Dropdown */
   .dropdown {
     margin-top: 0.5rem;
     width: auto;
@@ -214,31 +210,45 @@
   }
 
   .dropdown-content {
-    position: static;
-    transform: none;
+    position: absolute;
+    top: 105%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: var(--primary-color-light);
+    min-width: 120px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+    z-index: 11;
+    border-radius: 1.5rem;
     opacity: 0;
     visibility: hidden;
-    box-shadow: none;
-    background: none;
-    width: auto;
-    min-width: auto;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    border: 0.5px solid var(--container-border);
-    border-radius: 2rem;
-    padding: 0.5rem;
+    border: none;
+    transition: all 0.25s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    padding: 0.4rem;
   }
 
-  .dropdown-content.show {
+  .dropdown-content.open {
     opacity: 1;
     visibility: visible;
-    display: flex;
+    transform: translateX(-50%) translateY(0);
   }
 
   .dropdown-content a {
-    padding: 0.5rem;
-    border: none;
+    color: var(--secondary-color);
+    padding: 8px 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-radius: 1.2rem;
+    margin: 0.15rem 0;
+  }
+
+  .dropdown-content a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateX(2px);
   }
 
   .flag-icon {
@@ -246,7 +256,6 @@
     height: auto;
     margin-right: 0.3rem;
   }
-
 
   #socials-container {
     margin-top: 0.75rem;
@@ -260,9 +269,8 @@
   }
 }
 
-/* Screen width up to 600px */
 @media screen and (max-width: 600px) {
-  /* Layout */
+  /* Layout adjustments */
   #contact,
   footer {
     height: auto;
@@ -308,7 +316,7 @@
     font-size: 2rem;
   }
 
-  /* Containers */
+  /* Containers and elements */
   .lottie-container,
   .section__pic-container,
   #profile .lottie-container {
@@ -335,13 +343,10 @@
     gap: 1rem;
   }
 
-
-  /* Text */
   .text-container {
     text-align: justify;
   }
 
-  /* Dropdown */
   .dropdown {
     display: flex;
     justify-content: center;

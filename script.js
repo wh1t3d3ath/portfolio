@@ -205,8 +205,7 @@ const splashScreenHandler = (() => {
 
   const applyInitialTheme = () => {
     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const savedTheme = localStorage.getItem('theme');
-    const initialTheme = savedTheme || (prefersDarkScheme ? 'dark' : 'light');
+    const initialTheme = prefersDarkScheme ? 'dark' : 'light';
     
     util.attr(document.documentElement, 'theme', initialTheme);
     util.toggleClass(document.body, `${initialTheme}-theme`, true);
@@ -216,6 +215,9 @@ const splashScreenHandler = (() => {
         icon.className = `fas fa-${initialTheme === 'dark' ? 'sun' : 'moon'} color-icon icons`;
       }
     });
+
+    // Update localStorage with the initial theme
+    localStorage.setItem('theme', initialTheme);
   };
 
   const startEntranceAnimation = () => {
@@ -370,12 +372,6 @@ const lottieHandler = (() => {
 
 // Initialize ScrollReveal
 const initializeScrollReveal = () => {
-  const isMobile = window.innerWidth <= 768;
-
-  util.$$('#contact .icons, #contact .contact-icon').forEach(icon => {
-    Object.assign(icon.style, { opacity: '1', transform: 'none', transition: 'none' });
-  });
-
   const sr = ScrollReveal({
     distance: "20px",
     duration: 600,
@@ -390,52 +386,59 @@ const initializeScrollReveal = () => {
 
   const getConfig = (desktopConfig) => ({ ...desktopConfig, duration: 600, delay: 50 });
 
-  // Profile Section
-  sr.reveal('#profile .section__text__p1', getConfig({ origin: 'left', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#profile .title', getConfig({ origin: 'right', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#profile .section__text__p2', getConfig({ origin: 'left', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#profile .btn-container', getConfig({ origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#profile #socials-container', getConfig({ origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#profile .lottie-container', getConfig({ origin: 'right', distance: '50px', opacity: 0, scale: 0.9 }));
+  // Define reveal configurations for each section
+  const revealConfigs = {
+    profile: {
+      '.section__text__p1': { origin: 'left', distance: '30px', opacity: 0, scale: 0.95 },
+      '.title': { origin: 'right', distance: '30px', opacity: 0, scale: 0.95 },
+      '.section__text__p2': { origin: 'left', distance: '30px', opacity: 0, scale: 0.95 },
+      '.btn-container': { origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 },
+      '#socials-container': { origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 },
+      '.lottie-container': { origin: 'right', distance: '50px', opacity: 0, scale: 0.9 }
+    },
+    about: {
+      '.section__text__p1, .title': { origin: 'top', distance: '20px', opacity: 0, scale: 0.98 },
+      '.lottie-container': { origin: 'left', distance: '50px', opacity: 0, scale: 0.9 },
+      '.about-containers': { origin: 'right', distance: '30px', opacity: 0, scale: 0.95 },
+      '.text-container': { origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 }
+    },
+    experience: {
+      '.section__text__p1, .title': { origin: 'top', distance: '20px', opacity: 0, scale: 0.98 },
+      '.experience-details-container': { origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 },
+      '.article-container article': { origin: 'bottom', interval: 100, distance: '20px', opacity: 0, scale: 0.95 }
+    },
+    projects: {
+      '.section__text__p1, .title': { origin: 'top', distance: '20px', opacity: 0, scale: 0.98 },
+      '.color-container': { origin: 'bottom', interval: 200, distance: '30px', opacity: 0, scale: 0.95 }
+    },
+    contact: {
+      '.section__text__p1, .title': { origin: 'top', distance: '20px', opacity: 0, scale: 0.98 },
+      '.lottie-container': { origin: 'left', distance: '50px', opacity: 0, scale: 0.9 },
+      '.contact-info-upper-container': { origin: 'right', distance: '30px', opacity: 0, scale: 0.95 },
+      '.contact-item': { origin: 'bottom', interval: 100, distance: '20px', opacity: 0, scale: 0.95 }
+    },
+    footer: {
+      '.nav-links-container': { origin: 'bottom', distance: '15px', opacity: 0, scale: 0.98 },
+      '.nav-links li': { origin: 'bottom', interval: 100, distance: '10px', opacity: 0, scale: 0.95 },
+      'p': { origin: 'bottom', distance: '10px', opacity: 0, scale: 0.98 }
+    }
+  };
 
-  // About Section
-  sr.reveal('#about .section__text__p1', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#about .title', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#about .lottie-container', getConfig({ origin: 'left', distance: '50px', opacity: 0, scale: 0.9 }));
-  sr.reveal('#about .about-containers', getConfig({ origin: 'right', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#about .text-container', getConfig({ origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 }));
+  // Apply reveal configurations
+  Object.entries(revealConfigs).forEach(([section, configs]) => {
+    Object.entries(configs).forEach(([selector, config]) => {
+      sr.reveal(`#${section} ${selector}`, getConfig(config));
+    });
+  });
 
-  // Experience Section
-  sr.reveal('#experience .section__text__p1', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#experience .title', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#experience .experience-details-container', getConfig({ origin: 'bottom', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#experience .article-container article', getConfig({ origin: 'bottom', interval: 100, distance: '20px', opacity: 0, scale: 0.95 }));
-
-  // Projects Section
-  sr.reveal('#projects .section__text__p1', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#projects .title', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#projects .color-container', getConfig({ origin: 'bottom', interval: 200, distance: '30px', opacity: 0, scale: 0.95 }));
-
-  // Contact Section
-  sr.reveal('#contact .section__text__p1', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#contact .title', getConfig({ origin: 'top', distance: '20px', opacity: 0, scale: 0.98 }));
-  sr.reveal('#contact .lottie-container', getConfig({ origin: 'left', distance: '50px', opacity: 0, scale: 0.9 }));
-  sr.reveal('#contact .contact-info-upper-container', getConfig({ origin: 'right', distance: '30px', opacity: 0, scale: 0.95 }));
-  sr.reveal('#contact .contact-item', getConfig({ origin: 'bottom', interval: 100, distance: '20px', opacity: 0, scale: 0.95 }));
-
-  // Footer
-  sr.reveal('footer .nav-links-container', getConfig({ origin: 'bottom', distance: '15px', opacity: 0, scale: 0.98 }));
-  sr.reveal('footer .nav-links li', getConfig({ origin: 'bottom', interval: 100, distance: '10px', opacity: 0, scale: 0.95 }));
-  sr.reveal('footer p', getConfig({ origin: 'bottom', distance: '10px', opacity: 0, scale: 0.98 }));
-
-  // Scroll Indicators
+  // Reveal scroll indicators
   sr.reveal('.scroll-indicator-container', getConfig({ origin: 'bottom', distance: '20px', opacity: 0, scale: 0.95 }));
 };
 
-// Event listeners
+// Event listeners and initialization
 document.addEventListener("DOMContentLoaded", () => {
   themeHandler.initTheme();
-  util.updateElement("age", calculateAge("2004-05-25"));
+  util.updateElement("age", util.calculateAge("2004-05-25"));
   util.updateElement("current-year", new Date().getFullYear());
   dropdownHandler.setupDropdownMenu();
   arrowNavigationHandler.setupArrowNavigation();
@@ -443,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   util.$$(".icons").forEach(icon => {
     const label = icon.getAttribute("aria-label") || icon.getAttribute("title") || icon.textContent;
-    if (!icon.getAttribute("aria-label")) {
+    if (!label) {
       icon.setAttribute("aria-label", label);
     }
   });
@@ -490,7 +493,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e)
 });
 
 window.addEventListener("load", () => {
-  splashScreenHandler.applyInitialTheme();
+  splashScreenHandler.applyInitialTheme(); // Apply theme based on user's preference
   setTimeout(splashScreenHandler.hideSplashScreen, 2000);
   setTimeout(() => document.body.style.overflow = "auto", 3000);
 });
@@ -526,15 +529,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-// Helper function to calculate age
-function calculateAge(birthdate) {
-  const birth = new Date(birthdate);
-  const now = new Date();
-  let age = now.getFullYear() - birth.getFullYear();
-  const monthDiff = now.getMonth() - birth.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) {
-    age--;
-  }
-  return age;
-}
