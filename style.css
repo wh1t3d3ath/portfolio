@@ -511,6 +511,7 @@ section {
 }
 
 #about .lottie-container {
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -676,18 +677,13 @@ article div {
   padding: 1rem;
   flex-direction: column;
   color: var(--secondary-color-dark);
-  flex-direction: column;
-  align-items: center;
 }
 
 .contact-info-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .contact-item {
@@ -696,6 +692,13 @@ article div {
   text-decoration: none;
   color: inherit;
   transition: transform 0.3s ease;
+}
+
+.contact-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .contact-item:hover {
@@ -737,9 +740,6 @@ article div {
   color: var(--secondary-color);
 }
 
-.contact-info-container p {
-  font-size: larger;
-}
 
 .contact-icon {
   cursor: default;
@@ -795,7 +795,7 @@ footer p {
 
 ::-webkit-scrollbar-thumb {
   background: var(--container-border);
-  border-radius: 8px;
+  border-radius: 20px;
   border: 3px solid var(--primary-color);
 }
 
@@ -805,7 +805,7 @@ footer p {
 
 /* For Firefox */
 * {
-  scrollbar-width: thick;
+  scrollbar-width: thin;
   scrollbar-color: var(--container-border) transparent;
 }
 
@@ -817,6 +817,7 @@ footer p {
 [theme="dark"] ::-webkit-scrollbar-thumb {
   background: var(--dark-container-border);
   border-color: var(--dark-primary-color);
+  border-radius: 20px;
 }
 
 [theme="dark"] ::-webkit-scrollbar-thumb:hover {

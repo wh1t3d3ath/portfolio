@@ -376,13 +376,6 @@ const initializeScrollReveal = () => {
     Object.assign(icon.style, { opacity: '1', transform: 'none', transition: 'none' });
   });
 
-  if (isMobile) {
-    util.$$('#contact .contact-item p').forEach(text => {
-      text.style.display = 'none';
-    });
-    return;
-  }
-
   const sr = ScrollReveal({
     distance: "20px",
     duration: 600,
@@ -502,7 +495,7 @@ window.addEventListener("load", () => {
   setTimeout(() => document.body.style.overflow = "auto", 3000);
 });
 
-// Email copy functionality
+// Email functionality
 document.addEventListener("DOMContentLoaded", () => {
   const emailLink = util.$("#email-link");
   const emailTooltip = util.$("#email-tooltip");
@@ -514,11 +507,17 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => util.toggleClass(emailTooltip, "visible", false), 2000);
   };
 
+  const isMobile = () => window.innerWidth <= 768;
+
   emailLink.addEventListener("click", (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText(email)
-      .then(() => showTooltip("Email copied!"))
-      .catch(() => showTooltip("Failed to copy"));
+    if (isMobile()) {
+      window.location.href = `mailto:${email}`;
+    } else {
+      navigator.clipboard.writeText(email)
+        .then(() => showTooltip("Email copied!"))
+        .catch(() => showTooltip("Failed to copy"));
+    }
   });
 
   document.addEventListener("click", (e) => {

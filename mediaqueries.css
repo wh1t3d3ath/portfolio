@@ -133,8 +133,7 @@
     display: none;
   }
 }
-
-/* Screen width up to 768px */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   /* Layout */
   #profile {
@@ -248,12 +247,14 @@
     margin-right: 0.3rem;
   }
 
+
   #socials-container {
     margin-top: 0.75rem;
   }
 
   /* Remove hover effects on mobile */
-  .btn:hover, .btn:hover::after {
+  .btn:hover,
+  .btn:hover::after {
     transform: none;
     box-shadow: none;
   }
@@ -334,14 +335,6 @@
     gap: 1rem;
   }
 
-  .contact-info-container {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .contact-info-container p {
-    display: none;
-  }
 
   /* Text */
   .text-container {
