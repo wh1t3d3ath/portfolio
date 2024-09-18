@@ -370,7 +370,7 @@ const lottieHandler = (() => {
   return { insertLottieAnimations };
 })();
 
-// Initialize ScrollReveal
+// ScrollReveal initialization
 const initializeScrollReveal = () => {
   const sr = ScrollReveal({
     distance: "20px",
