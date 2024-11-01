@@ -1,4 +1,4 @@
-// Utility module
+// Core utility functions
 const util = (() => {
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
@@ -30,7 +30,7 @@ const util = (() => {
   };
 })();
 
-// Theme handler module
+// Theme handling
 const themeHandler = (() => {
   const setTheme = (theme) => {
     util.attr(document.documentElement, 'theme', theme);
@@ -81,7 +81,7 @@ const themeHandler = (() => {
   return { initTheme, toggleTheme, setTheme };
 })();
 
-// Menu handler module
+// Menu handling
 const menuHandler = (() => {
   const toggleMenu = () => {
     const menu = util.$(".menu-links");
@@ -116,7 +116,7 @@ const menuHandler = (() => {
   return { toggleMenu, closeMenuOnResize };
 })();
 
-// Dropdown handler module
+// Dropdown handling
 const dropdownHandler = (() => {
   const setupDropdownMenu = () => {
     const dropdown = util.$(".dropdown");
@@ -152,7 +152,7 @@ const dropdownHandler = (() => {
   return { setupDropdownMenu };
 })();
 
-// Animation handler module
+// Animation handling
 const animationHandler = (() => {
   const setupScrollAnimations = () => {
     if (window.innerWidth <= 768) {
@@ -183,7 +183,7 @@ const animationHandler = (() => {
   return { setupScrollAnimations };
 })();
 
-// Splash screen handler module
+// Splash screen handling
 const splashScreenHandler = (() => {
   const hideSplashScreen = () => {
     const splashScreen = util.$("#splash-screen");
@@ -192,14 +192,13 @@ const splashScreenHandler = (() => {
     splashScreen.addEventListener("transitionend", () => {
       splashScreen.style.display = "none";
       util.toggleClass(profileSection, "visible", true);
-      
-      // Initialize animations after splash screen is hidden
       startEntranceAnimation();
     });
 
     Object.assign(splashScreen.style, {
       opacity: "0",
-      transition: "opacity 1s ease"
+      transform: "scale(1.1)",
+      transition: "opacity 1s ease, transform 1s cubic-bezier(0.165, 0.84, 0.44, 1)"
     });
   };
 
@@ -216,7 +215,6 @@ const splashScreenHandler = (() => {
       }
     });
 
-    // Update localStorage with the initial theme
     localStorage.setItem('theme', initialTheme);
   };
 
@@ -224,59 +222,128 @@ const splashScreenHandler = (() => {
     const mainContent = util.$("main");
     const sections = util.$$("main > section");
     const nav = util.$("nav");
+    const profileLottie = util.$('#profile .lottie-container');
+    const profileInfo = util.$('#profile-info');
+    const socials = util.$('#socials-container');
+
+    // Enhanced initial states
+    if (profileLottie) {
+      Object.assign(profileLottie.style, {
+        opacity: "0",
+        transform: "translateX(50px) scale(0.95)",
+        transition: "opacity 1s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      });
+    }
+
+    if (profileInfo) {
+      Object.assign(profileInfo.style, {
+        opacity: "0",
+        transform: "translateY(30px)",
+        transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      });
+    }
+
+    if (socials) {
+      Object.assign(socials.style, {
+        opacity: "0",
+        transform: "translateY(20px)",
+        transition: "opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      });
+    }
 
     sections.forEach(el => {
       Object.assign(el.style, {
         opacity: "0",
         filter: "blur(10px)",
-        transform: "translateY(20px)",
-        transition: "opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease"
+        transform: "translateY(30px) scale(0.98)",
+        transition: "opacity 1s ease, filter 1s ease, transform 1s cubic-bezier(0.34, 1.56, 0.64, 1)"
       });
     });
 
-    Object.assign(mainContent.style, {
-      opacity: "1",
-      visibility: "visible"
-    });
+    // Staggered animation sequence
+    const animationSequence = async () => {
+      // Fade in main content
+      Object.assign(mainContent.style, {
+        opacity: "1",
+        visibility: "visible"
+      });
 
-    Object.assign(nav.style, {
-      opacity: "0",
-      transition: "opacity 0.5s ease"
-    });
-    setTimeout(() => {
-      nav.style.opacity = "1";
-    }, 200);
+      // Animate navigation with bounce
+      Object.assign(nav.style, {
+        opacity: "0",
+        transform: "translateY(-20px)",
+        transition: "opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      });
 
-    sections.forEach((section, index) => {
-      setTimeout(() => {
+      await new Promise(resolve => setTimeout(resolve, 200));
+      Object.assign(nav.style, {
+        opacity: "1",
+        transform: "translateY(0)"
+      });
+
+      // Animate sections with staggered timing
+      for (let [index, section] of sections.entries()) {
+        await new Promise(resolve => setTimeout(resolve, 200));
         Object.assign(section.style, {
           opacity: "1",
           filter: "blur(0)",
-          transform: "translateY(0)"
+          transform: "translateY(0) scale(1)"
         });
         animateSection(section);
-      }, (index + 1) * 300);
-    });
 
-    setTimeout(() => {
+        if (section.id === 'profile') {
+          // Profile section special animations
+          await new Promise(resolve => setTimeout(resolve, 300));
+          
+          if (profileInfo) {
+            Object.assign(profileInfo.style, {
+              opacity: "1",
+              transform: "translateY(0)"
+            });
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 200));
+          
+          if (profileLottie) {
+            Object.assign(profileLottie.style, {
+              opacity: "1",
+              transform: "translateX(0) scale(1)"
+            });
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 200));
+          
+          if (socials) {
+            Object.assign(socials.style, {
+              opacity: "1",
+              transform: "translateY(0)"
+            });
+          }
+        }
+      }
+
+      // Initialize other animations
+      await new Promise(resolve => setTimeout(resolve, 500));
       animationHandler.setupScrollAnimations();
       initializeScrollReveal();
-    }, sections.length * 300 + 500);
+    };
+
+    animationSequence();
   };
 
   const animateSection = (section) => {
     const elements = util.$$('.animated-element', section);
     elements.forEach((el, index) => {
       setTimeout(() => {
-        el.style.animation = `fadeInSlide 0.6s ${index * 0.1}s forwards ease-out`;
-      }, index * 100);
+        el.style.animation = `fadeInSlide 0.8s ${index * 0.15}s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`;
+      }, index * 150);
     });
   };
 
   return { hideSplashScreen, applyInitialTheme };
 })();
 
-// Arrow navigation handler module
+// Navigation handling
 const arrowNavigationHandler = (() => {
   const setupArrowNavigation = () => {
     const arrow = util.$(".icon.arrow");
@@ -304,7 +371,6 @@ const arrowNavigationHandler = (() => {
   return { setupArrowNavigation };
 })();
 
-// Scroll indicator handler module
 const scrollIndicatorHandler = (() => {
   const setupScrollIndicators = () => {
     document.addEventListener("click", function (event) {
@@ -321,7 +387,7 @@ const scrollIndicatorHandler = (() => {
   return { setupScrollIndicators };
 })();
 
-// Lottie animations handler module
+// Lottie animations
 const lottieHandler = (() => {
   const lottieAnimations = {
     splashScreen: "https://lottie.host/f6fd76fa-bf3d-47e1-9594-ca365dac923a/JTES7YEv6f.lottie",
@@ -349,15 +415,25 @@ const lottieHandler = (() => {
   const insertLottieAnimations = () => {
     const lottieContainers = {
       '#splash-screen': { src: lottieAnimations.splashScreen, options: { width: '200px', height: '200px' } },
-      '#profile .lottie-container': { src: lottieAnimations.profile },
+      '#profile .lottie-container': { 
+        src: lottieAnimations.profile,
+        initialStyle: {
+          opacity: "0",
+          transform: "translateX(50px)",
+          transition: "opacity 0.8s ease, transform 0.8s ease"
+        }
+      },
       '#about .lottie-container': { src: lottieAnimations.about },
       '#experience .section__pic-container': { src: lottieAnimations.experience },
       '#contact .lottie-container': { src: lottieAnimations.contact, options: { width: '400px', height: '400px' } }
     };
 
-    Object.entries(lottieContainers).forEach(([selector, { src, options }]) => {
+    Object.entries(lottieContainers).forEach(([selector, { src, options, initialStyle }]) => {
       const container = util.$(selector);
       if (container) {
+        if (initialStyle) {
+          Object.assign(container.style, initialStyle);
+        }
         container.appendChild(createLottiePlayer(src, options));
       }
     });
@@ -370,7 +446,7 @@ const lottieHandler = (() => {
   return { insertLottieAnimations };
 })();
 
-// ScrollReveal initialization
+// ScrollReveal configuration
 const initializeScrollReveal = () => {
   const sr = ScrollReveal({
     distance: "20px",
@@ -386,7 +462,6 @@ const initializeScrollReveal = () => {
 
   const getConfig = (desktopConfig) => ({ ...desktopConfig, duration: 600, delay: 50 });
 
-  // Define reveal configurations for each section
   const revealConfigs = {
     profile: {
       '.section__text__p1': { origin: 'left', distance: '30px', opacity: 0, scale: 0.95 },
@@ -424,14 +499,12 @@ const initializeScrollReveal = () => {
     }
   };
 
-  // Apply reveal configurations
   Object.entries(revealConfigs).forEach(([section, configs]) => {
     Object.entries(configs).forEach(([selector, config]) => {
       sr.reveal(`#${section} ${selector}`, getConfig(config));
     });
   });
 
-  // Reveal scroll indicators
   sr.reveal('.scroll-indicator-container', getConfig({ origin: 'bottom', distance: '20px', opacity: 0, scale: 0.95 }));
 };
 
@@ -469,7 +542,6 @@ document.addEventListener("DOMContentLoaded", () => {
     backToTopButton.addEventListener("click", util.scrollToTop);
   }
 
-  // Optimize scroll event listener
   const handleScroll = util.debounce(() => {
     const scrollPos = window.scrollY;
     const backToTopButton = util.$("#back-to-top");
@@ -493,7 +565,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e)
 });
 
 window.addEventListener("load", () => {
-  splashScreenHandler.applyInitialTheme(); // Apply theme based on user's preference
+  splashScreenHandler.applyInitialTheme();
   setTimeout(splashScreenHandler.hideSplashScreen, 2000);
   setTimeout(() => document.body.style.overflow = "auto", 3000);
 });
@@ -505,27 +577,43 @@ document.addEventListener("DOMContentLoaded", () => {
   const email = "vkavouras@proton.me";
 
   const showTooltip = (message) => {
-    emailTooltip.textContent = message;
-    util.toggleClass(emailTooltip, "visible", true);
-    setTimeout(() => util.toggleClass(emailTooltip, "visible", false), 2000);
+    if (emailTooltip) {
+      emailTooltip.textContent = message;
+      emailTooltip.style.visibility = 'visible';
+      emailTooltip.style.opacity = '1';
+      emailTooltip.style.transform = 'translateX(-50%) translateY(0)';
+
+      setTimeout(() => {
+        emailTooltip.style.opacity = '0';
+        emailTooltip.style.transform = 'translateX(-50%) translateY(10px)';
+        setTimeout(() => {
+          emailTooltip.style.visibility = 'hidden';
+        }, 300);
+      }, 2000);
+    }
   };
 
   const isMobile = () => window.innerWidth <= 768;
 
-  emailLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (isMobile()) {
-      window.location.href = `mailto:${email}`;
-    } else {
-      navigator.clipboard.writeText(email)
-        .then(() => showTooltip("Email copied!"))
-        .catch(() => showTooltip("Failed to copy"));
-    }
-  });
+  if (emailLink && emailTooltip) {
+    emailLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (isMobile()) {
+        window.location.href = `mailto:${email}`;
+      } else {
+        navigator.clipboard.writeText(email)
+          .then(() => showTooltip("Email copied!"))
+          .catch(() => showTooltip("Failed to copy"));
+      }
+    });
 
-  document.addEventListener("click", (e) => {
-    if (!emailLink.contains(e.target)) {
-      util.toggleClass(emailTooltip, "visible", false);
-    }
-  });
+    // Hide tooltip when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!emailLink.contains(e.target)) {
+        emailTooltip.style.visibility = 'hidden';
+        emailTooltip.style.opacity = '0';
+        emailTooltip.style.transform = 'translateX(-50%) translateY(10px)';
+      }
+    });
+  }
 });

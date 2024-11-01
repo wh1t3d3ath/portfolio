@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaggelis Kavouras - Software Developer Portfolio</title>
     <meta name="description" content="Explore my projects, skills, and experience in web development and game design.">
-    <link rel="icon" href="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-portfolio-social-media-agency-flaticons-lineal-color-flat-icons-4.png" type="image/x-icon">
+    <title>Vaggelis Kavouras - Software Developer Portfolio</title>
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
-    <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous" defer></script>
-    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js" defer></script>
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <link rel="icon" href="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-portfolio-social-media-agency-flaticons-lineal-color-flat-icons-4.png" type="image/x-icon">
 </head>
 <body>
-    <div id="splash-screen" style="position: fixed; width: 100%; height: 100%; z-index: 9999;"></div>
+    <!-- Splash Screen -->
+    <div id="splash-screen"></div>
 
+    <!-- Header -->
     <header>
+        <!-- Desktop Navigation -->
         <nav id="desktop-nav">
             <div class="logo">Vaggelis Kavouras</div>
             <ul class="nav-links">
@@ -23,9 +25,11 @@
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><i id="modeToggle" class="fas fa-adjust color-icon icons" onclick="toggleTheme()" style="cursor: pointer;"></i></li>
+                <li><i id="modeToggle" class="fas fa-adjust color-icon icons" onclick="toggleTheme()"></i></li>
             </ul>
         </nav>
+
+        <!-- Mobile Navigation -->
         <nav id="hamburger-nav">
             <div class="logo">Vaggelis Kavouras</div>
             <div class="hamburger-menu">
@@ -43,7 +47,9 @@
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
+        <!-- Profile Section -->
         <section id="profile" class="profile-section">
             <div class="profile-pic animated-element" id="profile-pic"></div>
             <div class="profile-info animated-element" id="profile-info">
@@ -51,6 +57,8 @@
                     <p class="section__text__p1 animated-element">Hello, I'm</p>
                     <h1 class="title animated-element" id="profile-name">Vaggelis Kavouras<span class="wave">👋</span></h1>
                     <p class="section__text__p2 animated-element" id="profile-description">Software Developer</p>
+                    
+                    <!-- CV Download & Contact Buttons -->
                     <div class="btn-container">
                         <div class="dropdown">
                             <button id="downloadCvButton" class="btn btn-color-2">Download CV</button>
@@ -61,6 +69,8 @@
                         </div>
                         <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
                     </div>
+
+                    <!-- Social Links -->
                     <div id="socials-container" class="profile-icons animated-element">
                         <a href="https://www.linkedin.com/in/vkavouras/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <i class="fab fa-linkedin icon linked-icon icons"></i>
@@ -77,6 +87,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about">
             <div class="section-text-container">
                 <p class="section__text__p1">Get To Know More</p>
@@ -107,6 +118,7 @@
             </div>
         </section>
 
+        <!-- Experience Section -->
         <section id="experience" class="animated">
             <div class="section-text-container">
                 <p class="section__text__p1">Explore My</p>
@@ -114,6 +126,7 @@
             </div>
             <div class="experience-details-container">
                 <div class="about-containers">
+                    <!-- Software Development Skills -->
                     <div class="details-container">
                         <h2 class="experience-sub-title">Software Development</h2>
                         <div class="article-container">
@@ -150,6 +163,7 @@
                         </div>
                     </div>
                     <div class="section__pic-container"></div>
+                    <!-- Content Creation Skills -->
                     <div class="details-container">
                         <h2 class="experience-sub-title">Content Creation</h2>
                         <div class="article-container">
@@ -192,6 +206,7 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects" class="animated">
             <div class="section-text-container">
                 <p class="section__text__p1">Browse My Recent</p>
@@ -199,6 +214,7 @@
             </div>
             <div class="experience-details-container">
                 <div class="about-containers">
+                    <!-- Project 1: Cooking Website -->
                     <div class="details-container color-container">
                         <div class="article-container">
                             <img src="https://img.freepik.com/free-vector/cross-platform-frameworks-abstract-concept-illustration_335657-1825.jpg?t=st=1720100807~exp=1720104407~hmac=4f98051dba052237644d5263d239ad7185d422245a215df1adfb29fba8e438a4&w=826" alt="Project 1" class="project-img" loading="lazy">
@@ -215,6 +231,7 @@
                             </button>
                         </div>
                     </div>
+                    <!-- Project 2: Unity Game -->
                     <div class="details-container color-container">
                         <div class="article-container">
                             <img src="https://img.freepik.com/free-vector/action-game-abstract-concept-illustration_335657-3751.jpg?t=st=1720098963~exp=1720102563~hmac=4ea4a085a33802a581aba5fcc23ac1eb1d3d77821bc7d6f64e7e48c4bc8d6066&w=826" alt="Project 2" class="project-img" loading="lazy">
@@ -231,6 +248,7 @@
                             </button>
                         </div>
                     </div>
+                    <!-- Project 3: Calculator -->
                     <div class="details-container color-container">
                         <div class="article-container">
                             <img src="https://img.freepik.com/free-vector/calculator-concept-illustration_114360-1239.jpg?t=st=1720101406~exp=1720105006~hmac=9f6b46023a2d3af283466edeed15465011b24bd0707fd99650d2f38f894ecdb8&w=826" alt="Project 3" class="project-img" loading="lazy">
@@ -254,6 +272,7 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="animated">
             <div class="section-text-container">
                 <p class="section__text__p1">Get in Touch</p>
@@ -280,6 +299,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <nav>
             <div class="nav-links-container">
@@ -294,10 +314,15 @@
         <p><i class="far fa-copyright"></i> <span id="current-year"></span> Kavouras Vaggelis. All Rights Reserved.</p>
     </footer>
 
+    <!-- Back to Top Button -->
     <button id="back-to-top" class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/ee64ada057.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     <script type="module" src="script.js"></script>
 </body>
 </html>

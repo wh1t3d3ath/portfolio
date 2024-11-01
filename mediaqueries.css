@@ -1,7 +1,8 @@
-/* Media Queries */
+/* ===== MEDIA QUERIES ===== */
 
+/* ===== 1400px AND BELOW ===== */
 @media screen and (max-width: 1400px) {
-  /* Layout adjustments */
+  /* Layout */
   #profile,
   .section-container {
     display: block;
@@ -52,12 +53,13 @@
     width: 8rem;
   }
 
-  /* Hide elements */
+  /* Hide Elements */
   .scroll-indicator {
     display: none;
   }
 }
 
+/* ===== 1200px AND BELOW ===== */
 @media screen and (max-width: 1200px) {
   /* Navigation */
   #desktop-nav {
@@ -80,7 +82,7 @@
     height: 12vh;
   }
 
-  /* Layout adjustments */
+  /* Layout */
   #profile,
   .section-container {
     display: block;
@@ -91,7 +93,7 @@
     margin: 4rem 5%;
   }
 
-  /* About and Experience Sections */
+  /* About & Experience */
   .lottie-container {
     height: 300px;
     width: 300px;
@@ -125,14 +127,15 @@
     width: 7rem;
   }
 
-  /* Hide elements */
+  /* Hide Elements */
   .fas.fa-arrow-down.icon.arrow {
     display: none;
   }
 }
 
+/* ===== 768px AND BELOW ===== */
 @media screen and (max-width: 768px) {
-  /* Layout adjustments */
+  /* Layout */
   #profile {
     height: 75vh;
     margin-bottom: 4rem;
@@ -147,7 +150,7 @@
     margin: 4rem 3%;
   }
 
-  /* Images and Containers */
+  /* Images & Containers */
   .lottie-container,
   .section__pic-container {
     width: 250px;
@@ -179,7 +182,7 @@
     width: 6rem;
   }
 
-  /* Project Buttons */
+  /* Project Elements */
   .project-btn .btn-text {
     display: none;
   }
@@ -188,7 +191,7 @@
     display: inline-block;
   }
 
-  /* Button and Dropdown */
+  /* Buttons & Dropdowns */
   .btn-container {
     flex-direction: column;
     align-items: center;
@@ -200,13 +203,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .dropdown-toggle {
-    width: 6rem;
-    font-size: 0.9rem;
-    padding: 0.75rem;
-    margin-bottom: 0.3rem;
   }
 
   .dropdown-content {
@@ -251,6 +247,7 @@
     transform: translateX(2px);
   }
 
+  /* Icons & Social */
   .flag-icon {
     width: 18px;
     height: auto;
@@ -261,7 +258,17 @@
     margin-top: 0.75rem;
   }
 
-  /* Remove hover effects on mobile */
+  /* Contact Section */
+  .contact-info-upper-container {
+    padding: 0.8rem;
+  }
+
+  .contact-item .icons {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  /* Disable Hover Effects */
   .btn:hover,
   .btn:hover::after {
     transform: none;
@@ -269,8 +276,9 @@
   }
 }
 
+/* ===== 600px AND BELOW ===== */
 @media screen and (max-width: 600px) {
-  /* Layout adjustments */
+  /* Layout */
   #contact,
   footer {
     height: auto;
@@ -281,6 +289,7 @@
     margin-bottom: 0;
   }
 
+  /* Navigation */
   footer nav {
     height: fit-content;
     margin-bottom: 2rem;
@@ -293,6 +302,10 @@
     gap: 0.5rem;
     text-align: center;
     align-items: center;
+  }
+
+  .nav-links a::after {
+    display: none;
   }
 
   /* Typography */
@@ -316,10 +329,9 @@
     font-size: 2rem;
   }
 
-  /* Containers and elements */
+  /* Containers & Elements */
   .lottie-container,
-  .section__pic-container,
-  #profile .lottie-container {
+  .section__pic-container {
     width: 250px;
     height: 250px;
   }
@@ -332,8 +344,7 @@
   }
 
   .contact-info-upper-container {
-    display: flex;
-    gap: 1rem;
+    margin: 1rem auto;
   }
 
   .icons {
@@ -347,28 +358,21 @@
     text-align: justify;
   }
 
-  .dropdown {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  /* Back to Top Button */
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
-  .dropdown-content {
-    display: none;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    top: 100%;
-    width: auto;
-    transform: translateX(-50%);
-  }
-
-  .dropdown-content.show {
-    display: flex;
+  .back-to-top i {
+    font-size: 1.2rem;
   }
 
   /* Animations */
-  .animated, .section {
+  .animated,
+  .section {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     animation-duration: 0.5s;
   }
